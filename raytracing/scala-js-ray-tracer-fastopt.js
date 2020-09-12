@@ -1533,6 +1533,438 @@ function $m_jl_Math$() {
   };
   return $n_jl_Math$
 }
+const $d_jl_Runnable = new $TypeData().initClass({
+  jl_Runnable: 0
+}, true, "java.lang.Runnable", {
+  jl_Runnable: 1,
+  O: 1
+});
+const $p_jl_StackTrace$__extract__O__Ajl_StackTraceElement = (function($thiz, stackdata) {
+  const lines = $p_jl_StackTrace$__normalizeStackTraceLines__O__O($thiz, stackdata);
+  return $p_jl_StackTrace$__normalizedLinesToStackTrace__O__Ajl_StackTraceElement($thiz, lines)
+});
+const $p_jl_StackTrace$__normalizedLinesToStackTrace__O__Ajl_StackTraceElement = (function($thiz, lines) {
+  const NormalizedFrameLine = $m_jl_StackTrace$StringRE$().re$extension__T__O("^([^\\@]*)\\@(.*):([0-9]+)$");
+  const NormalizedFrameLineWithColumn = $m_jl_StackTrace$StringRE$().re$extension__T__O("^([^\\@]*)\\@(.*):([0-9]+):([0-9]+)$");
+  const trace = [];
+  let i = 0;
+  while ((i < $uI(lines.length))) {
+    const line = $as_T(lines[i]);
+    if ((line !== "")) {
+      const mtch1 = NormalizedFrameLineWithColumn.exec(line);
+      if ((mtch1 !== null)) {
+        const x = mtch1[1];
+        const classAndMethodName = $p_jl_StackTrace$__extractClassMethod__T__O($thiz, $as_T(x));
+        const $$x3 = $as_T(classAndMethodName[0]);
+        const $$x2 = $as_T(classAndMethodName[1]);
+        const x$1 = mtch1[2];
+        const $$x1 = $as_T(x$1);
+        const x$2 = mtch1[3];
+        const s = $as_T(x$2);
+        const elem = new $c_jl_StackTraceElement($$x3, $$x2, $$x1, $uI(parseInt(s)));
+        const x$3 = mtch1[4];
+        const s$1 = $as_T(x$3);
+        elem.jl_StackTraceElement__f_columnNumber = $uI(parseInt(s$1));
+        $uI(trace.push(elem))
+      } else {
+        const mtch2 = NormalizedFrameLine.exec(line);
+        if ((mtch2 !== null)) {
+          const x$4 = mtch2[1];
+          const classAndMethodName$2 = $p_jl_StackTrace$__extractClassMethod__T__O($thiz, $as_T(x$4));
+          const $$x7 = $as_T(classAndMethodName$2[0]);
+          const $$x6 = $as_T(classAndMethodName$2[1]);
+          const x$5 = mtch2[2];
+          const $$x5 = $as_T(x$5);
+          const x$6 = mtch2[3];
+          const s$2 = $as_T(x$6);
+          const $$x4 = trace.push(new $c_jl_StackTraceElement($$x7, $$x6, $$x5, $uI(parseInt(s$2))));
+          $uI($$x4)
+        } else {
+          $uI(trace.push(new $c_jl_StackTraceElement("<jscode>", line, null, (-1))))
+        }
+      }
+    };
+    i = ((1 + i) | 0)
+  };
+  const len = $uI(trace.length);
+  const result = $newArrayObject($d_jl_StackTraceElement.getArrayOf(), [len]);
+  i = 0;
+  while ((i < len)) {
+    result.set(i, $as_jl_StackTraceElement(trace[i]));
+    i = ((1 + i) | 0)
+  };
+  return result
+});
+const $p_jl_StackTrace$__extractClassMethod__T__O = (function($thiz, functionName) {
+  const PatBC = $m_jl_StackTrace$StringRE$().re$extension__T__O("^(?:Object\\.|\\[object Object\\]\\.)?\\$[bc]_([^\\.]+)(?:\\.prototype)?\\.([^\\.]+)$");
+  const PatS = $m_jl_StackTrace$StringRE$().re$extension__T__O("^(?:Object\\.|\\[object Object\\]\\.)?\\$(?:ps?|s|f)_((?:_[^_]|[^_])+)__([^\\.]+)$");
+  const PatCT = $m_jl_StackTrace$StringRE$().re$extension__T__O("^(?:Object\\.|\\[object Object\\]\\.)?\\$ct_((?:_[^_]|[^_])+)__([^\\.]*)$");
+  const PatN = $m_jl_StackTrace$StringRE$().re$extension__T__O("^new (?:Object\\.|\\[object Object\\]\\.)?\\$c_([^\\.]+)$");
+  const PatM = $m_jl_StackTrace$StringRE$().re$extension__T__O("^(?:Object\\.|\\[object Object\\]\\.)?\\$m_([^\\.]+)$");
+  const matchBC = PatBC.exec(functionName);
+  const matchBCOrS = ((matchBC !== null) ? matchBC : PatS.exec(functionName));
+  if ((matchBCOrS !== null)) {
+    const x = matchBCOrS[1];
+    const $$x1 = $p_jl_StackTrace$__decodeClassName__T__T($thiz, $as_T(x));
+    const x$1 = matchBCOrS[2];
+    return [$$x1, $p_jl_StackTrace$__decodeMethodName__T__T($thiz, $as_T(x$1))]
+  } else {
+    const matchCT = PatCT.exec(functionName);
+    const matchCTOrN = ((matchCT !== null) ? matchCT : PatN.exec(functionName));
+    if ((matchCTOrN !== null)) {
+      const x$2 = matchCTOrN[1];
+      return [$p_jl_StackTrace$__decodeClassName__T__T($thiz, $as_T(x$2)), "<init>"]
+    } else {
+      const matchM = PatM.exec(functionName);
+      if ((matchM !== null)) {
+        const x$3 = matchM[1];
+        return [$p_jl_StackTrace$__decodeClassName__T__T($thiz, $as_T(x$3)), "<clinit>"]
+      } else {
+        return ["<jscode>", functionName]
+      }
+    }
+  }
+});
+const $p_jl_StackTrace$__decodeClassName__T__T = (function($thiz, encodedName) {
+  const dict = $p_jl_StackTrace$__decompressedClasses__O($thiz);
+  let base;
+  if ($uZ($m_jl_Utils$Cache$().jl_Utils$Cache$__f_safeHasOwnProperty.call(dict, encodedName))) {
+    const dict$1 = $p_jl_StackTrace$__decompressedClasses__O($thiz);
+    base = $as_T(dict$1[encodedName])
+  } else {
+    base = $p_jl_StackTrace$__loop$1__I__T__T($thiz, 0, encodedName)
+  };
+  const this$4 = $as_T(base.split("_").join("."));
+  return $as_T(this$4.split("\uff3f").join("_"))
+});
+const $p_jl_StackTrace$__decompressedClasses$lzycompute__O = (function($thiz) {
+  if (((((1 & $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24) === 0)) {
+    const dict = {};
+    dict.O = "java_lang_Object";
+    dict.T = "java_lang_String";
+    let index = 0;
+    while ((index <= 22)) {
+      if ((index >= 2)) {
+        const key = ("T" + index);
+        const value = ("scala_Tuple" + index);
+        dict[key] = value
+      };
+      const key$1 = ("F" + index);
+      const value$1 = ("scala_Function" + index);
+      dict[key$1] = value$1;
+      index = ((1 + index) | 0)
+    };
+    $thiz.jl_StackTrace$__f_decompressedClasses = dict;
+    $thiz.jl_StackTrace$__f_bitmap$0 = (((1 | $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24)
+  };
+  return $thiz.jl_StackTrace$__f_decompressedClasses
+});
+const $p_jl_StackTrace$__decompressedClasses__O = (function($thiz) {
+  return (((((1 & $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24) === 0) ? $p_jl_StackTrace$__decompressedClasses$lzycompute__O($thiz) : $thiz.jl_StackTrace$__f_decompressedClasses)
+});
+const $p_jl_StackTrace$__decompressedPrefixes$lzycompute__O = (function($thiz) {
+  if (((((2 & $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24) === 0)) {
+    const dict = {};
+    dict.sjsr_ = "scala_scalajs_runtime_";
+    dict.sjs_ = "scala_scalajs_";
+    dict.sci_ = "scala_collection_immutable_";
+    dict.scm_ = "scala_collection_mutable_";
+    dict.scg_ = "scala_collection_generic_";
+    dict.sc_ = "scala_collection_";
+    dict.sr_ = "scala_runtime_";
+    dict.s_ = "scala_";
+    dict.jl_ = "java_lang_";
+    dict.ju_ = "java_util_";
+    $thiz.jl_StackTrace$__f_decompressedPrefixes = dict;
+    $thiz.jl_StackTrace$__f_bitmap$0 = (((2 | $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24)
+  };
+  return $thiz.jl_StackTrace$__f_decompressedPrefixes
+});
+const $p_jl_StackTrace$__decompressedPrefixes__O = (function($thiz) {
+  return (((((2 & $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24) === 0) ? $p_jl_StackTrace$__decompressedPrefixes$lzycompute__O($thiz) : $thiz.jl_StackTrace$__f_decompressedPrefixes)
+});
+const $p_jl_StackTrace$__compressedPrefixes$lzycompute__O = (function($thiz) {
+  if (((((4 & $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24) === 0)) {
+    $thiz.jl_StackTrace$__f_compressedPrefixes = Object.keys($p_jl_StackTrace$__decompressedPrefixes__O($thiz));
+    $thiz.jl_StackTrace$__f_bitmap$0 = (((4 | $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24)
+  };
+  return $thiz.jl_StackTrace$__f_compressedPrefixes
+});
+const $p_jl_StackTrace$__compressedPrefixes__O = (function($thiz) {
+  return (((((4 & $thiz.jl_StackTrace$__f_bitmap$0) << 24) >> 24) === 0) ? $p_jl_StackTrace$__compressedPrefixes$lzycompute__O($thiz) : $thiz.jl_StackTrace$__f_compressedPrefixes)
+});
+const $p_jl_StackTrace$__decodeMethodName__T__T = (function($thiz, encodedName) {
+  if ((($uI(encodedName.length) >= 0) && ($as_T(encodedName.substring(0, $uI("init___".length))) === "init___"))) {
+    return "<init>"
+  } else {
+    const methodNameLen = $uI(encodedName.indexOf("__"));
+    return ((methodNameLen < 0) ? encodedName : $as_T(encodedName.substring(0, methodNameLen)))
+  }
+});
+const $p_jl_StackTrace$__normalizeStackTraceLines__O__O = (function($thiz, e) {
+  const x = (!e);
+  if ($uZ((!(!x)))) {
+    return []
+  } else {
+    const x$1 = (e.arguments && e.stack);
+    if ($uZ((!(!x$1)))) {
+      return $p_jl_StackTrace$__extractChrome__O__O($thiz, e)
+    } else {
+      const x$2 = (e.stack && e.sourceURL);
+      if ($uZ((!(!x$2)))) {
+        return $p_jl_StackTrace$__extractSafari__O__O($thiz, e)
+      } else {
+        const x$3 = (e.stack && e.number);
+        if ($uZ((!(!x$3)))) {
+          return $p_jl_StackTrace$__extractIE__O__O($thiz, e)
+        } else {
+          const x$4 = (e.stack && e.fileName);
+          if ($uZ((!(!x$4)))) {
+            return $p_jl_StackTrace$__extractFirefox__O__O($thiz, e)
+          } else {
+            const x$5 = (e.message && e["opera#sourceloc"]);
+            if ($uZ((!(!x$5)))) {
+              const x$6 = (!e.stacktrace);
+              if ($uZ((!(!x$6)))) {
+                return $p_jl_StackTrace$__extractOpera9__O__O($thiz, e)
+              } else {
+                const x$7 = ((e.message.indexOf("\n") > (-1.0)) && (e.message.split("\n").length > e.stacktrace.split("\n").length));
+                if ($uZ((!(!x$7)))) {
+                  return $p_jl_StackTrace$__extractOpera9__O__O($thiz, e)
+                } else {
+                  return $p_jl_StackTrace$__extractOpera10a__O__O($thiz, e)
+                }
+              }
+            } else {
+              const x$8 = ((e.message && e.stack) && e.stacktrace);
+              if ($uZ((!(!x$8)))) {
+                const x$9 = (e.stacktrace.indexOf("called from line") < 0.0);
+                if ($uZ((!(!x$9)))) {
+                  return $p_jl_StackTrace$__extractOpera10b__O__O($thiz, e)
+                } else {
+                  return $p_jl_StackTrace$__extractOpera11__O__O($thiz, e)
+                }
+              } else {
+                const x$10 = (e.stack && (!e.fileName));
+                if ($uZ((!(!x$10)))) {
+                  return $p_jl_StackTrace$__extractChrome__O__O($thiz, e)
+                } else {
+                  return $p_jl_StackTrace$__extractOther__O__O($thiz, e)
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+});
+const $p_jl_StackTrace$__extractChrome__O__O = (function($thiz, e) {
+  const x = ($as_T(e.stack) + "\n");
+  const $$x6 = x.replace($m_jl_StackTrace$StringRE$().re$extension__T__O("^[\\s\\S]+?\\s+at\\s+"), " at ");
+  const x$1 = $as_T($$x6);
+  const $$x5 = x$1.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^\\s+(at eval )?at\\s+", "gm"), "");
+  const x$2 = $as_T($$x5);
+  const $$x4 = x$2.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^([^\\(]+?)([\\n])", "gm"), "{anonymous}() ($1)$2");
+  const x$3 = $as_T($$x4);
+  const $$x3 = x$3.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^Object.<anonymous>\\s*\\(([^\\)]+)\\)", "gm"), "{anonymous}() ($1)");
+  const x$4 = $as_T($$x3);
+  const $$x2 = x$4.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^([^\\(]+|\\{anonymous\\}\\(\\)) \\((.+)\\)$", "gm"), "$1@$2");
+  const x$5 = $as_T($$x2);
+  const $$x1 = x$5.split("\n");
+  return $$x1.slice(0, (-1))
+});
+const $p_jl_StackTrace$__extractFirefox__O__O = (function($thiz, e) {
+  const x = $as_T(e.stack);
+  const $$x2 = x.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("(?:\\n@:0)?\\s+$", "m"), "");
+  const x$1 = $as_T($$x2);
+  const $$x1 = x$1.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^(?:\\((\\S*)\\))?@", "gm"), "{anonymous}($1)@");
+  const x$2 = $as_T($$x1);
+  return x$2.split("\n")
+});
+const $p_jl_StackTrace$__extractIE__O__O = (function($thiz, e) {
+  const x = $as_T(e.stack);
+  const $$x3 = x.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^\\s*at\\s+(.*)$", "gm"), "$1");
+  const x$1 = $as_T($$x3);
+  const $$x2 = x$1.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^Anonymous function\\s+", "gm"), "{anonymous}() ");
+  const x$2 = $as_T($$x2);
+  const $$x1 = x$2.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^([^\\(]+|\\{anonymous\\}\\(\\))\\s+\\((.+)\\)$", "gm"), "$1@$2");
+  const x$3 = $as_T($$x1);
+  const qual$1 = x$3.split("\n");
+  return qual$1.slice(1)
+});
+const $p_jl_StackTrace$__extractSafari__O__O = (function($thiz, e) {
+  const x = $as_T(e.stack);
+  const $$x3 = x.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("\\[native code\\]\\n", "m"), "");
+  const x$1 = $as_T($$x3);
+  const $$x2 = x$1.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^(?=\\w+Error\\:).*$\\n", "m"), "");
+  const x$2 = $as_T($$x2);
+  const $$x1 = x$2.replace($m_jl_StackTrace$StringRE$().re$extension__T__T__O("^@", "gm"), "{anonymous}()@");
+  const x$3 = $as_T($$x1);
+  return x$3.split("\n")
+});
+const $p_jl_StackTrace$__extractOpera9__O__O = (function($thiz, e) {
+  const lineRE = $m_jl_StackTrace$StringRE$().re$extension__T__T__O("Line (\\d+).*script (?:in )?(\\S+)", "i");
+  const x = $as_T(e.message);
+  const lines = x.split("\n");
+  const result = [];
+  let i = 2;
+  const len = $uI(lines.length);
+  while ((i < len)) {
+    const mtch = lineRE.exec($as_T(lines[i]));
+    if ((mtch !== null)) {
+      const x$1 = mtch[2];
+      const x$2 = mtch[1];
+      const $$x1 = result.push(((("{anonymous}()@" + x$1) + ":") + x$2));
+      $uI($$x1)
+    };
+    i = ((2 + i) | 0)
+  };
+  return result
+});
+const $p_jl_StackTrace$__extractOpera10a__O__O = (function($thiz, e) {
+  const lineRE = $m_jl_StackTrace$StringRE$().re$extension__T__T__O("Line (\\d+).*script (?:in )?(\\S+)(?:: In function (\\S+))?$", "i");
+  const x = $as_T(e.stacktrace);
+  const lines = x.split("\n");
+  const result = [];
+  let i = 0;
+  const len = $uI(lines.length);
+  while ((i < len)) {
+    const mtch = lineRE.exec($as_T(lines[i]));
+    if ((mtch !== null)) {
+      const x$1 = mtch[3];
+      const fnName = $as_T(((x$1 !== (void 0)) ? x$1 : "{anonymous}"));
+      const x$2 = mtch[2];
+      const x$3 = mtch[1];
+      const $$x1 = result.push(((((fnName + "()@") + x$2) + ":") + x$3));
+      $uI($$x1)
+    };
+    i = ((2 + i) | 0)
+  };
+  return result
+});
+const $p_jl_StackTrace$__extractOpera10b__O__O = (function($thiz, e) {
+  const lineRE = $m_jl_StackTrace$StringRE$().re$extension__T__O("^(.*)@(.+):(\\d+)$");
+  const x = $as_T(e.stacktrace);
+  const lines = x.split("\n");
+  const result = [];
+  let i = 0;
+  const len = $uI(lines.length);
+  while ((i < len)) {
+    const mtch = lineRE.exec($as_T(lines[i]));
+    if ((mtch !== null)) {
+      const x$1 = mtch[1];
+      let $$x1;
+      if ((x$1 !== (void 0))) {
+        const arg1 = $as_T(x$1);
+        $$x1 = $m_jl_StackTrace$().java$lang$StackTrace$$$anonfun$extractOpera10b$1__T__T(arg1)
+      } else {
+        $$x1 = "global code"
+      };
+      const fnName = $as_T($$x1);
+      const x$2 = mtch[2];
+      const x$3 = mtch[3];
+      const $$x2 = result.push(((((fnName + "@") + x$2) + ":") + x$3));
+      $uI($$x2)
+    };
+    i = ((1 + i) | 0)
+  };
+  return result
+});
+const $p_jl_StackTrace$__extractOpera11__O__O = (function($thiz, e) {
+  const lineRE = $m_jl_StackTrace$StringRE$().re$extension__T__O("^.*line (\\d+), column (\\d+)(?: in (.+))? in (\\S+):$");
+  const x = $as_T(e.stacktrace);
+  const lines = x.split("\n");
+  const result = [];
+  let i = 0;
+  const len = $uI(lines.length);
+  while ((i < len)) {
+    const mtch = lineRE.exec($as_T(lines[i]));
+    if ((mtch !== null)) {
+      const x$1 = mtch[4];
+      const $$x1 = $as_T(x$1);
+      const x$2 = mtch[1];
+      const x$3 = mtch[2];
+      const location = (((($$x1 + ":") + x$2) + ":") + x$3);
+      const x$4 = mtch[2];
+      const fnName0 = $as_T(((x$4 !== (void 0)) ? x$4 : "global code"));
+      const x$5 = $as_T(fnName0.replace($m_jl_StackTrace$StringRE$().re$extension__T__O("<anonymous function: (\\S+)>"), "$1"));
+      const $$x2 = x$5.replace($m_jl_StackTrace$StringRE$().re$extension__T__O("<anonymous function>"), "{anonymous}");
+      const fnName = $as_T($$x2);
+      $uI(result.push(((fnName + "@") + location)))
+    };
+    i = ((2 + i) | 0)
+  };
+  return result
+});
+const $p_jl_StackTrace$__extractOther__O__O = (function($thiz, e) {
+  return []
+});
+const $p_jl_StackTrace$__loop$1__I__T__T = (function($thiz, i, encodedName$1) {
+  while (true) {
+    if ((i < $uI($p_jl_StackTrace$__compressedPrefixes__O($thiz).length))) {
+      const prefix = $as_T($p_jl_StackTrace$__compressedPrefixes__O($thiz)[i]);
+      if ((($uI(encodedName$1.length) >= 0) && ($as_T(encodedName$1.substring(0, $uI(prefix.length))) === prefix))) {
+        const dict = $p_jl_StackTrace$__decompressedPrefixes__O($thiz);
+        const $$x1 = $as_T(dict[prefix]);
+        const beginIndex = $uI(prefix.length);
+        return (("" + $$x1) + $as_T(encodedName$1.substring(beginIndex)))
+      } else {
+        i = ((1 + i) | 0)
+      }
+    } else {
+      return ((($uI(encodedName$1.length) >= 0) && ($as_T(encodedName$1.substring(0, $uI("L".length))) === "L")) ? $as_T(encodedName$1.substring(1)) : encodedName$1)
+    }
+  }
+});
+class $c_jl_StackTrace$ extends $c_O {
+  constructor() {
+    super();
+    this.jl_StackTrace$__f_decompressedClasses = null;
+    this.jl_StackTrace$__f_decompressedPrefixes = null;
+    this.jl_StackTrace$__f_compressedPrefixes = null;
+    this.jl_StackTrace$__f_bitmap$0 = 0
+  };
+  java$lang$StackTrace$$$anonfun$extractOpera10b$1__T__T(x$1) {
+    return (x$1 + "()")
+  };
+}
+const $d_jl_StackTrace$ = new $TypeData().initClass({
+  jl_StackTrace$: 0
+}, false, "java.lang.StackTrace$", {
+  jl_StackTrace$: 1,
+  O: 1
+});
+$c_jl_StackTrace$.prototype.$classData = $d_jl_StackTrace$;
+let $n_jl_StackTrace$;
+function $m_jl_StackTrace$() {
+  if ((!$n_jl_StackTrace$)) {
+    $n_jl_StackTrace$ = new $c_jl_StackTrace$()
+  };
+  return $n_jl_StackTrace$
+}
+class $c_jl_StackTrace$StringRE$ extends $c_O {
+  re$extension__T__O(this$) {
+    return new RegExp(this$)
+  };
+  re$extension__T__T__O(this$, mods) {
+    return new RegExp(this$, mods)
+  };
+}
+const $d_jl_StackTrace$StringRE$ = new $TypeData().initClass({
+  jl_StackTrace$StringRE$: 0
+}, false, "java.lang.StackTrace$StringRE$", {
+  jl_StackTrace$StringRE$: 1,
+  O: 1
+});
+$c_jl_StackTrace$StringRE$.prototype.$classData = $d_jl_StackTrace$StringRE$;
+let $n_jl_StackTrace$StringRE$;
+function $m_jl_StackTrace$StringRE$() {
+  if ((!$n_jl_StackTrace$StringRE$)) {
+    $n_jl_StackTrace$StringRE$ = new $c_jl_StackTrace$StringRE$()
+  };
+  return $n_jl_StackTrace$StringRE$
+}
 class $c_jl_System$Streams$ extends $c_O {
   constructor() {
     super();
@@ -1603,6 +2035,53 @@ function $m_jl_System$SystemProperties$() {
   };
   return $n_jl_System$SystemProperties$
 }
+class $c_jl_Thread$ extends $c_O {
+  constructor() {
+    super();
+    this.jl_Thread$__f_SingleThread = null;
+    $n_jl_Thread$ = this;
+    this.jl_Thread$__f_SingleThread = new $c_jl_Thread((void 0))
+  };
+}
+const $d_jl_Thread$ = new $TypeData().initClass({
+  jl_Thread$: 0
+}, false, "java.lang.Thread$", {
+  jl_Thread$: 1,
+  O: 1
+});
+$c_jl_Thread$.prototype.$classData = $d_jl_Thread$;
+let $n_jl_Thread$;
+function $m_jl_Thread$() {
+  if ((!$n_jl_Thread$)) {
+    $n_jl_Thread$ = new $c_jl_Thread$()
+  };
+  return $n_jl_Thread$
+}
+class $c_jl_ThreadLocal extends $c_O {
+  constructor() {
+    super();
+    this.jl_ThreadLocal__f_hasValue = false;
+    this.jl_ThreadLocal__f_v = null;
+    this.jl_ThreadLocal__f_hasValue = false
+  };
+  get__O() {
+    if ((!this.jl_ThreadLocal__f_hasValue)) {
+      this.set__O__V(null)
+    };
+    return this.jl_ThreadLocal__f_v
+  };
+  set__O__V(o) {
+    this.jl_ThreadLocal__f_v = o;
+    this.jl_ThreadLocal__f_hasValue = true
+  };
+}
+const $d_jl_ThreadLocal = new $TypeData().initClass({
+  jl_ThreadLocal: 0
+}, false, "java.lang.ThreadLocal", {
+  jl_ThreadLocal: 1,
+  O: 1
+});
+$c_jl_ThreadLocal.prototype.$classData = $d_jl_ThreadLocal;
 class $c_jl_Utils$ extends $c_O {
   dictGetOrElse__O__T__O__O(dict, key, default$1) {
     return ($uZ($m_jl_Utils$Cache$().jl_Utils$Cache$__f_safeHasOwnProperty.call(dict, key)) ? dict[key] : default$1)
@@ -4395,6 +4874,53 @@ function $isArrayOf_ju_Map$Entry(obj, depth) {
 function $asArrayOf_ju_Map$Entry(obj, depth) {
   return (($isArrayOf_ju_Map$Entry(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.util.Map$Entry;", depth))
 }
+class $c_Lorg_scalajs_dom_ext_Ajax$ extends $c_O {
+  apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future(method, url, data, timeout, headers, withCredentials, responseType) {
+    const req = new XMLHttpRequest();
+    const promise = $ct_s_concurrent_impl_Promise$DefaultPromise__(new $c_s_concurrent_impl_Promise$DefaultPromise());
+    req.onreadystatechange = ((req$1, promise$1) => ((arg1$2) => $m_Lorg_scalajs_dom_ext_Ajax$().org$scalajs$dom$ext$Ajax$$$anonfun$apply$1__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_XMLHttpRequest__s_concurrent_Promise__O(arg1$2, req$1, promise$1)))(req, promise);
+    req.open(method, url);
+    req.responseType = responseType;
+    req.timeout = timeout;
+    req.withCredentials = withCredentials;
+    headers.foreach__F1__V(new $c_sjsr_AnonFunction1(((this$2, req$2) => ((x$2) => {
+      const x = $as_T2(x$2);
+      req$2.setRequestHeader($as_T(x._1__O()), $as_T(x._2__O()))
+    }))(this, req)));
+    if ((data === null)) {
+      req.send()
+    } else {
+      req.send(data)
+    };
+    return promise
+  };
+  org$scalajs$dom$ext$Ajax$$$anonfun$apply$1__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_XMLHttpRequest__s_concurrent_Promise__O(e, req$1, promise$1) {
+    if (($uI(req$1.readyState) === 4)) {
+      if (((($uI(req$1.status) >= 200) && ($uI(req$1.status) < 300)) || ($uI(req$1.status) === 304))) {
+        return $f_s_concurrent_Promise__success__O__s_concurrent_Promise(promise$1, req$1)
+      } else {
+        const cause = new $c_Lorg_scalajs_dom_ext_AjaxException(req$1);
+        return $f_s_concurrent_Promise__failure__jl_Throwable__s_concurrent_Promise(promise$1, cause)
+      }
+    } else {
+      return (void 0)
+    }
+  };
+}
+const $d_Lorg_scalajs_dom_ext_Ajax$ = new $TypeData().initClass({
+  Lorg_scalajs_dom_ext_Ajax$: 0
+}, false, "org.scalajs.dom.ext.Ajax$", {
+  Lorg_scalajs_dom_ext_Ajax$: 1,
+  O: 1
+});
+$c_Lorg_scalajs_dom_ext_Ajax$.prototype.$classData = $d_Lorg_scalajs_dom_ext_Ajax$;
+let $n_Lorg_scalajs_dom_ext_Ajax$;
+function $m_Lorg_scalajs_dom_ext_Ajax$() {
+  if ((!$n_Lorg_scalajs_dom_ext_Ajax$)) {
+    $n_Lorg_scalajs_dom_ext_Ajax$ = new $c_Lorg_scalajs_dom_ext_Ajax$()
+  };
+  return $n_Lorg_scalajs_dom_ext_Ajax$
+}
 const $p_Lorg_scalajs_dom_package$__window$lzycompute__Lorg_scalajs_dom_raw_Window = (function($thiz) {
   if (((33554432 & $thiz.Lorg_scalajs_dom_package$__f_bitmap$0) === 0)) {
     $thiz.Lorg_scalajs_dom_package$__f_window = window;
@@ -6656,6 +7182,275 @@ function $m_sc_package$$plus$colon$() {
   };
   return $n_sc_package$$plus$colon$
 }
+const $p_s_concurrent_BatchingExecutor$AbstractBatch__ensureCapacity__I__Ajl_Runnable = (function($thiz, curSize) {
+  const curOther = $thiz.s_concurrent_BatchingExecutor$AbstractBatch__f_other;
+  const curLen = curOther.u.length;
+  if ((curSize <= curLen)) {
+    return curOther
+  } else {
+    const newLen = ((curLen === 0) ? 4 : (curLen << 1));
+    if ((newLen <= curLen)) {
+      throw new $c_jl_StackOverflowError(("Space limit of asynchronous stack reached: " + curLen))
+    };
+    const newOther = $newArrayObject($d_jl_Runnable.getArrayOf(), [newLen]);
+    $systemArraycopy(curOther, 0, newOther, 0, curLen);
+    $thiz.s_concurrent_BatchingExecutor$AbstractBatch__f_other = newOther;
+    return newOther
+  }
+});
+const $ct_s_concurrent_BatchingExecutor$AbstractBatch__s_concurrent_BatchingExecutor__jl_Runnable__Ajl_Runnable__I__ = (function($thiz, outer, first, other, size) {
+  $thiz.s_concurrent_BatchingExecutor$AbstractBatch__f_first = first;
+  $thiz.s_concurrent_BatchingExecutor$AbstractBatch__f_other = other;
+  $thiz.s_concurrent_BatchingExecutor$AbstractBatch__f_size = size;
+  if ((outer === null)) {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+  } else {
+    $thiz.s_concurrent_BatchingExecutor$AbstractBatch__f_$outer = outer
+  };
+  return $thiz
+});
+class $c_s_concurrent_BatchingExecutor$AbstractBatch extends $c_O {
+  constructor() {
+    super();
+    this.s_concurrent_BatchingExecutor$AbstractBatch__f_first = null;
+    this.s_concurrent_BatchingExecutor$AbstractBatch__f_other = null;
+    this.s_concurrent_BatchingExecutor$AbstractBatch__f_size = 0;
+    this.s_concurrent_BatchingExecutor$AbstractBatch__f_$outer = null
+  };
+  push__jl_Runnable__V(r) {
+    const sz = this.s_concurrent_BatchingExecutor$AbstractBatch__f_size;
+    if ((sz === 0)) {
+      this.s_concurrent_BatchingExecutor$AbstractBatch__f_first = r
+    } else {
+      $p_s_concurrent_BatchingExecutor$AbstractBatch__ensureCapacity__I__Ajl_Runnable(this, sz).set((((-1) + sz) | 0), r)
+    };
+    this.s_concurrent_BatchingExecutor$AbstractBatch__f_size = ((1 + sz) | 0)
+  };
+  runN__I__V(n) {
+    while (true) {
+      if ((n > 0)) {
+        const x1 = this.s_concurrent_BatchingExecutor$AbstractBatch__f_size;
+        switch (x1) {
+          case 0: {
+            break
+          }
+          case 1: {
+            const next = this.s_concurrent_BatchingExecutor$AbstractBatch__f_first;
+            this.s_concurrent_BatchingExecutor$AbstractBatch__f_first = null;
+            this.s_concurrent_BatchingExecutor$AbstractBatch__f_size = 0;
+            next.run__V();
+            n = (((-1) + n) | 0);
+            continue;
+            break
+          }
+          default: {
+            const o = this.s_concurrent_BatchingExecutor$AbstractBatch__f_other;
+            const next$2 = o.get((((-2) + x1) | 0));
+            o.set((((-2) + x1) | 0), null);
+            this.s_concurrent_BatchingExecutor$AbstractBatch__f_size = (((-1) + x1) | 0);
+            next$2.run__V();
+            n = (((-1) + n) | 0);
+            continue
+          }
+        }
+      };
+      return (void 0)
+    }
+  };
+}
+class $c_s_concurrent_BatchingExecutorStatics$ extends $c_O {
+  constructor() {
+    super();
+    this.s_concurrent_BatchingExecutorStatics$__f_emptyBatchArray = null;
+    $n_s_concurrent_BatchingExecutorStatics$ = this;
+    this.s_concurrent_BatchingExecutorStatics$__f_emptyBatchArray = $newArrayObject($d_jl_Runnable.getArrayOf(), [0])
+  };
+}
+const $d_s_concurrent_BatchingExecutorStatics$ = new $TypeData().initClass({
+  s_concurrent_BatchingExecutorStatics$: 0
+}, false, "scala.concurrent.BatchingExecutorStatics$", {
+  s_concurrent_BatchingExecutorStatics$: 1,
+  O: 1
+});
+$c_s_concurrent_BatchingExecutorStatics$.prototype.$classData = $d_s_concurrent_BatchingExecutorStatics$;
+let $n_s_concurrent_BatchingExecutorStatics$;
+function $m_s_concurrent_BatchingExecutorStatics$() {
+  if ((!$n_s_concurrent_BatchingExecutorStatics$)) {
+    $n_s_concurrent_BatchingExecutorStatics$ = new $c_s_concurrent_BatchingExecutorStatics$()
+  };
+  return $n_s_concurrent_BatchingExecutorStatics$
+}
+class $c_s_concurrent_ExecutionContext$ extends $c_O {
+  constructor() {
+    super();
+    this.s_concurrent_ExecutionContext$__f_global = null;
+    this.s_concurrent_ExecutionContext$__f_defaultReporter = null;
+    this.s_concurrent_ExecutionContext$__f_bitmap$0 = false;
+    $n_s_concurrent_ExecutionContext$ = this;
+    this.s_concurrent_ExecutionContext$__f_defaultReporter = new $c_sjsr_AnonFunction1(((this$1) => ((x$1$2) => {
+      const x$1 = $as_jl_Throwable(x$1$2);
+      x$1.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$Streams$().jl_System$Streams$__f_err)
+    }))(this))
+  };
+}
+const $d_s_concurrent_ExecutionContext$ = new $TypeData().initClass({
+  s_concurrent_ExecutionContext$: 0
+}, false, "scala.concurrent.ExecutionContext$", {
+  s_concurrent_ExecutionContext$: 1,
+  O: 1
+});
+$c_s_concurrent_ExecutionContext$.prototype.$classData = $d_s_concurrent_ExecutionContext$;
+let $n_s_concurrent_ExecutionContext$;
+function $m_s_concurrent_ExecutionContext$() {
+  if ((!$n_s_concurrent_ExecutionContext$)) {
+    $n_s_concurrent_ExecutionContext$ = new $c_s_concurrent_ExecutionContext$()
+  };
+  return $n_s_concurrent_ExecutionContext$
+}
+class $c_s_concurrent_Future$ extends $c_O {
+  constructor() {
+    super();
+    this.s_concurrent_Future$__f_toBoxed = null;
+    this.s_concurrent_Future$__f__cachedId = null;
+    this.s_concurrent_Future$__f_collectFailed = null;
+    this.s_concurrent_Future$__f_filterFailure = null;
+    this.s_concurrent_Future$__f_failedFailure = null;
+    this.s_concurrent_Future$__f_failedFailureFuture = null;
+    this.s_concurrent_Future$__f__failedFun = null;
+    this.s_concurrent_Future$__f_recoverWithFailedMarker = null;
+    this.s_concurrent_Future$__f_recoverWithFailed = null;
+    this.s_concurrent_Future$__f__zipWithTuple2 = null;
+    this.s_concurrent_Future$__f__addToBuilderFun = null;
+    this.s_concurrent_Future$__f_unit = null;
+    $n_s_concurrent_Future$ = this;
+    const this$22 = $m_s_Predef$().s_Predef$__f_Map;
+    const array = [new $c_T2($d_Z.getClassOf(), $d_jl_Boolean.getClassOf()), new $c_T2($d_B.getClassOf(), $d_jl_Byte.getClassOf()), new $c_T2($d_C.getClassOf(), $d_jl_Character.getClassOf()), new $c_T2($d_S.getClassOf(), $d_jl_Short.getClassOf()), new $c_T2($d_I.getClassOf(), $d_jl_Integer.getClassOf()), new $c_T2($d_J.getClassOf(), $d_jl_Long.getClassOf()), new $c_T2($d_F.getClassOf(), $d_jl_Float.getClassOf()), new $c_T2($d_D.getClassOf(), $d_jl_Double.getClassOf()), new $c_T2($d_V.getClassOf(), $d_jl_Void.getClassOf())];
+    const elems = new $c_sjsr_WrappedVarArgs(array);
+    this.s_concurrent_Future$__f_toBoxed = this$22.from__sc_IterableOnce__sci_Map(elems);
+    this.s_concurrent_Future$__f__cachedId = new $c_sjsr_AnonFunction1(((this$23) => ((x$2) => x$2))(this));
+    this.s_concurrent_Future$__f_collectFailed = new $c_sjsr_AnonFunction1(((this$2$1) => ((t$2) => {
+      throw new $c_s_concurrent_Future$$anon$1(t$2)
+    }))(this));
+    this.s_concurrent_Future$__f_filterFailure = new $c_s_util_Failure(new $c_s_concurrent_Future$$anon$2());
+    this.s_concurrent_Future$__f_failedFailure = new $c_s_util_Failure(new $c_s_concurrent_Future$$anon$3());
+    this.s_concurrent_Future$__f_failedFailureFuture = $m_s_concurrent_Future$().fromTry__s_util_Try__s_concurrent_Future(this.s_concurrent_Future$__f_failedFailure);
+    this.s_concurrent_Future$__f__failedFun = new $c_sjsr_AnonFunction1(((this$3$1) => ((v$2) => {
+      const v = $as_s_util_Try(v$2);
+      return ((v instanceof $c_s_util_Failure) ? new $c_s_util_Success($as_s_util_Failure(v).s_util_Failure__f_exception) : $m_s_concurrent_Future$().s_concurrent_Future$__f_failedFailure)
+    }))(this));
+    this.s_concurrent_Future$__f_recoverWithFailedMarker = $m_s_concurrent_Future$().failed__jl_Throwable__s_concurrent_Future(new $c_s_concurrent_Future$$anon$4());
+    this.s_concurrent_Future$__f_recoverWithFailed = new $c_sjsr_AnonFunction1(((this$4$1) => ((t$3$2) => {
+      $as_jl_Throwable(t$3$2);
+      return $m_s_concurrent_Future$().s_concurrent_Future$__f_recoverWithFailedMarker
+    }))(this));
+    this.s_concurrent_Future$__f__zipWithTuple2 = new $c_sjsr_AnonFunction2(((this$5$1) => ((_1$2, _2$2) => new $c_T2(_1$2, _2$2)))(this));
+    this.s_concurrent_Future$__f__addToBuilderFun = new $c_sjsr_AnonFunction2(((this$6$1) => ((b$2, e$2) => {
+      const b = $as_scm_Builder(b$2);
+      return $as_scm_Builder(b.addOne__O__scm_Growable(e$2))
+    }))(this));
+    this.s_concurrent_Future$__f_unit = this.fromTry__s_util_Try__s_concurrent_Future(new $c_s_util_Success((void 0)))
+  };
+  failed__jl_Throwable__s_concurrent_Future(exception) {
+    return $m_s_concurrent_Promise$().failed__jl_Throwable__s_concurrent_Promise(exception)
+  };
+  fromTry__s_util_Try__s_concurrent_Future(result) {
+    return $ct_s_concurrent_impl_Promise$DefaultPromise__s_util_Try__(new $c_s_concurrent_impl_Promise$DefaultPromise(), result)
+  };
+}
+const $d_s_concurrent_Future$ = new $TypeData().initClass({
+  s_concurrent_Future$: 0
+}, false, "scala.concurrent.Future$", {
+  s_concurrent_Future$: 1,
+  O: 1
+});
+$c_s_concurrent_Future$.prototype.$classData = $d_s_concurrent_Future$;
+let $n_s_concurrent_Future$;
+function $m_s_concurrent_Future$() {
+  if ((!$n_s_concurrent_Future$)) {
+    $n_s_concurrent_Future$ = new $c_s_concurrent_Future$()
+  };
+  return $n_s_concurrent_Future$
+}
+function $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise($thiz, result) {
+  if ($thiz.tryComplete__s_util_Try__Z(result)) {
+    return $thiz
+  } else {
+    throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "Promise already completed.")
+  }
+}
+function $f_s_concurrent_Promise__success__O__s_concurrent_Promise($thiz, value) {
+  const result = new $c_s_util_Success(value);
+  return $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise($thiz, result)
+}
+function $f_s_concurrent_Promise__failure__jl_Throwable__s_concurrent_Promise($thiz, cause) {
+  const result = new $c_s_util_Failure(cause);
+  return $f_s_concurrent_Promise__complete__s_util_Try__s_concurrent_Promise($thiz, result)
+}
+class $c_s_concurrent_Promise$ extends $c_O {
+  failed__jl_Throwable__s_concurrent_Promise(exception) {
+    const result = new $c_s_util_Failure(exception);
+    return $ct_s_concurrent_impl_Promise$DefaultPromise__s_util_Try__(new $c_s_concurrent_impl_Promise$DefaultPromise(), result)
+  };
+}
+const $d_s_concurrent_Promise$ = new $TypeData().initClass({
+  s_concurrent_Promise$: 0
+}, false, "scala.concurrent.Promise$", {
+  s_concurrent_Promise$: 1,
+  O: 1
+});
+$c_s_concurrent_Promise$.prototype.$classData = $d_s_concurrent_Promise$;
+let $n_s_concurrent_Promise$;
+function $m_s_concurrent_Promise$() {
+  if ((!$n_s_concurrent_Promise$)) {
+    $n_s_concurrent_Promise$ = new $c_s_concurrent_Promise$()
+  };
+  return $n_s_concurrent_Promise$
+}
+class $c_s_concurrent_impl_Promise$ extends $c_O {
+  constructor() {
+    super();
+    this.s_concurrent_impl_Promise$__f_scala$concurrent$impl$Promise$$Noop = null;
+    $n_s_concurrent_impl_Promise$ = this;
+    this.s_concurrent_impl_Promise$__f_scala$concurrent$impl$Promise$$Noop = $ct_s_concurrent_impl_Promise$Transformation__I__F1__s_concurrent_ExecutionContext__(new $c_s_concurrent_impl_Promise$Transformation(), 0, null, $m_s_concurrent_ExecutionContext$parasitic$())
+  };
+  scala$concurrent$impl$Promise$$resolve__s_util_Try__s_util_Try(value) {
+    if ((value === null)) {
+      throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
+    };
+    if ((value instanceof $c_s_util_Success)) {
+      return value
+    } else {
+      const t = $as_s_util_Failure(value).s_util_Failure__f_exception;
+      return (((false || false) || (t instanceof $c_jl_Error)) ? (false ? new $c_s_util_Success($as_sr_NonLocalReturnControl(t).value__O()) : new $c_s_util_Failure(new $c_ju_concurrent_ExecutionException("Boxed Exception", t))) : value)
+    }
+  };
+}
+const $d_s_concurrent_impl_Promise$ = new $TypeData().initClass({
+  s_concurrent_impl_Promise$: 0
+}, false, "scala.concurrent.impl.Promise$", {
+  s_concurrent_impl_Promise$: 1,
+  O: 1
+});
+$c_s_concurrent_impl_Promise$.prototype.$classData = $d_s_concurrent_impl_Promise$;
+let $n_s_concurrent_impl_Promise$;
+function $m_s_concurrent_impl_Promise$() {
+  if ((!$n_s_concurrent_impl_Promise$)) {
+    $n_s_concurrent_impl_Promise$ = new $c_s_concurrent_impl_Promise$()
+  };
+  return $n_s_concurrent_impl_Promise$
+}
+function $is_s_concurrent_impl_Promise$Callbacks(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.s_concurrent_impl_Promise$Callbacks)))
+}
+function $as_s_concurrent_impl_Promise$Callbacks(obj) {
+  return (($is_s_concurrent_impl_Promise$Callbacks(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.impl.Promise$Callbacks"))
+}
+function $isArrayOf_s_concurrent_impl_Promise$Callbacks(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_impl_Promise$Callbacks)))
+}
+function $asArrayOf_s_concurrent_impl_Promise$Callbacks(obj, depth) {
+  return (($isArrayOf_s_concurrent_impl_Promise$Callbacks(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.impl.Promise$Callbacks;", depth))
+}
 class $c_s_math_Ordered$ extends $c_O {
 }
 const $d_s_math_Ordered$ = new $TypeData().initClass({
@@ -7205,6 +8000,69 @@ function $m_sr_Statics$PFMarker$() {
     $n_sr_Statics$PFMarker$ = new $c_sr_Statics$PFMarker$()
   };
   return $n_sr_Statics$PFMarker$
+}
+class $c_sjs_concurrent_JSExecutionContext$ extends $c_O {
+  constructor() {
+    super();
+    this.sjs_concurrent_JSExecutionContext$__f_queue = null;
+    $n_sjs_concurrent_JSExecutionContext$ = this;
+    this.sjs_concurrent_JSExecutionContext$__f_queue = $m_sjs_concurrent_QueueExecutionContext$().apply__s_concurrent_ExecutionContextExecutor()
+  };
+}
+const $d_sjs_concurrent_JSExecutionContext$ = new $TypeData().initClass({
+  sjs_concurrent_JSExecutionContext$: 0
+}, false, "scala.scalajs.concurrent.JSExecutionContext$", {
+  sjs_concurrent_JSExecutionContext$: 1,
+  O: 1
+});
+$c_sjs_concurrent_JSExecutionContext$.prototype.$classData = $d_sjs_concurrent_JSExecutionContext$;
+let $n_sjs_concurrent_JSExecutionContext$;
+function $m_sjs_concurrent_JSExecutionContext$() {
+  if ((!$n_sjs_concurrent_JSExecutionContext$)) {
+    $n_sjs_concurrent_JSExecutionContext$ = new $c_sjs_concurrent_JSExecutionContext$()
+  };
+  return $n_sjs_concurrent_JSExecutionContext$
+}
+class $c_sjs_concurrent_JSExecutionContext$Implicits$ extends $c_O {
+  constructor() {
+    super();
+    this.sjs_concurrent_JSExecutionContext$Implicits$__f_queue = null;
+    $n_sjs_concurrent_JSExecutionContext$Implicits$ = this;
+    this.sjs_concurrent_JSExecutionContext$Implicits$__f_queue = $m_sjs_concurrent_JSExecutionContext$().sjs_concurrent_JSExecutionContext$__f_queue
+  };
+}
+const $d_sjs_concurrent_JSExecutionContext$Implicits$ = new $TypeData().initClass({
+  sjs_concurrent_JSExecutionContext$Implicits$: 0
+}, false, "scala.scalajs.concurrent.JSExecutionContext$Implicits$", {
+  sjs_concurrent_JSExecutionContext$Implicits$: 1,
+  O: 1
+});
+$c_sjs_concurrent_JSExecutionContext$Implicits$.prototype.$classData = $d_sjs_concurrent_JSExecutionContext$Implicits$;
+let $n_sjs_concurrent_JSExecutionContext$Implicits$;
+function $m_sjs_concurrent_JSExecutionContext$Implicits$() {
+  if ((!$n_sjs_concurrent_JSExecutionContext$Implicits$)) {
+    $n_sjs_concurrent_JSExecutionContext$Implicits$ = new $c_sjs_concurrent_JSExecutionContext$Implicits$()
+  };
+  return $n_sjs_concurrent_JSExecutionContext$Implicits$
+}
+class $c_sjs_concurrent_QueueExecutionContext$ extends $c_O {
+  apply__s_concurrent_ExecutionContextExecutor() {
+    return (($as_T((typeof Promise)) === "undefined") ? new $c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext() : new $c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext())
+  };
+}
+const $d_sjs_concurrent_QueueExecutionContext$ = new $TypeData().initClass({
+  sjs_concurrent_QueueExecutionContext$: 0
+}, false, "scala.scalajs.concurrent.QueueExecutionContext$", {
+  sjs_concurrent_QueueExecutionContext$: 1,
+  O: 1
+});
+$c_sjs_concurrent_QueueExecutionContext$.prototype.$classData = $d_sjs_concurrent_QueueExecutionContext$;
+let $n_sjs_concurrent_QueueExecutionContext$;
+function $m_sjs_concurrent_QueueExecutionContext$() {
+  if ((!$n_sjs_concurrent_QueueExecutionContext$)) {
+    $n_sjs_concurrent_QueueExecutionContext$ = new $c_sjs_concurrent_QueueExecutionContext$()
+  };
+  return $n_sjs_concurrent_QueueExecutionContext$
 }
 class $c_sjs_js_ArrayOps$ extends $c_O {
   copyToArray$extension__sjs_js_Array__O__I__I__I(this$, xs, start, len) {
@@ -7771,6 +8629,14 @@ function $f_s_util_control_Exception$Described__withDesc__T__s_util_control_Exce
 }
 function $f_s_util_control_Exception$Described__toString__T($thiz) {
   return ((($thiz.s_util_control_Exception$Catch__f_name + "(") + $thiz.s_util_control_Exception$Catch__f_scala$util$control$Exception$Described$$_desc) + ")")
+}
+function $f_s_util_control_NoStackTrace__fillInStackTrace__jl_Throwable($thiz) {
+  const this$1 = $m_s_util_control_NoStackTrace$();
+  if (this$1.s_util_control_NoStackTrace$__f__noSuppression) {
+    return $c_jl_Throwable.prototype.fillInStackTrace__jl_Throwable.call($thiz)
+  } else {
+    return $as_jl_Throwable($thiz)
+  }
 }
 class $c_s_util_control_NonFatal$ extends $c_O {
   apply__jl_Throwable__Z(t) {
@@ -9043,6 +9909,69 @@ function $isArrayOf_jl_Number(obj, depth) {
 function $asArrayOf_jl_Number(obj, depth) {
   return (($isArrayOf_jl_Number(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.lang.Number;", depth))
 }
+class $c_jl_StackTraceElement extends $c_O {
+  constructor(declaringClass, methodName, fileName, lineNumber) {
+    super();
+    this.jl_StackTraceElement__f_declaringClass = null;
+    this.jl_StackTraceElement__f_methodName = null;
+    this.jl_StackTraceElement__f_fileName = null;
+    this.jl_StackTraceElement__f_lineNumber = 0;
+    this.jl_StackTraceElement__f_columnNumber = 0;
+    this.jl_StackTraceElement__f_declaringClass = declaringClass;
+    this.jl_StackTraceElement__f_methodName = methodName;
+    this.jl_StackTraceElement__f_fileName = fileName;
+    this.jl_StackTraceElement__f_lineNumber = lineNumber;
+    this.jl_StackTraceElement__f_columnNumber = (-1)
+  };
+  equals__O__Z(that) {
+    if ((that instanceof $c_jl_StackTraceElement)) {
+      const x2 = $as_jl_StackTraceElement(that);
+      return ((((this.jl_StackTraceElement__f_fileName === x2.jl_StackTraceElement__f_fileName) && (this.jl_StackTraceElement__f_lineNumber === x2.jl_StackTraceElement__f_lineNumber)) && (this.jl_StackTraceElement__f_declaringClass === x2.jl_StackTraceElement__f_declaringClass)) && (this.jl_StackTraceElement__f_methodName === x2.jl_StackTraceElement__f_methodName))
+    } else {
+      return false
+    }
+  };
+  toString__T() {
+    let result = "";
+    if ((this.jl_StackTraceElement__f_declaringClass !== "<jscode>")) {
+      result = ((("" + result) + this.jl_StackTraceElement__f_declaringClass) + ".")
+    };
+    result = (("" + result) + this.jl_StackTraceElement__f_methodName);
+    if ((this.jl_StackTraceElement__f_fileName === null)) {
+      result = (result + "(Unknown Source)")
+    } else {
+      result = ((result + "(") + this.jl_StackTraceElement__f_fileName);
+      if ((this.jl_StackTraceElement__f_lineNumber >= 0)) {
+        result = ((result + ":") + this.jl_StackTraceElement__f_lineNumber);
+        if ((this.jl_StackTraceElement__f_columnNumber >= 0)) {
+          result = ((result + ":") + this.jl_StackTraceElement__f_columnNumber)
+        }
+      };
+      result = (result + ")")
+    };
+    return result
+  };
+  hashCode__I() {
+    return ($f_T__hashCode__I(this.jl_StackTraceElement__f_declaringClass) ^ $f_T__hashCode__I(this.jl_StackTraceElement__f_methodName))
+  };
+}
+function $as_jl_StackTraceElement(obj) {
+  return (((obj instanceof $c_jl_StackTraceElement) || (obj === null)) ? obj : $throwClassCastException(obj, "java.lang.StackTraceElement"))
+}
+function $isArrayOf_jl_StackTraceElement(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.jl_StackTraceElement)))
+}
+function $asArrayOf_jl_StackTraceElement(obj, depth) {
+  return (($isArrayOf_jl_StackTraceElement(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.lang.StackTraceElement;", depth))
+}
+const $d_jl_StackTraceElement = new $TypeData().initClass({
+  jl_StackTraceElement: 0
+}, false, "java.lang.StackTraceElement", {
+  jl_StackTraceElement: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_jl_StackTraceElement.prototype.$classData = $d_jl_StackTraceElement;
 class $c_jl_String$ extends $c_O {
   constructor() {
     super();
@@ -9086,6 +10015,94 @@ function $m_jl_String$() {
   };
   return $n_jl_String$
 }
+class $c_jl_Thread extends $c_O {
+  constructor(dummy) {
+    super();
+    this.jl_Thread__f_java$lang$Thread$$interruptedState = false;
+    this.jl_Thread__f_name = null;
+    this.jl_Thread__f_java$lang$Thread$$interruptedState = false;
+    this.jl_Thread__f_name = "main"
+  };
+  run__V() {
+    /*<skip>*/
+  };
+}
+const $d_jl_Thread = new $TypeData().initClass({
+  jl_Thread: 0
+}, false, "java.lang.Thread", {
+  jl_Thread: 1,
+  O: 1,
+  jl_Runnable: 1
+});
+$c_jl_Thread.prototype.$classData = $d_jl_Thread;
+const $p_jl_Throwable__printStackTraceImpl__O__V = (function($thiz, sprintln) {
+  $thiz.getStackTrace__Ajl_StackTraceElement();
+  sprintln($thiz.toString__T());
+  if (($thiz.jl_Throwable__f_stackTrace.u.length !== 0)) {
+    let i = 0;
+    while ((i < $thiz.jl_Throwable__f_stackTrace.u.length)) {
+      sprintln(("  at " + $thiz.jl_Throwable__f_stackTrace.get(i)));
+      i = ((1 + i) | 0)
+    }
+  } else {
+    sprintln("  <no stack trace available>")
+  };
+  let wCause = $thiz;
+  while (true) {
+    const $$x3 = wCause;
+    const this$1 = wCause;
+    let $$x2;
+    if (($$x3 !== this$1.jl_Throwable__f_e)) {
+      const this$2 = wCause;
+      $$x2 = (this$2.jl_Throwable__f_e !== null)
+    } else {
+      $$x2 = false
+    };
+    if ($$x2) {
+      const parentTrace = wCause.getStackTrace__Ajl_StackTraceElement();
+      const this$3 = wCause;
+      wCause = this$3.jl_Throwable__f_e;
+      const thisTrace = wCause.getStackTrace__Ajl_StackTraceElement();
+      const thisLength = thisTrace.u.length;
+      const parentLength = parentTrace.u.length;
+      sprintln(("Caused by: " + wCause.toString__T()));
+      if ((thisLength !== 0)) {
+        let sameFrameCount = 0;
+        while (true) {
+          let $$x1;
+          if (((sameFrameCount < thisLength) && (sameFrameCount < parentLength))) {
+            const x = thisTrace.get((((-1) + ((thisLength - sameFrameCount) | 0)) | 0));
+            const x$2 = parentTrace.get((((-1) + ((parentLength - sameFrameCount) | 0)) | 0));
+            $$x1 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+          } else {
+            $$x1 = false
+          };
+          if ($$x1) {
+            sameFrameCount = ((1 + sameFrameCount) | 0)
+          } else {
+            break
+          }
+        };
+        if ((sameFrameCount > 0)) {
+          sameFrameCount = (((-1) + sameFrameCount) | 0)
+        };
+        const lengthToPrint = ((thisLength - sameFrameCount) | 0);
+        let i$2 = 0;
+        while ((i$2 < lengthToPrint)) {
+          sprintln(("  at " + thisTrace.get(i$2)));
+          i$2 = ((1 + i$2) | 0)
+        };
+        if ((sameFrameCount > 0)) {
+          sprintln((("  ... " + sameFrameCount) + " more"))
+        }
+      } else {
+        sprintln("  <no stack trace available>")
+      }
+    } else {
+      break
+    }
+  }
+});
 const $ct_jl_Throwable__T__jl_Throwable__Z__Z__ = (function($thiz, s, e, enableSuppression, writableStackTrace) {
   $thiz.jl_Throwable__f_s = s;
   $thiz.jl_Throwable__f_e = e;
@@ -9122,6 +10139,23 @@ class $c_jl_Throwable extends Error {
       this.jl_Throwable__f_stackTraceStateInternal = this
     };
     return this
+  };
+  getStackTrace__Ajl_StackTraceElement() {
+    if ((this.jl_Throwable__f_stackTrace === null)) {
+      if (this.jl_Throwable__f_writableStackTrace) {
+        const this$1 = $m_jl_StackTrace$();
+        this.jl_Throwable__f_stackTrace = $p_jl_StackTrace$__extract__O__Ajl_StackTraceElement(this$1, this.jl_Throwable__f_stackTraceStateInternal)
+      } else {
+        this.jl_Throwable__f_stackTrace = $newArrayObject($d_jl_StackTraceElement.getArrayOf(), [0])
+      }
+    };
+    return this.jl_Throwable__f_stackTrace
+  };
+  printStackTrace__Ljava_io_PrintStream__V(s) {
+    $p_jl_Throwable__printStackTraceImpl__O__V(this, ((arg$outer, s$1) => ((arg1$2) => {
+      const arg1 = $as_T(arg1$2);
+      s$1.println__T__V(arg1)
+    }))(this, s))
   };
   toString__T() {
     const className = $objectClassName(this);
@@ -10121,6 +11155,28 @@ function $m_ju_UUID$() {
     $n_ju_UUID$ = new $c_ju_UUID$()
   };
   return $n_ju_UUID$
+}
+const $ct_ju_concurrent_atomic_AtomicReference__O__ = (function($thiz, value) {
+  $thiz.ju_concurrent_atomic_AtomicReference__f_value = value;
+  return $thiz
+});
+class $c_ju_concurrent_atomic_AtomicReference extends $c_O {
+  constructor() {
+    super();
+    this.ju_concurrent_atomic_AtomicReference__f_value = null
+  };
+  compareAndSet__O__O__Z(expect, update) {
+    if (Object.is(expect, this.ju_concurrent_atomic_AtomicReference__f_value)) {
+      this.ju_concurrent_atomic_AtomicReference__f_value = update;
+      return true
+    } else {
+      return false
+    }
+  };
+  toString__T() {
+    const obj = this.ju_concurrent_atomic_AtomicReference__f_value;
+    return ("" + obj)
+  };
 }
 const $p_RTLong$__toUnsignedString__I__I__T = (function($thiz, lo, hi) {
   if ((((-2097152) & hi) === 0)) {
@@ -11295,6 +12351,18 @@ function $m_s_Option$() {
 function $f_s_PartialFunction__applyOrElse__O__F1__O($thiz, x, default$1) {
   return ($thiz.isDefinedAt__O__Z(x) ? $thiz.apply__O__O(x) : default$1.apply__O__O(x))
 }
+function $is_s_PartialFunction(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.s_PartialFunction)))
+}
+function $as_s_PartialFunction(obj) {
+  return (($is_s_PartialFunction(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.PartialFunction"))
+}
+function $isArrayOf_s_PartialFunction(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_PartialFunction)))
+}
+function $asArrayOf_s_PartialFunction(obj, depth) {
+  return (($isArrayOf_s_PartialFunction(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.PartialFunction;", depth))
+}
 class $c_T2$ extends $c_O {
   toString__T() {
     return "Tuple2"
@@ -11526,6 +12594,93 @@ function $m_scm_StringBuilder$() {
   };
   return $n_scm_StringBuilder$
 }
+function $f_s_concurrent_BatchingExecutor__submitSyncBatched__jl_Runnable__V($thiz, runnable) {
+  if ((runnable === null)) {
+    throw $ct_jl_NullPointerException__T__(new $c_jl_NullPointerException(), "runnable is null")
+  };
+  const tl = $thiz.s_concurrent_ExecutionContext$parasitic$__f_scala$concurrent$BatchingExecutor$$_tasksLocal;
+  const b = tl.get__O();
+  if ((b instanceof $c_s_concurrent_BatchingExecutor$SyncBatch)) {
+    $as_s_concurrent_BatchingExecutor$SyncBatch(b).push__jl_Runnable__V(runnable)
+  } else {
+    let i;
+    if ((b !== null)) {
+      const this$2 = $as_jl_Integer(b);
+      i = $uI(this$2)
+    } else {
+      i = 0
+    };
+    if ((i < 16)) {
+      const i$1 = ((1 + i) | 0);
+      tl.set__O__V(i$1);
+      try {
+        runnable.run__V()
+      } catch (e) {
+        const e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+        if (false) {
+          const x2 = $as_jl_InterruptedException(e$2);
+          $m_s_concurrent_ExecutionContext$().s_concurrent_ExecutionContext$__f_defaultReporter.apply__O__O(x2)
+        } else if ((e$2 !== null)) {
+          if ($m_s_util_control_NonFatal$().apply__jl_Throwable__Z(e$2)) {
+            $m_s_concurrent_ExecutionContext$().s_concurrent_ExecutionContext$__f_defaultReporter.apply__O__O(e$2)
+          } else {
+            throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+          }
+        } else {
+          throw e
+        }
+      } finally {
+        tl.set__O__V(b)
+      }
+    } else {
+      const batch = new $c_s_concurrent_BatchingExecutor$SyncBatch($thiz, runnable);
+      tl.set__O__V(batch);
+      batch.run__V();
+      tl.set__O__V(b)
+    }
+  }
+}
+function $is_s_concurrent_Future(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.s_concurrent_Future)))
+}
+function $as_s_concurrent_Future(obj) {
+  return (($is_s_concurrent_Future(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.Future"))
+}
+function $isArrayOf_s_concurrent_Future(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_Future)))
+}
+function $asArrayOf_s_concurrent_Future(obj, depth) {
+  return (($isArrayOf_s_concurrent_Future(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.Future;", depth))
+}
+class $c_s_concurrent_impl_Promise$ManyCallbacks extends $c_O {
+  constructor(first, rest) {
+    super();
+    this.s_concurrent_impl_Promise$ManyCallbacks__f_first = null;
+    this.s_concurrent_impl_Promise$ManyCallbacks__f_rest = null;
+    this.s_concurrent_impl_Promise$ManyCallbacks__f_first = first;
+    this.s_concurrent_impl_Promise$ManyCallbacks__f_rest = rest
+  };
+  toString__T() {
+    return "ManyCallbacks"
+  };
+}
+function $as_s_concurrent_impl_Promise$ManyCallbacks(obj) {
+  return (((obj instanceof $c_s_concurrent_impl_Promise$ManyCallbacks) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.impl.Promise$ManyCallbacks"))
+}
+function $isArrayOf_s_concurrent_impl_Promise$ManyCallbacks(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_impl_Promise$ManyCallbacks)))
+}
+function $asArrayOf_s_concurrent_impl_Promise$ManyCallbacks(obj, depth) {
+  return (($isArrayOf_s_concurrent_impl_Promise$ManyCallbacks(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.impl.Promise$ManyCallbacks;", depth))
+}
+const $d_s_concurrent_impl_Promise$ManyCallbacks = new $TypeData().initClass({
+  s_concurrent_impl_Promise$ManyCallbacks: 0
+}, false, "scala.concurrent.impl.Promise$ManyCallbacks", {
+  s_concurrent_impl_Promise$ManyCallbacks: 1,
+  O: 1,
+  s_concurrent_impl_Promise$Callbacks: 1
+});
+$c_s_concurrent_impl_Promise$ManyCallbacks.prototype.$classData = $d_s_concurrent_impl_Promise$ManyCallbacks;
 const $p_s_math_BigDecimal$__cache$lzycompute__As_math_BigDecimal = (function($thiz) {
   if ((!$thiz.s_math_BigDecimal$__f_bitmap$0)) {
     $thiz.s_math_BigDecimal$__f_cache = $newArrayObject($d_s_math_BigDecimal.getArrayOf(), [((1 + (($thiz.s_math_BigDecimal$__f_maxCached - $thiz.s_math_BigDecimal$__f_minCached) | 0)) | 0)]);
@@ -12000,6 +13155,28 @@ function $isArrayOf_s_util_control_Exception$Finally(obj, depth) {
 function $asArrayOf_s_util_control_Exception$Finally(obj, depth) {
   return (($isArrayOf_s_util_control_Exception$Finally(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.util.control.Exception$Finally;", depth))
 }
+class $c_s_util_control_NoStackTrace$ extends $c_O {
+  constructor() {
+    super();
+    this.s_util_control_NoStackTrace$__f__noSuppression = false;
+    this.s_util_control_NoStackTrace$__f__noSuppression = false
+  };
+}
+const $d_s_util_control_NoStackTrace$ = new $TypeData().initClass({
+  s_util_control_NoStackTrace$: 0
+}, false, "scala.util.control.NoStackTrace$", {
+  s_util_control_NoStackTrace$: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_s_util_control_NoStackTrace$.prototype.$classData = $d_s_util_control_NoStackTrace$;
+let $n_s_util_control_NoStackTrace$;
+function $m_s_util_control_NoStackTrace$() {
+  if ((!$n_s_util_control_NoStackTrace$)) {
+    $n_s_util_control_NoStackTrace$ = new $c_s_util_control_NoStackTrace$()
+  };
+  return $n_s_util_control_NoStackTrace$
+}
 class $c_s_util_hashing_MurmurHash3$ extends $c_s_util_hashing_MurmurHash3 {
   constructor() {
     super();
@@ -12190,7 +13367,7 @@ class $c_LRayTracing$ extends $c_O {
   constructor() {
     super();
     this.LRayTracing$__f_options = null;
-    this.LRayTracing$__f_fileInput = null;
+    this.LRayTracing$__f_button = null;
     this.LRayTracing$__f_executionStart = $L0;
     this.LRayTracing$__f_scala$App$$_args = null;
     this.LRayTracing$__f_scala$App$$initCode = null;
@@ -12504,44 +13681,46 @@ class $c_LRayTracing$ extends $c_O {
   RayTracing$$$anonfun$render$5__D__I__LCamera__LHittable__Lorg_scalajs_dom_raw_ImageData__sjs_js_Dynamic__s_Option__s_Option__J__V(x$15, j$1, camera$1, world$1, img$1, ctx$1, update$1, finish$1, start$1) {
     $p_LRayTracing$__renderLine$1__I__LCamera__LHittable__Lorg_scalajs_dom_raw_ImageData__sjs_js_Dynamic__s_Option__s_Option__J__V(this, ((1 + j$1) | 0), camera$1, world$1, img$1, ctx$1, update$1, finish$1, start$1)
   };
-  RayTracing$$$anonfun$new$2__Lorg_scalajs_dom_raw_UIEvent__Lorg_scalajs_dom_raw_FileReader__O(e, reader$1) {
-    const contents = $as_T(reader$1.result);
-    const x1 = $m_LRayTracing$().loadScene__T__s_Option(contents);
-    if ((x1 instanceof $c_s_Some)) {
-      const x2 = $as_s_Some(x1);
-      const p3 = $as_T2(x2.s_Some__f_value);
-      if ((p3 !== null)) {
-        const camera = $as_LCamera(p3._1__O());
-        const world = $as_LBVH(p3._2__O());
-        $m_LRayTracing$().render__LCamera__LHittable__s_Option__s_Option__V(camera, world, new $c_s_Some(new $c_sjsr_AnonFunction1(((this$1) => ((line$2) => {
-          const line = $uI(line$2);
-          const x = (((("Rendered line [" + ((1 + line) | 0)) + "/") + $m_LRayTracing$().LRayTracing$__f_options.LRayTracing$Options__f_height) + "]");
-          const this$3 = $m_s_Console$();
-          const this$4 = this$3.out__Ljava_io_PrintStream();
-          this$4.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"))
-        }))(this))), new $c_s_Some(new $c_sjsr_AnonFunction1(((this$2$1) => ((time$2) => {
-          const time = $uD(time$2);
-          const x$1 = (((("Rendered " + $m_LRayTracing$().LRayTracing$__f_options.LRayTracing$Options__f_height) + " lines in ") + time) + " seconds");
-          const this$6 = $m_s_Console$();
-          const this$7 = this$6.out__Ljava_io_PrintStream();
-          this$7.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"))
-        }))(this))));
-        return (void 0)
+  RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V(e) {
+    const scenes = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("scenes");
+    const this$3 = $m_Lorg_scalajs_dom_ext_Ajax$();
+    const url = $as_T(scenes.value);
+    const headers = $m_sci_Map$EmptyMap$();
+    this$3.apply__T__T__Lorg_scalajs_dom_ext_Ajax$InputData__I__sci_Map__Z__T__s_concurrent_Future("GET", url, null, 0, headers, false, "").foreach__F1__s_concurrent_ExecutionContext__V(new $c_sjsr_AnonFunction1(((this$4) => ((xhr$2) => {
+      const x1 = $m_LRayTracing$().loadScene__T__s_Option($as_T(xhr$2.responseText));
+      matchEnd6: {
+        if ((x1 instanceof $c_s_Some)) {
+          const x2 = $as_s_Some(x1);
+          const p3 = $as_T2(x2.s_Some__f_value);
+          if ((p3 !== null)) {
+            const camera = $as_LCamera(p3._1__O());
+            const world = $as_LBVH(p3._2__O());
+            $m_LRayTracing$().render__LCamera__LHittable__s_Option__s_Option__V(camera, world, new $c_s_Some(new $c_sjsr_AnonFunction1(((this$5) => ((line$2) => {
+              const line = $uI(line$2);
+              const x = (((("Rendered line [" + ((1 + line) | 0)) + "/") + $m_LRayTracing$().LRayTracing$__f_options.LRayTracing$Options__f_height) + "]");
+              const this$7 = $m_s_Console$();
+              const this$8 = this$7.out__Ljava_io_PrintStream();
+              this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"))
+            }))(this$4))), new $c_s_Some(new $c_sjsr_AnonFunction1(((this$2$1) => ((time$2) => {
+              const time = $uD(time$2);
+              const x$1 = (((("Rendered " + $m_LRayTracing$().LRayTracing$__f_options.LRayTracing$Options__f_height) + " lines in ") + time) + " seconds");
+              const this$10 = $m_s_Console$();
+              const this$11 = this$10.out__Ljava_io_PrintStream();
+              this$11.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"))
+            }))(this$4))));
+            break matchEnd6
+          }
+        };
+        const x$2 = $m_s_None$();
+        if ((x$2 === x1)) {
+          const this$13 = $m_s_Console$();
+          const this$14 = this$13.out__Ljava_io_PrintStream();
+          this$14.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Error loading scene\n");
+          break matchEnd6
+        };
+        throw new $c_s_MatchError(x1)
       }
-    };
-    const x$2 = $m_s_None$();
-    if ((x$2 === x1)) {
-      const this$9 = $m_s_Console$();
-      const this$10 = this$9.out__Ljava_io_PrintStream();
-      this$10.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Error loading scene\n");
-      return (void 0)
-    };
-    throw new $c_s_MatchError(x1)
-  };
-  RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_Event__V(e) {
-    const reader = new FileReader();
-    reader.readAsText($m_LRayTracing$().LRayTracing$__f_fileInput.files[0]);
-    reader.onload = ((reader$1) => ((arg1$2) => $m_LRayTracing$().RayTracing$$$anonfun$new$2__Lorg_scalajs_dom_raw_UIEvent__Lorg_scalajs_dom_raw_FileReader__O(arg1$2, reader$1)))(reader)
+    }))(this)), $m_sjs_concurrent_JSExecutionContext$Implicits$().sjs_concurrent_JSExecutionContext$Implicits$__f_queue)
   };
   delayedEndpoint$RayTracing$1__V() {
     this.LRayTracing$__f_options = new $c_LRayTracing$Options($m_s_None$(), 400, 225, 8, $m_s_None$());
@@ -12558,9 +13737,9 @@ class $c_LRayTracing$ extends $c_O {
         throw e
       }
     };
-    this.LRayTracing$__f_fileInput = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("sceneFile");
-    this.LRayTracing$__f_fileInput.onchange = ((arg1$2) => {
-      $m_LRayTracing$().RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_Event__V(arg1$2)
+    this.LRayTracing$__f_button = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("render");
+    this.LRayTracing$__f_button.onclick = ((arg1$2) => {
+      $m_LRayTracing$().RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V(arg1$2)
     })
   };
 }
@@ -12681,6 +13860,15 @@ const $ct_jl_Error__jl_Throwable__ = (function($thiz, e) {
   return $thiz
 });
 class $c_jl_Error extends $c_jl_Throwable {
+}
+function $as_jl_Error(obj) {
+  return (((obj instanceof $c_jl_Error) || (obj === null)) ? obj : $throwClassCastException(obj, "java.lang.Error"))
+}
+function $isArrayOf_jl_Error(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.jl_Error)))
+}
+function $asArrayOf_jl_Error(obj, depth) {
+  return (($isArrayOf_jl_Error(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.lang.Error;", depth))
 }
 const $ct_jl_Exception__T__ = (function($thiz, s) {
   $ct_jl_Throwable__T__jl_Throwable__Z__Z__($thiz, s, null, true, true);
@@ -15772,6 +16960,99 @@ function $m_scm_HashMap$() {
   };
   return $n_scm_HashMap$
 }
+class $c_s_concurrent_BatchingExecutor$SyncBatch extends $c_s_concurrent_BatchingExecutor$AbstractBatch {
+  constructor(outer, runnable) {
+    super();
+    $ct_s_concurrent_BatchingExecutor$AbstractBatch__s_concurrent_BatchingExecutor__jl_Runnable__Ajl_Runnable__I__(this, outer, runnable, $m_s_concurrent_BatchingExecutorStatics$().s_concurrent_BatchingExecutorStatics$__f_emptyBatchArray, 1)
+  };
+  run__V() {
+    while (true) {
+      try {
+        this.runN__I__V(1024)
+      } catch (e) {
+        const e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+        if (false) {
+          const x2 = $as_jl_InterruptedException(e$2);
+          $m_s_concurrent_ExecutionContext$().s_concurrent_ExecutionContext$__f_defaultReporter.apply__O__O(x2)
+        } else if ((e$2 !== null)) {
+          if ($m_s_util_control_NonFatal$().apply__jl_Throwable__Z(e$2)) {
+            $m_s_concurrent_ExecutionContext$().s_concurrent_ExecutionContext$__f_defaultReporter.apply__O__O(e$2)
+          } else {
+            throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+          }
+        } else {
+          throw e
+        }
+      };
+      if ((this.s_concurrent_BatchingExecutor$AbstractBatch__f_size > 0)) {
+        continue
+      };
+      return (void 0)
+    }
+  };
+}
+function $as_s_concurrent_BatchingExecutor$SyncBatch(obj) {
+  return (((obj instanceof $c_s_concurrent_BatchingExecutor$SyncBatch) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.BatchingExecutor$SyncBatch"))
+}
+function $isArrayOf_s_concurrent_BatchingExecutor$SyncBatch(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_BatchingExecutor$SyncBatch)))
+}
+function $asArrayOf_s_concurrent_BatchingExecutor$SyncBatch(obj, depth) {
+  return (($isArrayOf_s_concurrent_BatchingExecutor$SyncBatch(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.BatchingExecutor$SyncBatch;", depth))
+}
+const $d_s_concurrent_BatchingExecutor$SyncBatch = new $TypeData().initClass({
+  s_concurrent_BatchingExecutor$SyncBatch: 0
+}, false, "scala.concurrent.BatchingExecutor$SyncBatch", {
+  s_concurrent_BatchingExecutor$SyncBatch: 1,
+  s_concurrent_BatchingExecutor$AbstractBatch: 1,
+  O: 1,
+  jl_Runnable: 1
+});
+$c_s_concurrent_BatchingExecutor$SyncBatch.prototype.$classData = $d_s_concurrent_BatchingExecutor$SyncBatch;
+class $c_s_concurrent_impl_Promise$Link extends $c_ju_concurrent_atomic_AtomicReference {
+  constructor(to) {
+    super();
+    $ct_ju_concurrent_atomic_AtomicReference__O__(this, to)
+  };
+  promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(owner) {
+    const c = $as_s_concurrent_impl_Promise$DefaultPromise(this.ju_concurrent_atomic_AtomicReference__f_value);
+    let current = c;
+    let target = c;
+    while (true) {
+      const value = target.ju_concurrent_atomic_AtomicReference__f_value;
+      if ($is_s_concurrent_impl_Promise$Callbacks(value)) {
+        if (this.compareAndSet__O__O__Z(current, target)) {
+          return target
+        } else {
+          current = $as_s_concurrent_impl_Promise$DefaultPromise(this.ju_concurrent_atomic_AtomicReference__f_value)
+        }
+      } else if ((value instanceof $c_s_concurrent_impl_Promise$Link)) {
+        target = $as_s_concurrent_impl_Promise$DefaultPromise($as_s_concurrent_impl_Promise$Link(value).ju_concurrent_atomic_AtomicReference__f_value)
+      } else {
+        owner.unlink__s_util_Try__V($as_s_util_Try(value));
+        return owner
+      }
+    }
+  };
+}
+function $as_s_concurrent_impl_Promise$Link(obj) {
+  return (((obj instanceof $c_s_concurrent_impl_Promise$Link) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.impl.Promise$Link"))
+}
+function $isArrayOf_s_concurrent_impl_Promise$Link(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_impl_Promise$Link)))
+}
+function $asArrayOf_s_concurrent_impl_Promise$Link(obj, depth) {
+  return (($isArrayOf_s_concurrent_impl_Promise$Link(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.impl.Promise$Link;", depth))
+}
+const $d_s_concurrent_impl_Promise$Link = new $TypeData().initClass({
+  s_concurrent_impl_Promise$Link: 0
+}, false, "scala.concurrent.impl.Promise$Link", {
+  s_concurrent_impl_Promise$Link: 1,
+  ju_concurrent_atomic_AtomicReference: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_s_concurrent_impl_Promise$Link.prototype.$classData = $d_s_concurrent_impl_Promise$Link;
 class $c_s_math_Equiv$ extends $c_O {
 }
 const $d_s_math_Equiv$ = new $TypeData().initClass({
@@ -15865,6 +17146,27 @@ const $d_sr_Nothing$ = new $TypeData().initClass({
   O: 1,
   Ljava_io_Serializable: 1
 });
+class $c_sjs_js_Any$ extends $c_O {
+  fromFunction0__F0__sjs_js_Function0(f) {
+    return ((f$1) => (() => f$1.apply__O()))(f)
+  };
+}
+const $d_sjs_js_Any$ = new $TypeData().initClass({
+  sjs_js_Any$: 0
+}, false, "scala.scalajs.js.Any$", {
+  sjs_js_Any$: 1,
+  O: 1,
+  sjs_js_LowPrioAnyImplicits: 1,
+  sjs_js_LowestPrioAnyImplicits: 1
+});
+$c_sjs_js_Any$.prototype.$classData = $d_sjs_js_Any$;
+let $n_sjs_js_Any$;
+function $m_sjs_js_Any$() {
+  if ((!$n_sjs_js_Any$)) {
+    $n_sjs_js_Any$ = new $c_sjs_js_Any$()
+  };
+  return $n_sjs_js_Any$
+}
 class $c_sjsr_AnonFunction0 extends $c_sr_AbstractFunction0 {
   constructor(f) {
     super();
@@ -19829,6 +21131,22 @@ const $d_ju_Formatter = new $TypeData().initClass({
   Ljava_io_Flushable: 1
 });
 $c_ju_Formatter.prototype.$classData = $d_ju_Formatter;
+class $c_ju_concurrent_ExecutionException extends $c_jl_Exception {
+  constructor(message, cause) {
+    super();
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, message, cause, true, true)
+  };
+}
+const $d_ju_concurrent_ExecutionException = new $TypeData().initClass({
+  ju_concurrent_ExecutionException: 0
+}, false, "java.util.concurrent.ExecutionException", {
+  ju_concurrent_ExecutionException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_ju_concurrent_ExecutionException.prototype.$classData = $d_ju_concurrent_ExecutionException;
 class $c_RTLong extends $c_jl_Number {
   constructor(lo, hi) {
     super();
@@ -21315,6 +22633,104 @@ function $m_scm_Map$() {
   };
   return $n_scm_Map$
 }
+class $c_s_concurrent_Future$$anon$4 extends $c_jl_Throwable {
+  constructor() {
+    super();
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
+  };
+  fillInStackTrace__jl_Throwable() {
+    return $f_s_util_control_NoStackTrace__fillInStackTrace__jl_Throwable(this)
+  };
+}
+const $d_s_concurrent_Future$$anon$4 = new $TypeData().initClass({
+  s_concurrent_Future$$anon$4: 0
+}, false, "scala.concurrent.Future$$anon$4", {
+  s_concurrent_Future$$anon$4: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_util_control_NoStackTrace: 1
+});
+$c_s_concurrent_Future$$anon$4.prototype.$classData = $d_s_concurrent_Future$$anon$4;
+function $is_sr_NonLocalReturnControl(obj) {
+  return false
+}
+function $as_sr_NonLocalReturnControl(obj) {
+  return (($is_sr_NonLocalReturnControl(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.runtime.NonLocalReturnControl"))
+}
+function $isArrayOf_sr_NonLocalReturnControl(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.sr_NonLocalReturnControl)))
+}
+function $asArrayOf_sr_NonLocalReturnControl(obj, depth) {
+  return (($isArrayOf_sr_NonLocalReturnControl(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.runtime.NonLocalReturnControl;", depth))
+}
+class $c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext extends $c_O {
+  constructor() {
+    super();
+    this.sjs_concurrent_QueueExecutionContext$PromisesExecutionContext__f_resolvedUnitPromise = null;
+    this.sjs_concurrent_QueueExecutionContext$PromisesExecutionContext__f_resolvedUnitPromise = Promise.resolve((void 0))
+  };
+  execute__jl_Runnable__V(runnable) {
+    this.sjs_concurrent_QueueExecutionContext$PromisesExecutionContext__f_resolvedUnitPromise.then(((arg$outer, runnable$2) => ((arg1$2) => {
+      const arg1 = $as_jl_Void(arg1$2);
+      return arg$outer.scala$scalajs$concurrent$QueueExecutionContext$PromisesExecutionContext$$$anonfun$execute$2__jl_Void__jl_Runnable__sjs_js_$bar(arg1, runnable$2)
+    }))(this, runnable))
+  };
+  reportFailure__jl_Throwable__V(t) {
+    t.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$Streams$().jl_System$Streams$__f_err)
+  };
+  scala$scalajs$concurrent$QueueExecutionContext$PromisesExecutionContext$$$anonfun$execute$2__jl_Void__jl_Runnable__sjs_js_$bar(x$1, runnable$2) {
+    try {
+      runnable$2.run__V()
+    } catch (e) {
+      const e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+      if ((e$2 !== null)) {
+        e$2.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$Streams$().jl_System$Streams$__f_err)
+      } else {
+        throw e
+      }
+    }
+  };
+}
+const $d_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext = new $TypeData().initClass({
+  sjs_concurrent_QueueExecutionContext$PromisesExecutionContext: 0
+}, false, "scala.scalajs.concurrent.QueueExecutionContext$PromisesExecutionContext", {
+  sjs_concurrent_QueueExecutionContext$PromisesExecutionContext: 1,
+  O: 1,
+  s_concurrent_ExecutionContextExecutor: 1,
+  s_concurrent_ExecutionContext: 1,
+  ju_concurrent_Executor: 1
+});
+$c_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext.prototype.$classData = $d_sjs_concurrent_QueueExecutionContext$PromisesExecutionContext;
+class $c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext extends $c_O {
+  execute__jl_Runnable__V(runnable) {
+    setTimeout($m_sjs_js_Any$().fromFunction0__F0__sjs_js_Function0(new $c_sjsr_AnonFunction0(((this$1, runnable$1) => (() => {
+      try {
+        runnable$1.run__V()
+      } catch (e) {
+        const e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+        if ((e$2 !== null)) {
+          e$2.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$Streams$().jl_System$Streams$__f_err)
+        } else {
+          throw e
+        }
+      }
+    }))(this, runnable))), 0)
+  };
+  reportFailure__jl_Throwable__V(t) {
+    t.printStackTrace__Ljava_io_PrintStream__V($m_jl_System$Streams$().jl_System$Streams$__f_err)
+  };
+}
+const $d_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext = new $TypeData().initClass({
+  sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext: 0
+}, false, "scala.scalajs.concurrent.QueueExecutionContext$TimeoutsExecutionContext", {
+  sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext: 1,
+  O: 1,
+  s_concurrent_ExecutionContextExecutor: 1,
+  s_concurrent_ExecutionContext: 1,
+  ju_concurrent_Executor: 1
+});
+$c_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext.prototype.$classData = $d_sjs_concurrent_QueueExecutionContext$TimeoutsExecutionContext;
 class $c_sjs_js_WrappedDictionary$DictionaryIterator extends $c_O {
   constructor(dict) {
     super();
@@ -21432,6 +22848,15 @@ function $asArrayOf_s_util_Either(obj, depth) {
   return (($isArrayOf_s_util_Either(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.util.Either;", depth))
 }
 class $c_s_util_Try extends $c_O {
+}
+function $as_s_util_Try(obj) {
+  return (((obj instanceof $c_s_util_Try) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.util.Try"))
+}
+function $isArrayOf_s_util_Try(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_util_Try)))
+}
+function $asArrayOf_s_util_Try(obj, depth) {
+  return (($isArrayOf_s_util_Try(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.util.Try;", depth))
 }
 class $c_LBVH extends $c_LHittable {
   constructor(left, right) {
@@ -22525,6 +23950,23 @@ function $isArrayOf_jl_SecurityException(obj, depth) {
 function $asArrayOf_jl_SecurityException(obj, depth) {
   return (($isArrayOf_jl_SecurityException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.lang.SecurityException;", depth))
 }
+class $c_jl_StackOverflowError extends $c_jl_VirtualMachineError {
+  constructor(s) {
+    super();
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, s, null, true, true)
+  };
+}
+const $d_jl_StackOverflowError = new $TypeData().initClass({
+  jl_StackOverflowError: 0
+}, false, "java.lang.StackOverflowError", {
+  jl_StackOverflowError: 1,
+  jl_VirtualMachineError: 1,
+  jl_Error: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_jl_StackOverflowError.prototype.$classData = $d_jl_StackOverflowError;
 const $ct_jl_UnsupportedOperationException__ = (function($thiz) {
   $ct_jl_Throwable__T__jl_Throwable__Z__Z__($thiz, null, null, true, true);
   return $thiz
@@ -26225,6 +27667,38 @@ function $m_scm_ListBuffer$() {
   };
   return $n_scm_ListBuffer$
 }
+class $c_s_concurrent_ExecutionContext$parasitic$ extends $c_O {
+  constructor() {
+    super();
+    this.s_concurrent_ExecutionContext$parasitic$__f_scala$concurrent$BatchingExecutor$$_tasksLocal = null;
+    $n_s_concurrent_ExecutionContext$parasitic$ = this;
+    this.s_concurrent_ExecutionContext$parasitic$__f_scala$concurrent$BatchingExecutor$$_tasksLocal = new $c_jl_ThreadLocal()
+  };
+  execute__jl_Runnable__V(runnable) {
+    $f_s_concurrent_BatchingExecutor__submitSyncBatched__jl_Runnable__V(this, runnable)
+  };
+  reportFailure__jl_Throwable__V(t) {
+    $m_s_concurrent_ExecutionContext$().s_concurrent_ExecutionContext$__f_defaultReporter.apply__O__O(t)
+  };
+}
+const $d_s_concurrent_ExecutionContext$parasitic$ = new $TypeData().initClass({
+  s_concurrent_ExecutionContext$parasitic$: 0
+}, false, "scala.concurrent.ExecutionContext$parasitic$", {
+  s_concurrent_ExecutionContext$parasitic$: 1,
+  O: 1,
+  s_concurrent_ExecutionContextExecutor: 1,
+  s_concurrent_ExecutionContext: 1,
+  ju_concurrent_Executor: 1,
+  s_concurrent_BatchingExecutor: 1
+});
+$c_s_concurrent_ExecutionContext$parasitic$.prototype.$classData = $d_s_concurrent_ExecutionContext$parasitic$;
+let $n_s_concurrent_ExecutionContext$parasitic$;
+function $m_s_concurrent_ExecutionContext$parasitic$() {
+  if ((!$n_s_concurrent_ExecutionContext$parasitic$)) {
+    $n_s_concurrent_ExecutionContext$parasitic$ = new $c_s_concurrent_ExecutionContext$parasitic$()
+  };
+  return $n_s_concurrent_ExecutionContext$parasitic$
+}
 function $f_s_math_Ordering__lteq__O__O__Z($thiz, x, y) {
   return ($thiz.compare__O__O__I(x, y) <= 0)
 }
@@ -26374,6 +27848,36 @@ class $c_s_util_Failure extends $c_s_util_Try {
     super();
     this.s_util_Failure__f_exception = null;
     this.s_util_Failure__f_exception = exception
+  };
+  get__O() {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(this.s_util_Failure__f_exception)
+  };
+  foreach__F1__V(f) {
+    /*<skip>*/
+  };
+  recover__s_PartialFunction__s_util_Try(pf) {
+    const marker = $m_sr_Statics$PFMarker$();
+    try {
+      const v = pf.applyOrElse__O__F1__O(this.s_util_Failure__f_exception, new $c_sjsr_AnonFunction1(((this$2, marker$1) => ((x$2) => {
+        $as_jl_Throwable(x$2);
+        return marker$1
+      }))(this, marker)));
+      return ((marker !== v) ? new $c_s_util_Success(v) : this)
+    } catch (e) {
+      const e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+      if ((e$2 !== null)) {
+        if ((e$2 !== null)) {
+          const o11 = $m_s_util_control_NonFatal$().unapply__jl_Throwable__s_Option(e$2);
+          if ((!o11.isEmpty__Z())) {
+            const e$3 = $as_jl_Throwable(o11.get__O());
+            return new $c_s_util_Failure(e$3)
+          }
+        };
+        throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(e$2)
+      } else {
+        throw e
+      }
+    }
   };
   toOption__s_Option() {
     return $m_s_None$()
@@ -26547,6 +28051,15 @@ class $c_s_util_Success extends $c_s_util_Try {
     super();
     this.s_util_Success__f_value = null;
     this.s_util_Success__f_value = value
+  };
+  get__O() {
+    return this.s_util_Success__f_value
+  };
+  foreach__F1__V(f) {
+    f.apply__O__O(this.s_util_Success__f_value)
+  };
+  recover__s_PartialFunction__s_util_Try(pf) {
+    return this
   };
   toOption__s_Option() {
     return new $c_s_Some(this.s_util_Success__f_value)
@@ -27037,6 +28550,63 @@ const $d_ju_LinkedHashMap = new $TypeData().initClass({
   jl_Cloneable: 1
 });
 $c_ju_LinkedHashMap.prototype.$classData = $d_ju_LinkedHashMap;
+class $c_Lorg_scalajs_dom_ext_AjaxException extends $c_jl_Exception {
+  constructor(xhr) {
+    super();
+    this.Lorg_scalajs_dom_ext_AjaxException__f_xhr = null;
+    this.Lorg_scalajs_dom_ext_AjaxException__f_xhr = xhr;
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, null, null, true, true)
+  };
+  productPrefix__T() {
+    return "AjaxException"
+  };
+  productArity__I() {
+    return 1
+  };
+  productElement__I__O(x$1) {
+    return ((x$1 === 0) ? this.Lorg_scalajs_dom_ext_AjaxException__f_xhr : $m_sr_Statics$().ioobe__I__O(x$1))
+  };
+  productIterator__sc_Iterator() {
+    return new $c_sr_ScalaRunTime$$anon$1(this)
+  };
+  hashCode__I() {
+    const this$2 = $m_s_util_hashing_MurmurHash3$();
+    return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+  };
+  equals__O__Z(x$1) {
+    if ((this === x$1)) {
+      return true
+    } else if ((x$1 instanceof $c_Lorg_scalajs_dom_ext_AjaxException)) {
+      const AjaxException$1 = $as_Lorg_scalajs_dom_ext_AjaxException(x$1);
+      const x = this.Lorg_scalajs_dom_ext_AjaxException__f_xhr;
+      const y = AjaxException$1.Lorg_scalajs_dom_ext_AjaxException__f_xhr;
+      return $m_sr_BoxesRunTime$().equals__O__O__Z(x, y)
+    } else {
+      return false
+    }
+  };
+}
+function $as_Lorg_scalajs_dom_ext_AjaxException(obj) {
+  return (((obj instanceof $c_Lorg_scalajs_dom_ext_AjaxException) || (obj === null)) ? obj : $throwClassCastException(obj, "org.scalajs.dom.ext.AjaxException"))
+}
+function $isArrayOf_Lorg_scalajs_dom_ext_AjaxException(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lorg_scalajs_dom_ext_AjaxException)))
+}
+function $asArrayOf_Lorg_scalajs_dom_ext_AjaxException(obj, depth) {
+  return (($isArrayOf_Lorg_scalajs_dom_ext_AjaxException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lorg.scalajs.dom.ext.AjaxException;", depth))
+}
+const $d_Lorg_scalajs_dom_ext_AjaxException = new $TypeData().initClass({
+  Lorg_scalajs_dom_ext_AjaxException: 0
+}, false, "org.scalajs.dom.ext.AjaxException", {
+  Lorg_scalajs_dom_ext_AjaxException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_Product: 1,
+  s_Equals: 1
+});
+$c_Lorg_scalajs_dom_ext_AjaxException.prototype.$classData = $d_Lorg_scalajs_dom_ext_AjaxException;
 class $c_Lplay_api_libs_json_JsArray extends $c_O {
   constructor(value) {
     super();
@@ -28523,6 +30093,10 @@ class $c_Ljava_io_PrintStream extends $c_Ljava_io_FilterOutputStream {
     this.Ljava_io_PrintStream__f_errorFlag = false;
     this.Ljava_io_PrintStream__f_bitmap$0 = false
   };
+  println__T__V(s) {
+    this.print__T__V(s);
+    this.java$lang$JSConsoleBasedPrintStream$$printString__T__V("\n")
+  };
   append__jl_CharSequence__Ljava_io_PrintStream(csq) {
     this.print__T__V(((csq === null) ? "null" : $dp_toString__T(csq)));
     return this
@@ -29604,6 +31178,291 @@ const $d_scm_ArrayBuilder$generic = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_scm_ArrayBuilder$generic.prototype.$classData = $d_scm_ArrayBuilder$generic;
+class $c_s_concurrent_Future$$anon$1 extends $c_ju_NoSuchElementException {
+  constructor(t$2) {
+    super();
+    const s = ("Future.collect partial function is not defined at: " + t$2);
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, s, null, true, true)
+  };
+  fillInStackTrace__jl_Throwable() {
+    return $f_s_util_control_NoStackTrace__fillInStackTrace__jl_Throwable(this)
+  };
+}
+const $d_s_concurrent_Future$$anon$1 = new $TypeData().initClass({
+  s_concurrent_Future$$anon$1: 0
+}, false, "scala.concurrent.Future$$anon$1", {
+  s_concurrent_Future$$anon$1: 1,
+  ju_NoSuchElementException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_util_control_NoStackTrace: 1
+});
+$c_s_concurrent_Future$$anon$1.prototype.$classData = $d_s_concurrent_Future$$anon$1;
+class $c_s_concurrent_Future$$anon$2 extends $c_ju_NoSuchElementException {
+  constructor() {
+    super();
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, "Future.filter predicate is not satisfied", null, true, true)
+  };
+  fillInStackTrace__jl_Throwable() {
+    return $f_s_util_control_NoStackTrace__fillInStackTrace__jl_Throwable(this)
+  };
+}
+const $d_s_concurrent_Future$$anon$2 = new $TypeData().initClass({
+  s_concurrent_Future$$anon$2: 0
+}, false, "scala.concurrent.Future$$anon$2", {
+  s_concurrent_Future$$anon$2: 1,
+  ju_NoSuchElementException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_util_control_NoStackTrace: 1
+});
+$c_s_concurrent_Future$$anon$2.prototype.$classData = $d_s_concurrent_Future$$anon$2;
+class $c_s_concurrent_Future$$anon$3 extends $c_ju_NoSuchElementException {
+  constructor() {
+    super();
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, "Future.failed not completed with a throwable.", null, true, true)
+  };
+  fillInStackTrace__jl_Throwable() {
+    return $f_s_util_control_NoStackTrace__fillInStackTrace__jl_Throwable(this)
+  };
+}
+const $d_s_concurrent_Future$$anon$3 = new $TypeData().initClass({
+  s_concurrent_Future$$anon$3: 0
+}, false, "scala.concurrent.Future$$anon$3", {
+  s_concurrent_Future$$anon$3: 1,
+  ju_NoSuchElementException: 1,
+  jl_RuntimeException: 1,
+  jl_Exception: 1,
+  jl_Throwable: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_util_control_NoStackTrace: 1
+});
+$c_s_concurrent_Future$$anon$3.prototype.$classData = $d_s_concurrent_Future$$anon$3;
+const $p_s_concurrent_impl_Promise$DefaultPromise__value0__s_util_Try = (function($thiz) {
+  let _$this = $thiz;
+  while (true) {
+    const state = _$this.ju_concurrent_atomic_AtomicReference__f_value;
+    if ((state instanceof $c_s_util_Try)) {
+      return $as_s_util_Try(state)
+    } else if ((state instanceof $c_s_concurrent_impl_Promise$Link)) {
+      _$this = $as_s_concurrent_impl_Promise$Link(state).promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(_$this)
+    } else {
+      return null
+    }
+  }
+});
+const $p_s_concurrent_impl_Promise$DefaultPromise__dispatchOrAddCallbacks__O__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks = (function($thiz, state, callbacks) {
+  let _$this = $thiz;
+  while (true) {
+    if ((state instanceof $c_s_util_Try)) {
+      $p_s_concurrent_impl_Promise$DefaultPromise__submitWithValue__s_concurrent_impl_Promise$Callbacks__s_util_Try__V(_$this, callbacks, $as_s_util_Try(state));
+      return callbacks
+    } else if ($is_s_concurrent_impl_Promise$Callbacks(state)) {
+      if (_$this.compareAndSet__O__O__Z(state, ((state !== $m_s_concurrent_impl_Promise$().s_concurrent_impl_Promise$__f_scala$concurrent$impl$Promise$$Noop) ? $p_s_concurrent_impl_Promise$DefaultPromise__concatCallbacks__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks(_$this, callbacks, $as_s_concurrent_impl_Promise$Callbacks(state)) : callbacks))) {
+        return callbacks
+      } else {
+        state = _$this.ju_concurrent_atomic_AtomicReference__f_value
+      }
+    } else {
+      const p = $as_s_concurrent_impl_Promise$Link(state).promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(_$this);
+      const temp$state$2 = p.ju_concurrent_atomic_AtomicReference__f_value;
+      _$this = p;
+      state = temp$state$2
+    }
+  }
+});
+const $p_s_concurrent_impl_Promise$DefaultPromise__concatCallbacks__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks = (function($thiz, left, right) {
+  while (true) {
+    if ((left instanceof $c_s_concurrent_impl_Promise$Transformation)) {
+      return new $c_s_concurrent_impl_Promise$ManyCallbacks($as_s_concurrent_impl_Promise$Transformation(left), right)
+    } else {
+      const m = $as_s_concurrent_impl_Promise$ManyCallbacks(left);
+      const temp$left = m.s_concurrent_impl_Promise$ManyCallbacks__f_rest;
+      const temp$right = new $c_s_concurrent_impl_Promise$ManyCallbacks(m.s_concurrent_impl_Promise$ManyCallbacks__f_first, right);
+      left = temp$left;
+      right = temp$right
+    }
+  }
+});
+const $p_s_concurrent_impl_Promise$DefaultPromise__submitWithValue__s_concurrent_impl_Promise$Callbacks__s_util_Try__V = (function($thiz, callbacks, resolved) {
+  while ((callbacks instanceof $c_s_concurrent_impl_Promise$ManyCallbacks)) {
+    const m = $as_s_concurrent_impl_Promise$ManyCallbacks(callbacks);
+    m.s_concurrent_impl_Promise$ManyCallbacks__f_first.submitWithValue__s_util_Try__s_concurrent_impl_Promise$Transformation(resolved);
+    callbacks = m.s_concurrent_impl_Promise$ManyCallbacks__f_rest
+  };
+  $as_s_concurrent_impl_Promise$Transformation(callbacks).submitWithValue__s_util_Try__s_concurrent_impl_Promise$Transformation(resolved)
+});
+const $ct_s_concurrent_impl_Promise$DefaultPromise__O__ = (function($thiz, initial) {
+  $ct_ju_concurrent_atomic_AtomicReference__O__($thiz, initial);
+  return $thiz
+});
+const $ct_s_concurrent_impl_Promise$DefaultPromise__s_util_Try__ = (function($thiz, result) {
+  $ct_s_concurrent_impl_Promise$DefaultPromise__O__($thiz, $m_s_concurrent_impl_Promise$().scala$concurrent$impl$Promise$$resolve__s_util_Try__s_util_Try(result));
+  return $thiz
+});
+const $ct_s_concurrent_impl_Promise$DefaultPromise__ = (function($thiz) {
+  $ct_s_concurrent_impl_Promise$DefaultPromise__O__($thiz, $m_s_concurrent_impl_Promise$().s_concurrent_impl_Promise$__f_scala$concurrent$impl$Promise$$Noop);
+  return $thiz
+});
+class $c_s_concurrent_impl_Promise$DefaultPromise extends $c_ju_concurrent_atomic_AtomicReference {
+  apply$mcVD$sp__D__V(v1) {
+    const resolved = $as_s_util_Try(v1);
+    this.tryComplete0__O__s_util_Try__Z(this.ju_concurrent_atomic_AtomicReference__f_value, resolved)
+  };
+  apply$mcVI$sp__I__V(v1) {
+    const resolved = $as_s_util_Try(v1);
+    this.tryComplete0__O__s_util_Try__Z(this.ju_concurrent_atomic_AtomicReference__f_value, resolved)
+  };
+  foreach__F1__s_concurrent_ExecutionContext__V(f, executor) {
+    const state = this.ju_concurrent_atomic_AtomicReference__f_value;
+    if ((!(state instanceof $c_s_util_Failure))) {
+      $p_s_concurrent_impl_Promise$DefaultPromise__dispatchOrAddCallbacks__O__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks(this, state, $ct_s_concurrent_impl_Promise$Transformation__I__F1__s_concurrent_ExecutionContext__(new $c_s_concurrent_impl_Promise$Transformation(), 5, f, executor))
+    }
+  };
+  onComplete__F1__s_concurrent_ExecutionContext__V(func, executor) {
+    $p_s_concurrent_impl_Promise$DefaultPromise__dispatchOrAddCallbacks__O__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks(this, this.ju_concurrent_atomic_AtomicReference__f_value, $ct_s_concurrent_impl_Promise$Transformation__I__F1__s_concurrent_ExecutionContext__(new $c_s_concurrent_impl_Promise$Transformation(), 6, func, executor))
+  };
+  toString__T() {
+    let _$this = this;
+    while (true) {
+      const state = _$this.ju_concurrent_atomic_AtomicReference__f_value;
+      if ((state instanceof $c_s_util_Try)) {
+        return (("Future(" + state) + ")")
+      } else if ((state instanceof $c_s_concurrent_impl_Promise$Link)) {
+        _$this = $as_s_concurrent_impl_Promise$Link(state).promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(_$this)
+      } else {
+        return "Future(<not completed>)"
+      }
+    }
+  };
+  tryComplete__s_util_Try__Z(value) {
+    const state = this.ju_concurrent_atomic_AtomicReference__f_value;
+    return ((!(state instanceof $c_s_util_Try)) && this.tryComplete0__O__s_util_Try__Z(state, $m_s_concurrent_impl_Promise$().scala$concurrent$impl$Promise$$resolve__s_util_Try__s_util_Try(value)))
+  };
+  tryComplete0__O__s_util_Try__Z(state, resolved) {
+    let _$this = this;
+    while (true) {
+      if ($is_s_concurrent_impl_Promise$Callbacks(state)) {
+        if (_$this.compareAndSet__O__O__Z(state, resolved)) {
+          if ((state !== $m_s_concurrent_impl_Promise$().s_concurrent_impl_Promise$__f_scala$concurrent$impl$Promise$$Noop)) {
+            $p_s_concurrent_impl_Promise$DefaultPromise__submitWithValue__s_concurrent_impl_Promise$Callbacks__s_util_Try__V(_$this, $as_s_concurrent_impl_Promise$Callbacks(state), resolved)
+          };
+          return true
+        } else {
+          state = _$this.ju_concurrent_atomic_AtomicReference__f_value
+        }
+      } else if ((state instanceof $c_s_concurrent_impl_Promise$Link)) {
+        const p = $as_s_concurrent_impl_Promise$Link(state).promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(_$this);
+        if ((p !== _$this)) {
+          const temp$state$2 = p.ju_concurrent_atomic_AtomicReference__f_value;
+          _$this = p;
+          state = temp$state$2
+        } else {
+          return false
+        }
+      } else {
+        return false
+      }
+    }
+  };
+  completeWith__s_concurrent_Future__s_concurrent_impl_Promise$DefaultPromise(other) {
+    if ((other !== this)) {
+      const state = this.ju_concurrent_atomic_AtomicReference__f_value;
+      if ((!(state instanceof $c_s_util_Try))) {
+        let resolved;
+        if ((other instanceof $c_s_concurrent_impl_Promise$DefaultPromise)) {
+          resolved = $p_s_concurrent_impl_Promise$DefaultPromise__value0__s_util_Try($as_s_concurrent_impl_Promise$DefaultPromise(other))
+        } else {
+          const this$2 = $m_s_Option$().apply__O__s_Option($p_s_concurrent_impl_Promise$DefaultPromise__value0__s_util_Try(other));
+          $m_s_$less$colon$less$();
+          resolved = $as_s_util_Try((this$2.isEmpty__Z() ? null : this$2.get__O()))
+        };
+        if ((resolved !== null)) {
+          this.tryComplete0__O__s_util_Try__Z(state, resolved)
+        } else {
+          other.onComplete__F1__s_concurrent_ExecutionContext__V(this, $m_s_concurrent_ExecutionContext$parasitic$())
+        }
+      }
+    };
+    return this
+  };
+  linkRootOf__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$Link__V(target, link) {
+    let _$this = this;
+    while (true) {
+      if ((_$this !== target)) {
+        const state = _$this.ju_concurrent_atomic_AtomicReference__f_value;
+        if ((state instanceof $c_s_util_Try)) {
+          if ((!target.tryComplete0__O__s_util_Try__Z(target.ju_concurrent_atomic_AtomicReference__f_value, $as_s_util_Try(state)))) {
+            throw $ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), "Cannot link completed promises together")
+          }
+        } else if ($is_s_concurrent_impl_Promise$Callbacks(state)) {
+          const l = ((link !== null) ? link : new $c_s_concurrent_impl_Promise$Link(target));
+          const p = l.promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(_$this);
+          if (((_$this !== p) && _$this.compareAndSet__O__O__Z(state, l))) {
+            if ((state !== $m_s_concurrent_impl_Promise$().s_concurrent_impl_Promise$__f_scala$concurrent$impl$Promise$$Noop)) {
+              $p_s_concurrent_impl_Promise$DefaultPromise__dispatchOrAddCallbacks__O__s_concurrent_impl_Promise$Callbacks__s_concurrent_impl_Promise$Callbacks(p, p.ju_concurrent_atomic_AtomicReference__f_value, $as_s_concurrent_impl_Promise$Callbacks(state))
+            }
+          } else {
+            target = p;
+            link = l;
+            continue
+          }
+        } else {
+          _$this = $as_s_concurrent_impl_Promise$Link(state).promise__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$DefaultPromise(_$this);
+          continue
+        }
+      };
+      break
+    }
+  };
+  unlink__s_util_Try__V(resolved) {
+    let _$this = this;
+    while (true) {
+      const state = _$this.ju_concurrent_atomic_AtomicReference__f_value;
+      if ((state instanceof $c_s_concurrent_impl_Promise$Link)) {
+        const next = (_$this.compareAndSet__O__O__Z(state, resolved) ? $as_s_concurrent_impl_Promise$DefaultPromise($as_s_concurrent_impl_Promise$Link(state).ju_concurrent_atomic_AtomicReference__f_value) : _$this);
+        _$this = next;
+        continue
+      } else {
+        _$this.tryComplete0__O__s_util_Try__Z(state, resolved)
+      };
+      break
+    }
+  };
+  apply__O__O(v1) {
+    const resolved = $as_s_util_Try(v1);
+    this.tryComplete0__O__s_util_Try__Z(this.ju_concurrent_atomic_AtomicReference__f_value, resolved)
+  };
+}
+function $as_s_concurrent_impl_Promise$DefaultPromise(obj) {
+  return (((obj instanceof $c_s_concurrent_impl_Promise$DefaultPromise) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.impl.Promise$DefaultPromise"))
+}
+function $isArrayOf_s_concurrent_impl_Promise$DefaultPromise(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_impl_Promise$DefaultPromise)))
+}
+function $asArrayOf_s_concurrent_impl_Promise$DefaultPromise(obj, depth) {
+  return (($isArrayOf_s_concurrent_impl_Promise$DefaultPromise(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.impl.Promise$DefaultPromise;", depth))
+}
+const $d_s_concurrent_impl_Promise$DefaultPromise = new $TypeData().initClass({
+  s_concurrent_impl_Promise$DefaultPromise: 0
+}, false, "scala.concurrent.impl.Promise$DefaultPromise", {
+  s_concurrent_impl_Promise$DefaultPromise: 1,
+  ju_concurrent_atomic_AtomicReference: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_concurrent_Promise: 1,
+  s_concurrent_Future: 1,
+  s_concurrent_Awaitable: 1,
+  F1: 1
+});
+$c_s_concurrent_impl_Promise$DefaultPromise.prototype.$classData = $d_s_concurrent_impl_Promise$DefaultPromise;
 class $c_s_math_Ordering$Boolean$ extends $c_O {
   lteq__O__O__Z(x, y) {
     return $f_s_math_Ordering__lteq__O__O__Z(this, x, y)
@@ -31771,6 +33630,181 @@ function $isArrayOf_sci_Set(obj, depth) {
 function $asArrayOf_sci_Set(obj, depth) {
   return (($isArrayOf_sci_Set(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.immutable.Set;", depth))
 }
+const $p_s_concurrent_impl_Promise$Transformation__handleFailure__jl_Throwable__s_concurrent_ExecutionContext__V = (function($thiz, t, e) {
+  const wasInterrupted = false;
+  if ((wasInterrupted || $m_s_util_control_NonFatal$().apply__jl_Throwable__Z(t))) {
+    const completed = $thiz.tryComplete0__O__s_util_Try__Z($thiz.ju_concurrent_atomic_AtomicReference__f_value, $m_s_concurrent_impl_Promise$().scala$concurrent$impl$Promise$$resolve__s_util_Try__s_util_Try(new $c_s_util_Failure(t)));
+    if ((completed && wasInterrupted)) {
+      const this$1 = $m_jl_Thread$().jl_Thread$__f_SingleThread;
+      this$1.jl_Thread__f_java$lang$Thread$$interruptedState = true
+    };
+    if (((($thiz.s_concurrent_impl_Promise$Transformation__f__xform === 5) || ($thiz.s_concurrent_impl_Promise$Transformation__f__xform === 6)) || (!completed))) {
+      e.reportFailure__jl_Throwable__V(t)
+    }
+  } else {
+    throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(t)
+  }
+});
+const $ct_s_concurrent_impl_Promise$Transformation__F1__s_concurrent_ExecutionContext__s_util_Try__I__ = (function($thiz, _fun, _ec, _arg, _xform) {
+  $thiz.s_concurrent_impl_Promise$Transformation__f__fun = _fun;
+  $thiz.s_concurrent_impl_Promise$Transformation__f__ec = _ec;
+  $thiz.s_concurrent_impl_Promise$Transformation__f__arg = _arg;
+  $thiz.s_concurrent_impl_Promise$Transformation__f__xform = _xform;
+  $ct_s_concurrent_impl_Promise$DefaultPromise__($thiz);
+  return $thiz
+});
+const $ct_s_concurrent_impl_Promise$Transformation__I__F1__s_concurrent_ExecutionContext__ = (function($thiz, xform, f, ec) {
+  $ct_s_concurrent_impl_Promise$Transformation__F1__s_concurrent_ExecutionContext__s_util_Try__I__($thiz, f, ec, null, xform);
+  return $thiz
+});
+class $c_s_concurrent_impl_Promise$Transformation extends $c_s_concurrent_impl_Promise$DefaultPromise {
+  constructor() {
+    super();
+    this.s_concurrent_impl_Promise$Transformation__f__fun = null;
+    this.s_concurrent_impl_Promise$Transformation__f__ec = null;
+    this.s_concurrent_impl_Promise$Transformation__f__arg = null;
+    this.s_concurrent_impl_Promise$Transformation__f__xform = 0
+  };
+  submitWithValue__s_util_Try__s_concurrent_impl_Promise$Transformation(resolved) {
+    this.s_concurrent_impl_Promise$Transformation__f__arg = resolved;
+    const e = this.s_concurrent_impl_Promise$Transformation__f__ec;
+    try {
+      e.execute__jl_Runnable__V(this)
+    } catch (e$2) {
+      const e$3 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e$2);
+      if ((e$3 !== null)) {
+        this.s_concurrent_impl_Promise$Transformation__f__fun = null;
+        this.s_concurrent_impl_Promise$Transformation__f__arg = null;
+        this.s_concurrent_impl_Promise$Transformation__f__ec = null;
+        $p_s_concurrent_impl_Promise$Transformation__handleFailure__jl_Throwable__s_concurrent_ExecutionContext__V(this, e$3, e)
+      } else {
+        throw e$2
+      }
+    };
+    return this
+  };
+  run__V() {
+    const v = this.s_concurrent_impl_Promise$Transformation__f__arg;
+    const fun = this.s_concurrent_impl_Promise$Transformation__f__fun;
+    const ec = this.s_concurrent_impl_Promise$Transformation__f__ec;
+    this.s_concurrent_impl_Promise$Transformation__f__fun = null;
+    this.s_concurrent_impl_Promise$Transformation__f__arg = null;
+    this.s_concurrent_impl_Promise$Transformation__f__ec = null;
+    try {
+      const x1 = this.s_concurrent_impl_Promise$Transformation__f__xform;
+      let resolvedResult;
+      switch (x1) {
+        case 0: {
+          resolvedResult = null;
+          break
+        }
+        case 1: {
+          resolvedResult = ((v instanceof $c_s_util_Success) ? new $c_s_util_Success(fun.apply__O__O(v.get__O())) : v);
+          break
+        }
+        case 2: {
+          if ((v instanceof $c_s_util_Success)) {
+            const f = fun.apply__O__O(v.get__O());
+            if ((f instanceof $c_s_concurrent_impl_Promise$DefaultPromise)) {
+              $as_s_concurrent_impl_Promise$DefaultPromise(f).linkRootOf__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$Link__V(this, null)
+            } else {
+              this.completeWith__s_concurrent_Future__s_concurrent_impl_Promise$DefaultPromise($as_s_concurrent_Future(f))
+            };
+            resolvedResult = null
+          } else {
+            resolvedResult = v
+          };
+          break
+        }
+        case 3: {
+          resolvedResult = $m_s_concurrent_impl_Promise$().scala$concurrent$impl$Promise$$resolve__s_util_Try__s_util_Try($as_s_util_Try(fun.apply__O__O(v)));
+          break
+        }
+        case 4: {
+          const f$2 = fun.apply__O__O(v);
+          if ((f$2 instanceof $c_s_concurrent_impl_Promise$DefaultPromise)) {
+            $as_s_concurrent_impl_Promise$DefaultPromise(f$2).linkRootOf__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$Link__V(this, null)
+          } else {
+            this.completeWith__s_concurrent_Future__s_concurrent_impl_Promise$DefaultPromise($as_s_concurrent_Future(f$2))
+          };
+          resolvedResult = null;
+          break
+        }
+        case 5: {
+          v.foreach__F1__V(fun);
+          resolvedResult = null;
+          break
+        }
+        case 6: {
+          fun.apply__O__O(v);
+          resolvedResult = null;
+          break
+        }
+        case 7: {
+          resolvedResult = ((v instanceof $c_s_util_Failure) ? $m_s_concurrent_impl_Promise$().scala$concurrent$impl$Promise$$resolve__s_util_Try__s_util_Try(v.recover__s_PartialFunction__s_util_Try($as_s_PartialFunction(fun))) : v);
+          break
+        }
+        case 8: {
+          if ((v instanceof $c_s_util_Failure)) {
+            const f$3 = $as_s_concurrent_Future($as_s_PartialFunction(fun).applyOrElse__O__F1__O($as_s_util_Failure(v).s_util_Failure__f_exception, $m_s_concurrent_Future$().s_concurrent_Future$__f_recoverWithFailed));
+            resolvedResult = ((f$3 !== $m_s_concurrent_Future$().s_concurrent_Future$__f_recoverWithFailedMarker) ? (((f$3 instanceof $c_s_concurrent_impl_Promise$DefaultPromise) ? $as_s_concurrent_impl_Promise$DefaultPromise(f$3).linkRootOf__s_concurrent_impl_Promise$DefaultPromise__s_concurrent_impl_Promise$Link__V(this, null) : this.completeWith__s_concurrent_Future__s_concurrent_impl_Promise$DefaultPromise(f$3)), null) : v)
+          } else {
+            resolvedResult = v
+          };
+          break
+        }
+        case 9: {
+          resolvedResult = (((v instanceof $c_s_util_Failure) || $uZ(fun.apply__O__O(v.get__O()))) ? v : $m_s_concurrent_Future$().s_concurrent_Future$__f_filterFailure);
+          break
+        }
+        case 10: {
+          resolvedResult = ((v instanceof $c_s_util_Success) ? new $c_s_util_Success($as_s_PartialFunction(fun).applyOrElse__O__F1__O(v.get__O(), $m_s_concurrent_Future$().s_concurrent_Future$__f_collectFailed)) : v);
+          break
+        }
+        default: {
+          resolvedResult = new $c_s_util_Failure($ct_jl_IllegalStateException__T__(new $c_jl_IllegalStateException(), ("BUG: encountered transformation promise with illegal type: " + this.s_concurrent_impl_Promise$Transformation__f__xform)))
+        }
+      };
+      if ((resolvedResult !== null)) {
+        this.tryComplete0__O__s_util_Try__Z(this.ju_concurrent_atomic_AtomicReference__f_value, resolvedResult)
+      }
+    } catch (e) {
+      const e$2 = $m_sjsr_package$().wrapJavaScriptException__O__jl_Throwable(e);
+      if ((e$2 !== null)) {
+        $p_s_concurrent_impl_Promise$Transformation__handleFailure__jl_Throwable__s_concurrent_ExecutionContext__V(this, e$2, ec)
+      } else {
+        throw e
+      }
+    }
+  };
+}
+function $as_s_concurrent_impl_Promise$Transformation(obj) {
+  return (((obj instanceof $c_s_concurrent_impl_Promise$Transformation) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.impl.Promise$Transformation"))
+}
+function $isArrayOf_s_concurrent_impl_Promise$Transformation(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_impl_Promise$Transformation)))
+}
+function $asArrayOf_s_concurrent_impl_Promise$Transformation(obj, depth) {
+  return (($isArrayOf_s_concurrent_impl_Promise$Transformation(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.impl.Promise$Transformation;", depth))
+}
+const $d_s_concurrent_impl_Promise$Transformation = new $TypeData().initClass({
+  s_concurrent_impl_Promise$Transformation: 0
+}, false, "scala.concurrent.impl.Promise$Transformation", {
+  s_concurrent_impl_Promise$Transformation: 1,
+  s_concurrent_impl_Promise$DefaultPromise: 1,
+  ju_concurrent_atomic_AtomicReference: 1,
+  O: 1,
+  Ljava_io_Serializable: 1,
+  s_concurrent_Promise: 1,
+  s_concurrent_Future: 1,
+  s_concurrent_Awaitable: 1,
+  F1: 1,
+  s_concurrent_impl_Promise$Callbacks: 1,
+  jl_Runnable: 1,
+  s_concurrent_Batchable: 1,
+  s_concurrent_OnCompleteRunnable: 1
+});
+$c_s_concurrent_impl_Promise$Transformation.prototype.$classData = $d_s_concurrent_impl_Promise$Transformation;
 class $c_sc_AbstractMap extends $c_sc_AbstractIterable {
   equals__O__Z(o) {
     return $f_sc_Map__equals__O__Z(this, o)
