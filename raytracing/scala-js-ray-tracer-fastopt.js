@@ -13683,6 +13683,15 @@ class $c_LRayTracing$ extends $c_O {
   };
   RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V(e) {
     const scenes = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("scenes");
+    const samples = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("samples");
+    const $$x1 = $m_LRayTracing$();
+    const qual$1 = $m_LRayTracing$().LRayTracing$__f_options;
+    const x$1 = $doubleToInt($uD(samples.valueAsNumber));
+    const x$2 = qual$1.LRayTracing$Options__f_filename;
+    const x$3 = qual$1.LRayTracing$Options__f_width;
+    const x$4 = qual$1.LRayTracing$Options__f_height;
+    const x$5 = qual$1.LRayTracing$Options__f_scene;
+    $$x1.LRayTracing$__f_options = new $c_LRayTracing$Options(x$2, x$3, x$4, x$1, x$5);
     const this$3 = $m_Lorg_scalajs_dom_ext_Ajax$();
     const url = $as_T(scenes.value);
     const headers = $m_sci_Map$EmptyMap$();
@@ -13703,16 +13712,16 @@ class $c_LRayTracing$ extends $c_O {
               this$8.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"))
             }))(this$4))), new $c_s_Some(new $c_sjsr_AnonFunction1(((this$2$1) => ((time$2) => {
               const time = $uD(time$2);
-              const x$1 = (((("Rendered " + $m_LRayTracing$().LRayTracing$__f_options.LRayTracing$Options__f_height) + " lines in ") + time) + " seconds");
+              const x$6 = (((("Rendered " + $m_LRayTracing$().LRayTracing$__f_options.LRayTracing$Options__f_height) + " lines in ") + time) + " seconds");
               const this$10 = $m_s_Console$();
               const this$11 = this$10.out__Ljava_io_PrintStream();
-              this$11.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$1 + "\n"))
+              this$11.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x$6 + "\n"))
             }))(this$4))));
             break matchEnd6
           }
         };
-        const x$2 = $m_s_None$();
-        if ((x$2 === x1)) {
+        const x$7 = $m_s_None$();
+        if ((x$7 === x1)) {
           const this$13 = $m_s_Console$();
           const this$14 = this$13.out__Ljava_io_PrintStream();
           this$14.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Error loading scene\n");
