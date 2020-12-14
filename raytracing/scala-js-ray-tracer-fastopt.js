@@ -792,6 +792,7 @@ class $c_LJsonReads$ extends $c_O {
   constructor() {
     super();
     this.LJsonReads$__f_checkerReads = null;
+    this.LJsonReads$__f_vec2Reads = null;
     this.LJsonReads$__f_vec3Reads = null;
     this.LJsonReads$__f_cameraReads = null;
     this.LJsonReads$__f_solidColorReads = null;
@@ -800,6 +801,7 @@ class $c_LJsonReads$ extends $c_O {
     this.LJsonReads$__f_diffuseReads = null;
     this.LJsonReads$__f_glossyReads = null;
     this.LJsonReads$__f_glassReads = null;
+    this.LJsonReads$__f_emissionReads = null;
     this.LJsonReads$__f_materialReads = null;
     this.LJsonReads$__f_bitmap$0 = false;
     $n_LJsonReads$ = this;
@@ -816,112 +818,148 @@ class $c_LJsonReads$ extends $c_O {
     const r$1 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
     const this$7 = $m_Lplay_api_libs_json_Reads$();
     const mb = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$7, this$6, r$1);
-    const this$11 = this$8.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb);
-    const this$9 = $m_Lplay_api_libs_json_JsPath$().apply__I__Lplay_api_libs_json_JsPath(2);
-    const r$2 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
-    const this$10 = $m_Lplay_api_libs_json_Reads$();
-    const m3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$10, this$9, r$2);
-    const $$x2 = this$11.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3);
-    const $$x1 = new $c_sjsr_AnonFunction3(((this$12) => ((x$2, y$2, z$2) => {
+    const $$x2 = this$8.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb);
+    const $$x1 = new $c_sjsr_AnonFunction2(((this$9) => ((x$2, y$2) => {
       const x = $uD(x$2);
       const y = $uD(y$2);
-      const z = $uD(z$2);
-      return new $c_LVec3(x, y, z)
+      return new $c_LVec2(x, y)
     }))(this));
     $m_Lplay_api_libs_json_Reads$();
     $m_Lplay_api_libs_json_Reads$();
     const applicativeJsResult$1 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
     const a$1 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$1);
-    this.LJsonReads$__f_vec3Reads = $as_Lplay_api_libs_json_Reads($$x2.apply__F3__Lplay_api_libs_functional_Functor__O($$x1, new $c_Lplay_api_libs_json_Reads$$anon$7(a$1)));
-    const $$x4 = $m_Lplay_api_libs_json_JsPath$();
-    const this$15 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator = this$15.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming, optionHandlers, discriminator, typeNaming);
-    const this$17 = $$x4.$bslash__T__Lplay_api_libs_json_JsPath("origin");
-    const r$3 = this.LJsonReads$__f_vec3Reads;
-    const this$18 = $m_Lplay_api_libs_json_Reads$();
-    const a$2 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$18, this$17, r$3);
+    this.LJsonReads$__f_vec2Reads = $as_Lplay_api_libs_json_Reads($$x2.apply__F2__Lplay_api_libs_functional_Functor__O($$x1, new $c_Lplay_api_libs_json_Reads$$anon$7(a$1)));
+    const this$12 = $m_Lplay_api_libs_json_JsPath$().apply__I__Lplay_api_libs_json_JsPath(0);
+    const r$2 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$13 = $m_Lplay_api_libs_json_Reads$();
+    const a$2 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$13, this$12, r$2);
     $m_Lplay_api_libs_json_Reads$();
     const applicativeJsResult$2 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
     const app$1 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$2);
     const fcb$1 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$1);
-    const this$26 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$2, fcb$1);
-    const $$x5 = $m_Lplay_api_libs_json_JsPath$();
-    const this$22 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$1 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$1 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$1 = this$22.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$1 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$1, optionHandlers$1, discriminator$1, typeNaming$1);
-    const this$24 = $$x5.$bslash__T__Lplay_api_libs_json_JsPath("target");
-    const r$4 = this.LJsonReads$__f_vec3Reads;
-    const this$25 = $m_Lplay_api_libs_json_Reads$();
-    const mb$1 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$25, this$24, r$4);
-    const this$31 = this$26.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$1);
+    const this$19 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$2, fcb$1);
+    const this$17 = $m_Lplay_api_libs_json_JsPath$().apply__I__Lplay_api_libs_json_JsPath(1);
+    const r$3 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$18 = $m_Lplay_api_libs_json_Reads$();
+    const mb$1 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$18, this$17, r$3);
+    const this$22 = this$19.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$1);
+    const this$20 = $m_Lplay_api_libs_json_JsPath$().apply__I__Lplay_api_libs_json_JsPath(2);
+    const r$4 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$21 = $m_Lplay_api_libs_json_Reads$();
+    const m3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$21, this$20, r$4);
+    const $$x4 = this$22.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3);
+    const $$x3 = new $c_sjsr_AnonFunction3(((this$2$1) => ((x$3$2, y$3$2, z$2) => {
+      const x$3 = $uD(x$3$2);
+      const y$3 = $uD(y$3$2);
+      const z = $uD(z$2);
+      return new $c_LVec3(x$3, y$3, z)
+    }))(this));
+    $m_Lplay_api_libs_json_Reads$();
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$3 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$3 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$3);
+    this.LJsonReads$__f_vec3Reads = $as_Lplay_api_libs_json_Reads($$x4.apply__F3__Lplay_api_libs_functional_Functor__O($$x3, new $c_Lplay_api_libs_json_Reads$$anon$7(a$3)));
     const $$x6 = $m_Lplay_api_libs_json_JsPath$();
-    const this$27 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$2 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$2 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$2 = this$27.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$2 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$2, optionHandlers$2, discriminator$2, typeNaming$2);
-    const this$29 = $$x6.$bslash__T__Lplay_api_libs_json_JsPath("vup");
+    const this$25 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator = this$25.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming, optionHandlers, discriminator, typeNaming);
+    const this$27 = $$x6.$bslash__T__Lplay_api_libs_json_JsPath("origin");
     const r$5 = this.LJsonReads$__f_vec3Reads;
-    const this$30 = $m_Lplay_api_libs_json_Reads$();
-    const m3$1 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$30, this$29, r$5);
-    const this$36 = this$31.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3$1);
+    const this$28 = $m_Lplay_api_libs_json_Reads$();
+    const a$4 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$28, this$27, r$5);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$4 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app$2 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$4);
+    const fcb$2 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$2);
+    const this$36 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$4, fcb$2);
     const $$x7 = $m_Lplay_api_libs_json_JsPath$();
     const this$32 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$3 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$3 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$3 = this$32.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$3 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$3, optionHandlers$3, discriminator$3, typeNaming$3);
-    const this$34 = $$x7.$bslash__T__Lplay_api_libs_json_JsPath("vfov");
-    const r$6 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const naming$1 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$1 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$1 = this$32.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$1 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$1, optionHandlers$1, discriminator$1, typeNaming$1);
+    const this$34 = $$x7.$bslash__T__Lplay_api_libs_json_JsPath("target");
+    const r$6 = this.LJsonReads$__f_vec3Reads;
     const this$35 = $m_Lplay_api_libs_json_Reads$();
-    const m3$2 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$35, this$34, r$6);
-    const this$41 = this$36.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild4(m3$2);
+    const mb$2 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$35, this$34, r$6);
+    const this$41 = this$36.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$2);
     const $$x8 = $m_Lplay_api_libs_json_JsPath$();
     const this$37 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$4 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$4 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$4 = this$37.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$4 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$4, optionHandlers$4, discriminator$4, typeNaming$4);
-    const this$39 = $$x8.$bslash__T__Lplay_api_libs_json_JsPath("aspect_ratio");
-    const r$7 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const naming$2 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$2 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$2 = this$37.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$2 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$2, optionHandlers$2, discriminator$2, typeNaming$2);
+    const this$39 = $$x8.$bslash__T__Lplay_api_libs_json_JsPath("vup");
+    const r$7 = this.LJsonReads$__f_vec3Reads;
     const this$40 = $m_Lplay_api_libs_json_Reads$();
-    const m3$3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$40, this$39, r$7);
-    const this$46 = this$41.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild5(m3$3);
+    const m3$1 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$40, this$39, r$7);
+    const this$46 = this$41.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3$1);
     const $$x9 = $m_Lplay_api_libs_json_JsPath$();
     const this$42 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$5 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$5 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$5 = this$42.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$5 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$5, optionHandlers$5, discriminator$5, typeNaming$5);
-    const this$44 = $$x9.$bslash__T__Lplay_api_libs_json_JsPath("aperture");
+    const naming$3 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$3 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$3 = this$42.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$3 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$3, optionHandlers$3, discriminator$3, typeNaming$3);
+    const this$44 = $$x9.$bslash__T__Lplay_api_libs_json_JsPath("vfov");
     const r$8 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
     const this$45 = $m_Lplay_api_libs_json_Reads$();
-    const m3$4 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$45, this$44, r$8);
-    const this$51 = this$46.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild6(m3$4);
+    const m3$2 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$45, this$44, r$8);
+    const this$51 = this$46.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild4(m3$2);
     const $$x10 = $m_Lplay_api_libs_json_JsPath$();
     const this$47 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$6 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$6 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$6 = this$47.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$6 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$6, optionHandlers$6, discriminator$6, typeNaming$6);
-    const this$49 = $$x10.$bslash__T__Lplay_api_libs_json_JsPath("focus_distance");
+    const naming$4 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$4 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$4 = this$47.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$4 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$4, optionHandlers$4, discriminator$4, typeNaming$4);
+    const this$49 = $$x10.$bslash__T__Lplay_api_libs_json_JsPath("aspect_ratio");
     const r$9 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
     const this$50 = $m_Lplay_api_libs_json_Reads$();
-    const m3$5 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$50, this$49, r$9);
-    const $$x11 = this$51.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild7(m3$5);
-    const $$x3 = new $c_sjsr_AnonFunction7(((this$2$1) => ((origin$2, target$2, vup$2, vfov$2, aspect_ratio$2, aperture$2, focus_distance$2) => {
+    const m3$3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$50, this$49, r$9);
+    const this$56 = this$51.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild5(m3$3);
+    const $$x11 = $m_Lplay_api_libs_json_JsPath$();
+    const this$52 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$5 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$5 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$5 = this$52.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$5 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$5, optionHandlers$5, discriminator$5, typeNaming$5);
+    const this$54 = $$x11.$bslash__T__Lplay_api_libs_json_JsPath("aperture");
+    const r$10 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$55 = $m_Lplay_api_libs_json_Reads$();
+    const m3$4 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$55, this$54, r$10);
+    const this$61 = this$56.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild6(m3$4);
+    const $$x12 = $m_Lplay_api_libs_json_JsPath$();
+    const this$57 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$6 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$6 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$6 = this$57.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$6 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$6, optionHandlers$6, discriminator$6, typeNaming$6);
+    const this$59 = $$x12.$bslash__T__Lplay_api_libs_json_JsPath("focus_distance");
+    const r$11 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$60 = $m_Lplay_api_libs_json_Reads$();
+    const m3$5 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$60, this$59, r$11);
+    const this$66 = this$61.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild7(m3$5);
+    const $$x13 = $m_Lplay_api_libs_json_JsPath$();
+    const this$62 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$7 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$7 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$7 = this$62.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$7 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$7, optionHandlers$7, discriminator$7, typeNaming$7);
+    const this$64 = $$x13.$bslash__T__Lplay_api_libs_json_JsPath("background");
+    const r$12 = this.LJsonReads$__f_vec3Reads;
+    const this$65 = $m_Lplay_api_libs_json_Reads$();
+    const m3$6 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$65, this$64, r$12);
+    const $$x14 = this$66.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild8(m3$6);
+    const $$x5 = new $c_sjsr_AnonFunction8(((this$3$1) => ((origin$2, target$2, vup$2, vfov$2, aspect_ratio$2, aperture$2, focus_distance$2, background$2) => {
       const origin = $as_LVec3(origin$2);
       const target = $as_LVec3(target$2);
       const vup = $as_LVec3(vup$2);
@@ -929,15 +967,16 @@ class $c_LJsonReads$ extends $c_O {
       const aspect_ratio = $uD(aspect_ratio$2);
       const aperture = $uD(aperture$2);
       const focus_distance = $uD(focus_distance$2);
-      return new $c_LCamera(origin, target, vup, vfov, aspect_ratio, aperture, focus_distance)
+      const background = $as_LVec3(background$2);
+      return new $c_LCamera(origin, target, vup, vfov, aspect_ratio, aperture, focus_distance, background)
     }))(this));
     $m_Lplay_api_libs_json_Reads$();
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$3 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const a$3 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$3);
-    const underlying = $as_Lplay_api_libs_json_Reads($$x11.apply__F7__Lplay_api_libs_functional_Functor__O($$x3, new $c_Lplay_api_libs_json_Reads$$anon$7(a$3)));
+    const applicativeJsResult$5 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$5 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$5);
+    const underlying = $as_Lplay_api_libs_json_Reads($$x14.apply__F8__Lplay_api_libs_functional_Functor__O($$x5, new $c_Lplay_api_libs_json_Reads$$anon$7(a$5)));
     $m_Lplay_api_libs_json_Reads$();
-    const f = new $c_sjsr_AnonFunction1(((this$3$1, underlying$1) => ((x0$1$2) => {
+    const f = new $c_sjsr_AnonFunction1(((this$4$1, underlying$1) => ((x0$1$2) => {
       const x0$1 = $as_Lplay_api_libs_json_JsValue(x0$1$2);
       if ((x0$1 instanceof $c_Lplay_api_libs_json_JsObject)) {
         const x2 = $as_Lplay_api_libs_json_JsObject(x0$1);
@@ -947,83 +986,83 @@ class $c_LJsonReads$ extends $c_O {
       }
     }))(this, underlying));
     this.LJsonReads$__f_cameraReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f);
-    const $$x12 = $m_Lplay_api_libs_json_JsPath$();
-    const this$55 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$7 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$7 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$7 = this$55.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$7 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$7, optionHandlers$7, discriminator$7, typeNaming$7);
-    const this$57 = $$x12.$bslash__T__Lplay_api_libs_json_JsPath("color");
-    const r$10 = this.LJsonReads$__f_vec3Reads;
-    const this$58 = $m_Lplay_api_libs_json_Reads$();
-    const this$59 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$58, this$57, r$10);
-    const f$1 = new $c_sjsr_AnonFunction1(((this$4$1) => ((color$2) => {
+    const $$x15 = $m_Lplay_api_libs_json_JsPath$();
+    const this$70 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$8 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$8 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$8 = this$70.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$8 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$8, optionHandlers$8, discriminator$8, typeNaming$8);
+    const this$72 = $$x15.$bslash__T__Lplay_api_libs_json_JsPath("color");
+    const r$13 = this.LJsonReads$__f_vec3Reads;
+    const this$73 = $m_Lplay_api_libs_json_Reads$();
+    const this$74 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$73, this$72, r$13);
+    const f$1 = new $c_sjsr_AnonFunction1(((this$5$1) => ((color$2) => {
       const color = $as_LVec3(color$2);
       return new $c_LSolidColor(color)
     }))(this));
-    const underlying$2 = $f_Lplay_api_libs_json_Reads__map__F1__Lplay_api_libs_json_Reads(this$59, f$1);
+    const underlying$2 = $f_Lplay_api_libs_json_Reads__map__F1__Lplay_api_libs_json_Reads(this$74, f$1);
     $m_Lplay_api_libs_json_Reads$();
-    const f$3 = new $c_sjsr_AnonFunction1(((this$5$1, underlying$2$1) => ((x0$2$2) => {
+    const f$3 = new $c_sjsr_AnonFunction1(((this$6$1, underlying$2$1) => ((x0$2$2) => {
       const x0$2 = $as_Lplay_api_libs_json_JsValue(x0$2$2);
       if ((x0$2 instanceof $c_Lplay_api_libs_json_JsObject)) {
         const x2$1 = $as_Lplay_api_libs_json_JsObject(x0$2);
-        const f$2 = new $c_sjsr_AnonFunction1(((this$60) => ((v$2) => {
+        const f$2 = new $c_sjsr_AnonFunction1(((this$75) => ((v$2) => {
           const v = $as_LSolidColor(v$2);
-          return $m_Lplay_api_libs_json_Reads$().pure__F0__Lplay_api_libs_json_Reads(new $c_sjsr_AnonFunction0(((this$61, v$1) => (() => v$1))(this$60, v)))
-        }))(this$5$1));
+          return $m_Lplay_api_libs_json_Reads$().pure__F0__Lplay_api_libs_json_Reads(new $c_sjsr_AnonFunction0(((this$76, v$1) => (() => v$1))(this$75, v)))
+        }))(this$6$1));
         return $f_Lplay_api_libs_json_Reads__flatMap__F1__Lplay_api_libs_json_Reads(underlying$2$1, f$2).reads__Lplay_api_libs_json_JsValue__Lplay_api_libs_json_JsResult(x2$1)
       } else {
         return $m_Lplay_api_libs_json_JsError$().apply__T__Lplay_api_libs_json_JsError("error.expected.jsobject")
       }
     }))(this, underlying$2));
     this.LJsonReads$__f_solidColorReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f$3);
-    const $$x13 = $m_Lplay_api_libs_json_JsPath$();
-    const this$63 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$8 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$8 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$8 = this$63.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$8 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$8, optionHandlers$8, discriminator$8, typeNaming$8);
-    const this$65 = $$x13.$bslash__T__Lplay_api_libs_json_JsPath("size");
-    const r$11 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
-    const this$66 = $m_Lplay_api_libs_json_Reads$();
-    const this$67 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$66, this$65, r$11);
-    const f$4 = new $c_sjsr_AnonFunction1(((this$6$1) => ((size$2) => {
-      const size = $uD(size$2);
-      return new $c_LPerlin(size)
+    const $$x16 = $m_Lplay_api_libs_json_JsPath$();
+    const this$78 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$9 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$9 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$9 = this$78.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$9 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$9, optionHandlers$9, discriminator$9, typeNaming$9);
+    const this$80 = $$x16.$bslash__T__Lplay_api_libs_json_JsPath("scale");
+    const r$14 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$81 = $m_Lplay_api_libs_json_Reads$();
+    const this$82 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$81, this$80, r$14);
+    const f$4 = new $c_sjsr_AnonFunction1(((this$7$1) => ((scale$2) => {
+      const scale = $uD(scale$2);
+      return new $c_LPerlin(scale)
     }))(this));
-    const underlying$3 = $f_Lplay_api_libs_json_Reads__map__F1__Lplay_api_libs_json_Reads(this$67, f$4);
+    const underlying$3 = $f_Lplay_api_libs_json_Reads__map__F1__Lplay_api_libs_json_Reads(this$82, f$4);
     $m_Lplay_api_libs_json_Reads$();
-    const f$6 = new $c_sjsr_AnonFunction1(((this$7$1, underlying$3$1) => ((x0$3$2) => {
+    const f$6 = new $c_sjsr_AnonFunction1(((this$8$1, underlying$3$1) => ((x0$3$2) => {
       const x0$3 = $as_Lplay_api_libs_json_JsValue(x0$3$2);
       if ((x0$3 instanceof $c_Lplay_api_libs_json_JsObject)) {
         const x2$2 = $as_Lplay_api_libs_json_JsObject(x0$3);
-        const f$5 = new $c_sjsr_AnonFunction1(((this$68) => ((v$2$1) => {
+        const f$5 = new $c_sjsr_AnonFunction1(((this$83) => ((v$2$1) => {
           const v$3 = $as_LPerlin(v$2$1);
-          return $m_Lplay_api_libs_json_Reads$().pure__F0__Lplay_api_libs_json_Reads(new $c_sjsr_AnonFunction0(((this$69, v$4) => (() => v$4))(this$68, v$3)))
-        }))(this$7$1));
+          return $m_Lplay_api_libs_json_Reads$().pure__F0__Lplay_api_libs_json_Reads(new $c_sjsr_AnonFunction0(((this$84, v$4) => (() => v$4))(this$83, v$3)))
+        }))(this$8$1));
         return $f_Lplay_api_libs_json_Reads__flatMap__F1__Lplay_api_libs_json_Reads(underlying$3$1, f$5).reads__Lplay_api_libs_json_JsValue__Lplay_api_libs_json_JsResult(x2$2)
       } else {
         return $m_Lplay_api_libs_json_JsError$().apply__T__Lplay_api_libs_json_JsError("error.expected.jsobject")
       }
     }))(this, underlying$3));
     this.LJsonReads$__f_perlinReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f$6);
-    const this$71 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("type");
-    const r$12 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
-    const this$72 = $m_Lplay_api_libs_json_Reads$();
-    const a$4 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$72, this$71, r$12);
+    const this$86 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("type");
+    const r$15 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
+    const this$87 = $m_Lplay_api_libs_json_Reads$();
+    const a$6 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$87, this$86, r$15);
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$4 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const app$2 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$4);
-    const fcb$2 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$2);
-    const this$78 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$4, fcb$2);
-    const this$76 = $m_Lplay_api_libs_json_JsPath$();
-    const r$13 = $m_Lplay_api_libs_json_Reads$().JsObjectReads__Lplay_api_libs_json_DefaultReads$JsObjectReads$();
-    const this$77 = $m_Lplay_api_libs_json_Reads$();
-    const mb$2 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$77, this$76, r$13);
-    const $$x15 = this$78.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$2);
-    const $$x14 = new $c_sjsr_AnonFunction2(((this$8$1) => ((_type$2, texture$2) => {
+    const applicativeJsResult$6 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app$3 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$6);
+    const fcb$3 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$3);
+    const this$93 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$6, fcb$3);
+    const this$91 = $m_Lplay_api_libs_json_JsPath$();
+    const r$16 = $m_Lplay_api_libs_json_Reads$().JsObjectReads__Lplay_api_libs_json_DefaultReads$JsObjectReads$();
+    const this$92 = $m_Lplay_api_libs_json_Reads$();
+    const mb$3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$92, this$91, r$16);
+    const $$x18 = this$93.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$3);
+    const $$x17 = new $c_sjsr_AnonFunction2(((this$9$1) => ((_type$2, texture$2) => {
       const _type = $as_T(_type$2);
       const texture = $as_Lplay_api_libs_json_JsObject(texture$2);
       if ((_type === "SolidColor")) {
@@ -1035,86 +1074,88 @@ class $c_LJsonReads$ extends $c_O {
       } else if ((_type === "Perlin")) {
         const fjs$2 = $m_LJsonReads$().LJsonReads$__f_perlinReads;
         return $as_LTexture($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(texture, fjs$2))
+      } else if ((_type === "Image")) {
+        return new $c_LChecker(5.0, new $c_LSolidColor(new $c_LVec3(1.0, 0.0, 1.0)), new $c_LSolidColor(new $c_LVec3(0.0, 0.0, 0.0)))
       } else {
         throw new $c_s_MatchError(_type)
       }
     }))(this));
     $m_Lplay_api_libs_json_Reads$();
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$5 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const a$5 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$5);
-    this.LJsonReads$__f_textureReads = $as_Lplay_api_libs_json_Reads($$x15.apply__F2__Lplay_api_libs_functional_Functor__O($$x14, new $c_Lplay_api_libs_json_Reads$$anon$7(a$5)));
-    const $$x16 = $m_Lplay_api_libs_json_JsPath$();
-    const this$81 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$9 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$9 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$9 = this$81.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$9 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$9, optionHandlers$9, discriminator$9, typeNaming$9);
-    const this$83 = $$x16.$bslash__T__Lplay_api_libs_json_JsPath("texture");
-    const r$14 = this.LJsonReads$__f_textureReads;
-    const this$84 = $m_Lplay_api_libs_json_Reads$();
-    const this$85 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$84, this$83, r$14);
-    const f$7 = new $c_sjsr_AnonFunction1(((this$9$1) => ((texture$3$2) => {
+    const applicativeJsResult$7 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$7 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$7);
+    this.LJsonReads$__f_textureReads = $as_Lplay_api_libs_json_Reads($$x18.apply__F2__Lplay_api_libs_functional_Functor__O($$x17, new $c_Lplay_api_libs_json_Reads$$anon$7(a$7)));
+    const $$x19 = $m_Lplay_api_libs_json_JsPath$();
+    const this$96 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$10 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$10 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$10 = this$96.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$10 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$10, optionHandlers$10, discriminator$10, typeNaming$10);
+    const this$98 = $$x19.$bslash__T__Lplay_api_libs_json_JsPath("texture");
+    const r$17 = this.LJsonReads$__f_textureReads;
+    const this$99 = $m_Lplay_api_libs_json_Reads$();
+    const this$100 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$99, this$98, r$17);
+    const f$7 = new $c_sjsr_AnonFunction1(((this$10$1) => ((texture$3$2) => {
       const texture$3 = $as_LTexture(texture$3$2);
       return new $c_LDiffuse(texture$3)
     }))(this));
-    const underlying$4 = $f_Lplay_api_libs_json_Reads__map__F1__Lplay_api_libs_json_Reads(this$85, f$7);
+    const underlying$4 = $f_Lplay_api_libs_json_Reads__map__F1__Lplay_api_libs_json_Reads(this$100, f$7);
     $m_Lplay_api_libs_json_Reads$();
-    const f$9 = new $c_sjsr_AnonFunction1(((this$10$1, underlying$4$1) => ((x0$4$2) => {
+    const f$9 = new $c_sjsr_AnonFunction1(((this$11$1, underlying$4$1) => ((x0$4$2) => {
       const x0$4 = $as_Lplay_api_libs_json_JsValue(x0$4$2);
       if ((x0$4 instanceof $c_Lplay_api_libs_json_JsObject)) {
         const x2$3 = $as_Lplay_api_libs_json_JsObject(x0$4);
-        const f$8 = new $c_sjsr_AnonFunction1(((this$86) => ((v$2$2) => {
+        const f$8 = new $c_sjsr_AnonFunction1(((this$101) => ((v$2$2) => {
           const v$5 = $as_LDiffuse(v$2$2);
-          return $m_Lplay_api_libs_json_Reads$().pure__F0__Lplay_api_libs_json_Reads(new $c_sjsr_AnonFunction0(((this$87, v$6) => (() => v$6))(this$86, v$5)))
-        }))(this$10$1));
+          return $m_Lplay_api_libs_json_Reads$().pure__F0__Lplay_api_libs_json_Reads(new $c_sjsr_AnonFunction0(((this$102, v$6) => (() => v$6))(this$101, v$5)))
+        }))(this$11$1));
         return $f_Lplay_api_libs_json_Reads__flatMap__F1__Lplay_api_libs_json_Reads(underlying$4$1, f$8).reads__Lplay_api_libs_json_JsValue__Lplay_api_libs_json_JsResult(x2$3)
       } else {
         return $m_Lplay_api_libs_json_JsError$().apply__T__Lplay_api_libs_json_JsError("error.expected.jsobject")
       }
     }))(this, underlying$4));
     this.LJsonReads$__f_diffuseReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f$9);
-    const $$x18 = $m_Lplay_api_libs_json_JsPath$();
-    const this$89 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$10 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$10 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$10 = this$89.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$10 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$10, optionHandlers$10, discriminator$10, typeNaming$10);
-    const this$91 = $$x18.$bslash__T__Lplay_api_libs_json_JsPath("texture");
-    const r$15 = this.LJsonReads$__f_textureReads;
-    const this$92 = $m_Lplay_api_libs_json_Reads$();
-    const a$6 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$92, this$91, r$15);
-    $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$6 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const app$3 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$6);
-    const fcb$3 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$3);
-    const this$100 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$6, fcb$3);
-    const $$x19 = $m_Lplay_api_libs_json_JsPath$();
-    const this$96 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const $$x21 = $m_Lplay_api_libs_json_JsPath$();
+    const this$104 = $m_Lplay_api_libs_json_JsonConfiguration$();
     const naming$11 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
     const optionHandlers$11 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$11 = this$96.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const discriminator$11 = this$104.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
     const typeNaming$11 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
     new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$11, optionHandlers$11, discriminator$11, typeNaming$11);
-    const this$98 = $$x19.$bslash__T__Lplay_api_libs_json_JsPath("roughness");
-    const r$16 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
-    const this$99 = $m_Lplay_api_libs_json_Reads$();
-    const mb$3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$99, this$98, r$16);
-    const $$x20 = this$100.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$3);
-    const $$x17 = new $c_sjsr_AnonFunction2(((this$11$1) => ((texture$4$2, roughness$2) => {
+    const this$106 = $$x21.$bslash__T__Lplay_api_libs_json_JsPath("texture");
+    const r$18 = this.LJsonReads$__f_textureReads;
+    const this$107 = $m_Lplay_api_libs_json_Reads$();
+    const a$8 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$107, this$106, r$18);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$8 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app$4 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$8);
+    const fcb$4 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$4);
+    const this$115 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$8, fcb$4);
+    const $$x22 = $m_Lplay_api_libs_json_JsPath$();
+    const this$111 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$12 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$12 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$12 = this$111.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$12 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$12, optionHandlers$12, discriminator$12, typeNaming$12);
+    const this$113 = $$x22.$bslash__T__Lplay_api_libs_json_JsPath("roughness");
+    const r$19 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$114 = $m_Lplay_api_libs_json_Reads$();
+    const mb$4 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$114, this$113, r$19);
+    const $$x23 = this$115.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$4);
+    const $$x20 = new $c_sjsr_AnonFunction2(((this$12$1) => ((texture$4$2, roughness$2) => {
       const texture$4 = $as_LTexture(texture$4$2);
       const roughness = $uD(roughness$2);
       return new $c_LGlossy(texture$4, roughness)
     }))(this));
     $m_Lplay_api_libs_json_Reads$();
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$7 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const a$7 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$7);
-    const underlying$5 = $as_Lplay_api_libs_json_Reads($$x20.apply__F2__Lplay_api_libs_functional_Functor__O($$x17, new $c_Lplay_api_libs_json_Reads$$anon$7(a$7)));
+    const applicativeJsResult$9 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$9 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$9);
+    const underlying$5 = $as_Lplay_api_libs_json_Reads($$x23.apply__F2__Lplay_api_libs_functional_Functor__O($$x20, new $c_Lplay_api_libs_json_Reads$$anon$7(a$9)));
     $m_Lplay_api_libs_json_Reads$();
-    const f$10 = new $c_sjsr_AnonFunction1(((this$12$1, underlying$5$1) => ((x0$5$2) => {
+    const f$10 = new $c_sjsr_AnonFunction1(((this$13$1, underlying$5$1) => ((x0$5$2) => {
       const x0$5 = $as_Lplay_api_libs_json_JsValue(x0$5$2);
       if ((x0$5 instanceof $c_Lplay_api_libs_json_JsObject)) {
         const x2$4 = $as_Lplay_api_libs_json_JsObject(x0$5);
@@ -1124,46 +1165,46 @@ class $c_LJsonReads$ extends $c_O {
       }
     }))(this, underlying$5));
     this.LJsonReads$__f_glossyReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f$10);
-    const $$x22 = $m_Lplay_api_libs_json_JsPath$();
-    const this$104 = $m_Lplay_api_libs_json_JsonConfiguration$();
-    const naming$12 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    const optionHandlers$12 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$12 = this$104.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
-    const typeNaming$12 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
-    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$12, optionHandlers$12, discriminator$12, typeNaming$12);
-    const this$106 = $$x22.$bslash__T__Lplay_api_libs_json_JsPath("texture");
-    const r$17 = this.LJsonReads$__f_textureReads;
-    const this$107 = $m_Lplay_api_libs_json_Reads$();
-    const a$8 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$107, this$106, r$17);
-    $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$8 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const app$4 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$8);
-    const fcb$4 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$4);
-    const this$115 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$8, fcb$4);
-    const $$x23 = $m_Lplay_api_libs_json_JsPath$();
-    const this$111 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const $$x25 = $m_Lplay_api_libs_json_JsPath$();
+    const this$119 = $m_Lplay_api_libs_json_JsonConfiguration$();
     const naming$13 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
     const optionHandlers$13 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
-    const discriminator$13 = this$111.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const discriminator$13 = this$119.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
     const typeNaming$13 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
     new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$13, optionHandlers$13, discriminator$13, typeNaming$13);
-    const this$113 = $$x23.$bslash__T__Lplay_api_libs_json_JsPath("ior");
-    const r$18 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
-    const this$114 = $m_Lplay_api_libs_json_Reads$();
-    const mb$4 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$114, this$113, r$18);
-    const $$x24 = this$115.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$4);
-    const $$x21 = new $c_sjsr_AnonFunction2(((this$13$1) => ((texture$5$2, ior$2) => {
+    const this$121 = $$x25.$bslash__T__Lplay_api_libs_json_JsPath("texture");
+    const r$20 = this.LJsonReads$__f_textureReads;
+    const this$122 = $m_Lplay_api_libs_json_Reads$();
+    const a$10 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$122, this$121, r$20);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$10 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app$5 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$10);
+    const fcb$5 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$5);
+    const this$130 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$10, fcb$5);
+    const $$x26 = $m_Lplay_api_libs_json_JsPath$();
+    const this$126 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$14 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$14 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$14 = this$126.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$14 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$14, optionHandlers$14, discriminator$14, typeNaming$14);
+    const this$128 = $$x26.$bslash__T__Lplay_api_libs_json_JsPath("ior");
+    const r$21 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$129 = $m_Lplay_api_libs_json_Reads$();
+    const mb$5 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$129, this$128, r$21);
+    const $$x27 = this$130.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$5);
+    const $$x24 = new $c_sjsr_AnonFunction2(((this$14$1) => ((texture$5$2, ior$2) => {
       const texture$5 = $as_LTexture(texture$5$2);
       const ior = $uD(ior$2);
       return new $c_LGlass(texture$5, ior)
     }))(this));
     $m_Lplay_api_libs_json_Reads$();
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$9 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const a$9 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$9);
-    const underlying$6 = $as_Lplay_api_libs_json_Reads($$x24.apply__F2__Lplay_api_libs_functional_Functor__O($$x21, new $c_Lplay_api_libs_json_Reads$$anon$7(a$9)));
+    const applicativeJsResult$11 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$11 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$11);
+    const underlying$6 = $as_Lplay_api_libs_json_Reads($$x27.apply__F2__Lplay_api_libs_functional_Functor__O($$x24, new $c_Lplay_api_libs_json_Reads$$anon$7(a$11)));
     $m_Lplay_api_libs_json_Reads$();
-    const f$11 = new $c_sjsr_AnonFunction1(((this$14$1, underlying$6$1) => ((x0$6$2) => {
+    const f$11 = new $c_sjsr_AnonFunction1(((this$15$1, underlying$6$1) => ((x0$6$2) => {
       const x0$6 = $as_Lplay_api_libs_json_JsValue(x0$6$2);
       if ((x0$6 instanceof $c_Lplay_api_libs_json_JsObject)) {
         const x2$5 = $as_Lplay_api_libs_json_JsObject(x0$6);
@@ -1173,21 +1214,70 @@ class $c_LJsonReads$ extends $c_O {
       }
     }))(this, underlying$6));
     this.LJsonReads$__f_glassReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f$11);
-    const this$119 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("type");
-    const r$19 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
-    const this$120 = $m_Lplay_api_libs_json_Reads$();
-    const a$10 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$120, this$119, r$19);
+    const $$x29 = $m_Lplay_api_libs_json_JsPath$();
+    const this$134 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$15 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$15 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$15 = this$134.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$15 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$15, optionHandlers$15, discriminator$15, typeNaming$15);
+    const this$136 = $$x29.$bslash__T__Lplay_api_libs_json_JsPath("texture");
+    const r$22 = this.LJsonReads$__f_textureReads;
+    const this$137 = $m_Lplay_api_libs_json_Reads$();
+    const a$12 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$137, this$136, r$22);
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$10 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const app$5 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$10);
-    const fcb$5 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$5);
-    const this$126 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$10, fcb$5);
-    const this$124 = $m_Lplay_api_libs_json_JsPath$();
-    const r$20 = $m_Lplay_api_libs_json_Reads$().JsObjectReads__Lplay_api_libs_json_DefaultReads$JsObjectReads$();
-    const this$125 = $m_Lplay_api_libs_json_Reads$();
-    const mb$5 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$125, this$124, r$20);
-    const $$x26 = this$126.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$5);
-    const $$x25 = new $c_sjsr_AnonFunction2(((this$15$1) => ((_type$3$2, material$2) => {
+    const applicativeJsResult$12 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app$6 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$12);
+    const fcb$6 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$6);
+    const this$145 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$12, fcb$6);
+    const $$x30 = $m_Lplay_api_libs_json_JsPath$();
+    const this$141 = $m_Lplay_api_libs_json_JsonConfiguration$();
+    const naming$16 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    const optionHandlers$16 = $m_Lplay_api_libs_json_OptionHandlers$Default$();
+    const discriminator$16 = this$141.Lplay_api_libs_json_JsonConfiguration$__f_defaultDiscriminator;
+    const typeNaming$16 = $m_Lplay_api_libs_json_JsonNaming$Identity$();
+    new $c_Lplay_api_libs_json_JsonConfiguration$Impl(naming$16, optionHandlers$16, discriminator$16, typeNaming$16);
+    const this$143 = $$x30.$bslash__T__Lplay_api_libs_json_JsPath("strength");
+    const r$23 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$144 = $m_Lplay_api_libs_json_Reads$();
+    const mb$6 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$144, this$143, r$23);
+    const $$x31 = this$145.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$6);
+    const $$x28 = new $c_sjsr_AnonFunction2(((this$16$1) => ((texture$6$2, strength$2) => {
+      const texture$6 = $as_LTexture(texture$6$2);
+      const strength = $uD(strength$2);
+      return new $c_LEmission(texture$6, strength)
+    }))(this));
+    $m_Lplay_api_libs_json_Reads$();
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$13 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$13 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$13);
+    const underlying$7 = $as_Lplay_api_libs_json_Reads($$x31.apply__F2__Lplay_api_libs_functional_Functor__O($$x28, new $c_Lplay_api_libs_json_Reads$$anon$7(a$13)));
+    $m_Lplay_api_libs_json_Reads$();
+    const f$12 = new $c_sjsr_AnonFunction1(((this$17$1, underlying$7$1) => ((x0$7$2) => {
+      const x0$7 = $as_Lplay_api_libs_json_JsValue(x0$7$2);
+      if ((x0$7 instanceof $c_Lplay_api_libs_json_JsObject)) {
+        const x2$6 = $as_Lplay_api_libs_json_JsObject(x0$7);
+        return underlying$7$1.reads__Lplay_api_libs_json_JsValue__Lplay_api_libs_json_JsResult(x2$6)
+      } else {
+        return $m_Lplay_api_libs_json_JsError$().apply__T__Lplay_api_libs_json_JsError("error.expected.jsobject")
+      }
+    }))(this, underlying$7));
+    this.LJsonReads$__f_emissionReads = new $c_Lplay_api_libs_json_Reads$$anon$6(f$12);
+    const this$149 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("type");
+    const r$24 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
+    const this$150 = $m_Lplay_api_libs_json_Reads$();
+    const a$14 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$150, this$149, r$24);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$14 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app$7 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$14);
+    const fcb$7 = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app$7);
+    const this$156 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a$14, fcb$7);
+    const this$154 = $m_Lplay_api_libs_json_JsPath$();
+    const r$25 = $m_Lplay_api_libs_json_Reads$().JsObjectReads__Lplay_api_libs_json_DefaultReads$JsObjectReads$();
+    const this$155 = $m_Lplay_api_libs_json_Reads$();
+    const mb$7 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$155, this$154, r$25);
+    const $$x33 = this$156.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb$7);
+    const $$x32 = new $c_sjsr_AnonFunction2(((this$18$1) => ((_type$3$2, material$2) => {
       const _type$3 = $as_T(_type$3$2);
       const material = $as_Lplay_api_libs_json_JsObject(material$2);
       if ((_type$3 === "Diffuse")) {
@@ -1199,15 +1289,18 @@ class $c_LJsonReads$ extends $c_O {
       } else if ((_type$3 === "Glossy")) {
         const fjs$5 = $m_LJsonReads$().LJsonReads$__f_glossyReads;
         return $as_LMaterial($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(material, fjs$5))
+      } else if ((_type$3 === "Emission")) {
+        const fjs$6 = $m_LJsonReads$().LJsonReads$__f_emissionReads;
+        return $as_LMaterial($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(material, fjs$6))
       } else {
         throw new $c_s_MatchError(_type$3)
       }
     }))(this));
     $m_Lplay_api_libs_json_Reads$();
     $m_Lplay_api_libs_json_Reads$();
-    const applicativeJsResult$11 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
-    const a$11 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$11);
-    this.LJsonReads$__f_materialReads = $as_Lplay_api_libs_json_Reads($$x26.apply__F2__Lplay_api_libs_functional_Functor__O($$x25, new $c_Lplay_api_libs_json_Reads$$anon$7(a$11)))
+    const applicativeJsResult$15 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$15 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$15);
+    this.LJsonReads$__f_materialReads = $as_Lplay_api_libs_json_Reads($$x33.apply__F2__Lplay_api_libs_functional_Functor__O($$x32, new $c_Lplay_api_libs_json_Reads$$anon$7(a$15)))
   };
   checkerReads__Lplay_api_libs_json_Reads() {
     return ((!this.LJsonReads$__f_bitmap$0) ? $p_LJsonReads$__checkerReads$lzycompute__Lplay_api_libs_json_Reads(this) : this.LJsonReads$__f_checkerReads)
@@ -1244,6 +1337,114 @@ class $c_LJsonReads$ extends $c_O {
     const a$1 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$1);
     return $as_Lplay_api_libs_json_Reads($$x2.apply__F3__Lplay_api_libs_functional_Functor__O($$x1, new $c_Lplay_api_libs_json_Reads$$anon$7(a$1)))
   };
+  xyRectReads__sci_Map__Lplay_api_libs_json_Reads(materials) {
+    const this$4 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("sides");
+    const this$3 = $m_Lplay_api_libs_json_Reads$();
+    const this$1 = $m_sci_Seq$();
+    const bf = new $c_sc_IterableFactory$ToFactory(this$1);
+    const ra = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const r = new $c_Lplay_api_libs_json_LowPriorityDefaultReads$$anon$8(this$3, bf, ra);
+    const this$5 = $m_Lplay_api_libs_json_Reads$();
+    const a = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$5, this$4, r);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult);
+    const fcb = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app);
+    const this$11 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a, fcb);
+    const this$9 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("z");
+    const r$1 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$10 = $m_Lplay_api_libs_json_Reads$();
+    const mb = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$10, this$9, r$1);
+    const this$14 = this$11.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb);
+    const this$12 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("material");
+    const r$2 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
+    const this$13 = $m_Lplay_api_libs_json_Reads$();
+    const m3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$13, this$12, r$2);
+    const $$x2 = this$14.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3);
+    const $$x1 = new $c_sjsr_AnonFunction3(((this$15, materials$1) => ((sides$2, z$2, material$2) => {
+      const sides = $as_sci_Seq(sides$2);
+      const z = $uD(z$2);
+      const material = $as_T(material$2);
+      return new $c_LXYRect($uD(sides.apply__I__O(0)), $uD(sides.apply__I__O(1)), $uD(sides.apply__I__O(2)), $uD(sides.apply__I__O(3)), z, $as_LMaterial(materials$1.apply__O__O(material)))
+    }))(this, materials));
+    $m_Lplay_api_libs_json_Reads$();
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$1 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$1 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$1);
+    return $as_Lplay_api_libs_json_Reads($$x2.apply__F3__Lplay_api_libs_functional_Functor__O($$x1, new $c_Lplay_api_libs_json_Reads$$anon$7(a$1)))
+  };
+  xzRectReads__sci_Map__Lplay_api_libs_json_Reads(materials) {
+    const this$4 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("sides");
+    const this$3 = $m_Lplay_api_libs_json_Reads$();
+    const this$1 = $m_sci_Seq$();
+    const bf = new $c_sc_IterableFactory$ToFactory(this$1);
+    const ra = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const r = new $c_Lplay_api_libs_json_LowPriorityDefaultReads$$anon$8(this$3, bf, ra);
+    const this$5 = $m_Lplay_api_libs_json_Reads$();
+    const a = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$5, this$4, r);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult);
+    const fcb = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app);
+    const this$11 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a, fcb);
+    const this$9 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("y");
+    const r$1 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$10 = $m_Lplay_api_libs_json_Reads$();
+    const mb = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$10, this$9, r$1);
+    const this$14 = this$11.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb);
+    const this$12 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("material");
+    const r$2 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
+    const this$13 = $m_Lplay_api_libs_json_Reads$();
+    const m3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$13, this$12, r$2);
+    const $$x2 = this$14.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3);
+    const $$x1 = new $c_sjsr_AnonFunction3(((this$15, materials$1) => ((sides$2, y$2, material$2) => {
+      const sides = $as_sci_Seq(sides$2);
+      const y = $uD(y$2);
+      const material = $as_T(material$2);
+      return new $c_LXZRect($uD(sides.apply__I__O(0)), $uD(sides.apply__I__O(1)), $uD(sides.apply__I__O(2)), $uD(sides.apply__I__O(3)), y, $as_LMaterial(materials$1.apply__O__O(material)))
+    }))(this, materials));
+    $m_Lplay_api_libs_json_Reads$();
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$1 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$1 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$1);
+    return $as_Lplay_api_libs_json_Reads($$x2.apply__F3__Lplay_api_libs_functional_Functor__O($$x1, new $c_Lplay_api_libs_json_Reads$$anon$7(a$1)))
+  };
+  yzRectReads__sci_Map__Lplay_api_libs_json_Reads(materials) {
+    const this$4 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("sides");
+    const this$3 = $m_Lplay_api_libs_json_Reads$();
+    const this$1 = $m_sci_Seq$();
+    const bf = new $c_sc_IterableFactory$ToFactory(this$1);
+    const ra = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const r = new $c_Lplay_api_libs_json_LowPriorityDefaultReads$$anon$8(this$3, bf, ra);
+    const this$5 = $m_Lplay_api_libs_json_Reads$();
+    const a = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$5, this$4, r);
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const app = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult);
+    const fcb = new $c_Lplay_api_libs_functional_FunctionalCanBuild$$anon$1(app);
+    const this$11 = new $c_Lplay_api_libs_functional_FunctionalBuilderOps(a, fcb);
+    const this$9 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("x");
+    const r$1 = $m_Lplay_api_libs_json_Reads$().DoubleReads__Lplay_api_libs_json_DefaultReads$DoubleReads$();
+    const this$10 = $m_Lplay_api_libs_json_Reads$();
+    const mb = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$10, this$9, r$1);
+    const this$14 = this$11.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild2(mb);
+    const this$12 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("material");
+    const r$2 = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
+    const this$13 = $m_Lplay_api_libs_json_Reads$();
+    const m3 = $f_Lplay_api_libs_json_PathReads__at__Lplay_api_libs_json_JsPath__Lplay_api_libs_json_Reads__Lplay_api_libs_json_Reads(this$13, this$12, r$2);
+    const $$x2 = this$14.$tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild3(m3);
+    const $$x1 = new $c_sjsr_AnonFunction3(((this$15, materials$1) => ((sides$2, x$2, material$2) => {
+      const sides = $as_sci_Seq(sides$2);
+      const x = $uD(x$2);
+      const material = $as_T(material$2);
+      return new $c_LYZRect($uD(sides.apply__I__O(0)), $uD(sides.apply__I__O(1)), $uD(sides.apply__I__O(2)), $uD(sides.apply__I__O(3)), x, $as_LMaterial(materials$1.apply__O__O(material)))
+    }))(this, materials));
+    $m_Lplay_api_libs_json_Reads$();
+    $m_Lplay_api_libs_json_Reads$();
+    const applicativeJsResult$1 = $m_Lplay_api_libs_json_JsResult$().Lplay_api_libs_json_JsResult$__f_applicativeJsResult;
+    const a$1 = new $c_Lplay_api_libs_json_Reads$$anon$1(applicativeJsResult$1);
+    return $as_Lplay_api_libs_json_Reads($$x2.apply__F3__Lplay_api_libs_functional_Functor__O($$x1, new $c_Lplay_api_libs_json_Reads$$anon$7(a$1)))
+  };
   hittableRead__sci_Map__Lplay_api_libs_json_Reads(materials) {
     const this$1 = $m_Lplay_api_libs_json_JsPath$().$bslash__T__Lplay_api_libs_json_JsPath("type");
     const r = $m_Lplay_api_libs_json_Reads$().StringReads__Lplay_api_libs_json_DefaultReads$StringReads$();
@@ -1265,6 +1466,15 @@ class $c_LJsonReads$ extends $c_O {
       if ((_type === "Sphere")) {
         const fjs = $m_LJsonReads$().sphereReads__sci_Map__Lplay_api_libs_json_Reads(materials$1);
         return $as_LHittable($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(obj, fjs))
+      } else if ((_type === "XYRect")) {
+        const fjs$1 = $m_LJsonReads$().xyRectReads__sci_Map__Lplay_api_libs_json_Reads(materials$1);
+        return $as_LHittable($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(obj, fjs$1))
+      } else if ((_type === "XZRect")) {
+        const fjs$2 = $m_LJsonReads$().xzRectReads__sci_Map__Lplay_api_libs_json_Reads(materials$1);
+        return $as_LHittable($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(obj, fjs$2))
+      } else if ((_type === "YZRect")) {
+        const fjs$3 = $m_LJsonReads$().yzRectReads__sci_Map__Lplay_api_libs_json_Reads(materials$1);
+        return $as_LHittable($f_Lplay_api_libs_json_JsReadable__as__Lplay_api_libs_json_Reads__O(obj, fjs$3))
       } else {
         throw new $c_s_MatchError(_type)
       }
@@ -5169,28 +5379,57 @@ class $c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7 extends $c_O {
       this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_$outer = outer
     }
   };
-  apply__F7__Lplay_api_libs_functional_Functor__O(f, fu) {
-    return fu.fmap__O__F1__O(this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_$outer.Lplay_api_libs_functional_FunctionalBuilder__f_play$api$libs$functional$FunctionalBuilder$$canBuild.apply__O__O__O(this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_m1, this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_m2), new $c_sjsr_AnonFunction1(((this$1, f$1) => ((x0$1$2) => {
+  $tilde__O__Lplay_api_libs_functional_FunctionalBuilder$CanBuild8(m3) {
+    return new $c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild8(this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_$outer, this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_$outer.Lplay_api_libs_functional_FunctionalBuilder__f_play$api$libs$functional$FunctionalBuilder$$canBuild.apply__O__O__O(this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_m1, this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild7__f_m2), m3)
+  };
+}
+const $d_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7 = new $TypeData().initClass({
+  Lplay_api_libs_functional_FunctionalBuilder$CanBuild7: 0
+}, false, "play.api.libs.functional.FunctionalBuilder$CanBuild7", {
+  Lplay_api_libs_functional_FunctionalBuilder$CanBuild7: 1,
+  O: 1
+});
+$c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7.prototype.$classData = $d_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7;
+class $c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild8 extends $c_O {
+  constructor(outer, m1, m2) {
+    super();
+    this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_m1 = null;
+    this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_m2 = null;
+    this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_$outer = null;
+    this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_m1 = m1;
+    this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_m2 = m2;
+    if ((outer === null)) {
+      throw $m_sjsr_package$().unwrapJavaScriptException__jl_Throwable__O(null)
+    } else {
+      this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_$outer = outer
+    }
+  };
+  apply__F8__Lplay_api_libs_functional_Functor__O(f, fu) {
+    return fu.fmap__O__F1__O(this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_$outer.Lplay_api_libs_functional_FunctionalBuilder__f_play$api$libs$functional$FunctionalBuilder$$canBuild.apply__O__O__O(this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_m1, this.Lplay_api_libs_functional_FunctionalBuilder$CanBuild8__f_m2), new $c_sjsr_AnonFunction1(((this$1, f$1) => ((x0$1$2) => {
       const x0$1 = $as_Lplay_api_libs_functional_$tilde(x0$1$2);
       if ((x0$1 !== null)) {
         const p2 = $as_Lplay_api_libs_functional_$tilde(x0$1.Lplay_api_libs_functional_$tilde__f__1);
-        const a7 = x0$1.Lplay_api_libs_functional_$tilde__f__2;
+        const a8 = x0$1.Lplay_api_libs_functional_$tilde__f__2;
         if ((p2 !== null)) {
           const p3 = $as_Lplay_api_libs_functional_$tilde(p2.Lplay_api_libs_functional_$tilde__f__1);
-          const a6 = p2.Lplay_api_libs_functional_$tilde__f__2;
+          const a7 = p2.Lplay_api_libs_functional_$tilde__f__2;
           if ((p3 !== null)) {
             const p4 = $as_Lplay_api_libs_functional_$tilde(p3.Lplay_api_libs_functional_$tilde__f__1);
-            const a5 = p3.Lplay_api_libs_functional_$tilde__f__2;
+            const a6 = p3.Lplay_api_libs_functional_$tilde__f__2;
             if ((p4 !== null)) {
               const p5 = $as_Lplay_api_libs_functional_$tilde(p4.Lplay_api_libs_functional_$tilde__f__1);
-              const a4 = p4.Lplay_api_libs_functional_$tilde__f__2;
+              const a5 = p4.Lplay_api_libs_functional_$tilde__f__2;
               if ((p5 !== null)) {
                 const p6 = $as_Lplay_api_libs_functional_$tilde(p5.Lplay_api_libs_functional_$tilde__f__1);
-                const a3 = p5.Lplay_api_libs_functional_$tilde__f__2;
+                const a4 = p5.Lplay_api_libs_functional_$tilde__f__2;
                 if ((p6 !== null)) {
-                  const a1 = p6.Lplay_api_libs_functional_$tilde__f__1;
-                  const a2 = p6.Lplay_api_libs_functional_$tilde__f__2;
-                  return f$1.apply__O__O__O__O__O__O__O__O(a1, a2, a3, a4, a5, a6, a7)
+                  const p7 = $as_Lplay_api_libs_functional_$tilde(p6.Lplay_api_libs_functional_$tilde__f__1);
+                  const a3 = p6.Lplay_api_libs_functional_$tilde__f__2;
+                  if ((p7 !== null)) {
+                    const a1 = p7.Lplay_api_libs_functional_$tilde__f__1;
+                    const a2 = p7.Lplay_api_libs_functional_$tilde__f__2;
+                    return f$1.apply__O__O__O__O__O__O__O__O__O(a1, a2, a3, a4, a5, a6, a7, a8)
+                  }
                 }
               }
             }
@@ -5201,13 +5440,13 @@ class $c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7 extends $c_O {
     }))(this, f)))
   };
 }
-const $d_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7 = new $TypeData().initClass({
-  Lplay_api_libs_functional_FunctionalBuilder$CanBuild7: 0
-}, false, "play.api.libs.functional.FunctionalBuilder$CanBuild7", {
-  Lplay_api_libs_functional_FunctionalBuilder$CanBuild7: 1,
+const $d_Lplay_api_libs_functional_FunctionalBuilder$CanBuild8 = new $TypeData().initClass({
+  Lplay_api_libs_functional_FunctionalBuilder$CanBuild8: 0
+}, false, "play.api.libs.functional.FunctionalBuilder$CanBuild8", {
+  Lplay_api_libs_functional_FunctionalBuilder$CanBuild8: 1,
   O: 1
 });
-$c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7.prototype.$classData = $d_Lplay_api_libs_functional_FunctionalBuilder$CanBuild7;
+$c_Lplay_api_libs_functional_FunctionalBuilder$CanBuild8.prototype.$classData = $d_Lplay_api_libs_functional_FunctionalBuilder$CanBuild8;
 class $c_Lplay_api_libs_functional_FunctionalBuilderOps extends $c_O {
   constructor(ma, fcb) {
     super();
@@ -5920,6 +6159,24 @@ function $f_sc_IterableOnceOps__exists__F1__Z($thiz, p) {
   };
   return res
 }
+function $f_sc_IterableOnceOps__reduceLeft__F2__O($thiz, op) {
+  const it = $as_sc_IterableOnce($thiz).iterator__sc_Iterator();
+  if ((!it.hasNext__Z())) {
+    throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+  };
+  let first = true;
+  let acc = null;
+  while (it.hasNext__Z()) {
+    const x = it.next__O();
+    if (first) {
+      acc = x;
+      first = false
+    } else {
+      acc = op.apply__O__O__O(acc, x)
+    }
+  };
+  return acc
+}
 function $f_sc_IterableOnceOps__isEmpty__Z($thiz) {
   return (!$as_sc_IterableOnce($thiz).iterator__sc_Iterator().hasNext__Z())
 }
@@ -5956,6 +6213,14 @@ function $f_sc_IterableOnceOps__copyToArray__O__I__I__I($thiz, xs, start, len) {
     i = ((1 + i) | 0)
   };
   return ((i - start) | 0)
+}
+function $f_sc_IterableOnceOps__sum__s_math_Numeric__O($thiz, num) {
+  if ($thiz.isEmpty__Z()) {
+    return num.fromInt__I__O(0)
+  } else {
+    const op = new $c_sjsr_AnonFunction2(((this$1, num$1) => ((x$2, y$2) => num$1.plus__O__O__O(x$2, y$2)))($thiz, num));
+    return $thiz.reduceLeft__F2__O(op)
+  }
 }
 function $f_sc_IterableOnceOps__mkString__T__T__T__T($thiz, start, sep, end) {
   if ($thiz.isEmpty__Z()) {
@@ -9370,28 +9635,6 @@ function $m_LBVH$() {
   };
   return $n_LBVH$
 }
-class $c_LPerlin$ extends $c_O {
-  constructor() {
-    super();
-    this.LPerlin$__f_point_count = 0;
-    this.LPerlin$__f_point_count = 256
-  };
-}
-const $d_LPerlin$ = new $TypeData().initClass({
-  LPerlin$: 0
-}, false, "Perlin$", {
-  LPerlin$: 1,
-  O: 1,
-  Ljava_io_Serializable: 1
-});
-$c_LPerlin$.prototype.$classData = $d_LPerlin$;
-let $n_LPerlin$;
-function $m_LPerlin$() {
-  if ((!$n_LPerlin$)) {
-    $n_LPerlin$ = new $c_LPerlin$()
-  };
-  return $n_LPerlin$
-}
 class $c_LVec3$ extends $c_O {
   random__D__D__LVec3(min, max) {
     return new $c_LVec3($m_s_util_Random$().between__D__D__D(min, max), $m_s_util_Random$().between__D__D__D(min, max), $m_s_util_Random$().between__D__D__D(min, max))
@@ -9600,6 +9843,22 @@ class $c_jl_Double$ extends $c_O {
     } else {
       const match2 = $p_jl_Double$__doubleStrHexPat__O(this).exec(s);
       return ((match2 !== null) ? $p_jl_Double$__parseHexDoubleImpl$1__O__T__D(this, match2, s) : $p_jl_Double$__fail$1__T__E(this, s))
+    }
+  };
+  compare__D__D__I(a, b) {
+    if ((a !== a)) {
+      return ((b !== b) ? 0 : 1)
+    } else if ((b !== b)) {
+      return (-1)
+    } else if ((a === b)) {
+      if ((a === 0.0)) {
+        const ainf = (1.0 / a);
+        return ((ainf === (1.0 / b)) ? 0 : ((ainf < 0.0) ? (-1) : 1))
+      } else {
+        return 0
+      }
+    } else {
+      return ((a < b) ? (-1) : 1)
     }
   };
 }
@@ -12419,6 +12678,26 @@ $c_sc_BuildFromLowPriority2$$anon$11.prototype.$classData = $d_sc_BuildFromLowPr
 function $f_sc_IterableFactory__tabulate__I__F1__O($thiz, n, f) {
   return $thiz.from__sc_IterableOnce__O(new $c_sc_View$Tabulate(n, f))
 }
+function $f_sc_IterableFactory__tabulate__I__I__F2__O($thiz, n1, n2, f) {
+  return $thiz.tabulate__I__F1__O(n1, new $c_sjsr_AnonFunction1(((this$1, n2$1, f$1) => ((i1$2) => {
+    const i1 = $uI(i1$2);
+    return this$1.tabulate__I__F1__O(n2$1, new $c_sjsr_AnonFunction1(((this$2, f$1$1, i1$1) => ((x$1$2) => {
+      const x$1 = $uI(x$1$2);
+      return f$1$1.apply__O__O__O(i1$1, x$1)
+    }))(this$1, f$1, i1)))
+  }))($thiz, n2, f)))
+}
+function $f_sc_IterableFactory__tabulate__I__I__I__F3__O($thiz, n1, n2, n3, f) {
+  return $thiz.tabulate__I__F1__O(n1, new $c_sjsr_AnonFunction1(((this$1, n2$1, n3$1, f$1) => ((i1$2) => {
+    const i1 = $uI(i1$2);
+    const f$3 = new $c_sjsr_AnonFunction2(((this$2, f$2, i1$1) => ((x$2$2, x$3$2) => {
+      const x$2 = $uI(x$2$2);
+      const x$3 = $uI(x$3$2);
+      return f$2.apply__O__O__O__O(i1$1, x$2, x$3)
+    }))(this$1, f$1, i1));
+    return $f_sc_IterableFactory__tabulate__I__I__F2__O(this$1, n2$1, n3$1, f$3)
+  }))($thiz, n2, n3, f)))
+}
 class $c_sc_WithFilter extends $c_O {
 }
 class $c_sci_$colon$colon$ extends $c_O {
@@ -12958,9 +13237,9 @@ class $c_sr_AbstractFunction3 extends $c_O {
     return "<function3>"
   };
 }
-class $c_sr_AbstractFunction7 extends $c_O {
+class $c_sr_AbstractFunction8 extends $c_O {
   toString__T() {
-    return "<function7>"
+    return "<function8>"
   };
 }
 class $c_sr_IntRef extends $c_O {
@@ -13313,9 +13592,9 @@ const $p_LRayTracing$__renderLine$1__I__LCamera__LHittable__Lorg_scalajs_dom_raw
           first = false
         } else {
           const arg1$2 = acc;
-          const x$11 = $as_LVec3(arg1$2);
-          const x$12 = $as_LVec3(x);
-          acc = x$11.$plus__LVec3__LVec3(x$12)
+          const x$2 = $as_LVec3(arg1$2);
+          const x$3 = $as_LVec3(x);
+          acc = x$2.$plus__LVec3__LVec3(x$3)
         }
       };
       const $$x1 = $as_LVec3(acc);
@@ -13340,8 +13619,8 @@ const $p_LRayTracing$__renderLine$1__I__LCamera__LHittable__Lorg_scalajs_dom_raw
   };
   if ((!update$1.isEmpty__Z())) {
     const arg1$3 = update$1.get__O();
-    const x$14 = $as_F1(arg1$3);
-    x$14.apply$mcVI$sp__I__V(j)
+    const x$5 = $as_F1(arg1$3);
+    x$5.apply$mcVI$sp__I__V(j)
   };
   if ((((1 + j) | 0) < $thiz.LRayTracing$__f_options.LRayTracing$Options__f_height)) {
     $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().requestAnimationFrame(((j$1, camera$1$1, world$1$1, img$1$1, ctx$1$1, update$1$1, finish$1$1, start$1$1) => ((arg1$2$1) => {
@@ -13355,11 +13634,11 @@ const $p_LRayTracing$__renderLine$1__I__LCamera__LHittable__Lorg_scalajs_dom_raw
     const hi$4 = this$18.RTLong$__f_org$scalajs$linker$runtime$RuntimeLong$$hiReturn;
     if ((!finish$1.isEmpty__Z())) {
       const arg1$5 = finish$1.get__O();
-      const x$16 = $as_F1(arg1$5);
+      const x$7 = $as_F1(arg1$5);
       const bhi = start$1.RTLong__f_hi;
       const lo$1 = ((lo - start$1.RTLong__f_lo) | 0);
       const hi$5 = ((((-2147483648) ^ lo$1) > ((-2147483648) ^ lo)) ? (((-1) + ((hi$4 - bhi) | 0)) | 0) : ((hi$4 - bhi) | 0));
-      x$16.apply$mcVD$sp__D__V(($m_RTLong$().org$scalajs$linker$runtime$RuntimeLong$$toDouble__I__I__D(lo$1, hi$5) / 1000.0))
+      x$7.apply$mcVD$sp__D__V(($m_RTLong$().org$scalajs$linker$runtime$RuntimeLong$$toDouble__I__I__D(lo$1, hi$5) / 1000.0))
     }
   }
 });
@@ -13376,263 +13655,6 @@ class $c_LRayTracing$ extends $c_O {
     const body = new $c_LRayTracing$delayedInit$body(this);
     const this$1 = this.LRayTracing$__f_scala$App$$initCode;
     this$1.addOne__O__scm_ListBuffer(body)
-  };
-  parseOptions__sci_List__s_Option__s_Option(args, options) {
-    while (true) {
-      let rc49 = false;
-      let x2 = null;
-      const x1 = args;
-      if ((x1 instanceof $c_sci_$colon$colon)) {
-        rc49 = true;
-        x2 = $as_sci_$colon$colon(x1);
-        const p3 = $as_T(x2.sci_$colon$colon__f_head);
-        const p4 = x2.sci_$colon$colon__f_next;
-        if (((p3 === "--filename") && (p4 instanceof $c_sci_$colon$colon))) {
-          const x5 = $as_sci_$colon$colon(p4);
-          const filename = $as_T(x5.sci_$colon$colon__f_head);
-          const tail = x5.sci_$colon$colon__f_next;
-          const this$1 = options;
-          let temp$options;
-          if (this$1.isEmpty__Z()) {
-            temp$options = $m_s_None$()
-          } else {
-            const arg1 = this$1.get__O();
-            const x$1 = $as_LRayTracing$Options(arg1);
-            const filename$1 = new $c_s_Some(filename);
-            const width = x$1.LRayTracing$Options__f_width;
-            const height = x$1.LRayTracing$Options__f_height;
-            const samples = x$1.LRayTracing$Options__f_samples;
-            const scene = x$1.LRayTracing$Options__f_scene;
-            temp$options = new $c_s_Some(new $c_LRayTracing$Options(filename$1, width, height, samples, scene))
-          };
-          args = tail;
-          options = temp$options;
-          continue
-        }
-      };
-      if (rc49) {
-        const p7 = $as_T(x2.sci_$colon$colon__f_head);
-        const p8 = x2.sci_$colon$colon__f_next;
-        if (((p7 === "-o") && (p8 instanceof $c_sci_$colon$colon))) {
-          const x9 = $as_sci_$colon$colon(p8);
-          const filename$2 = $as_T(x9.sci_$colon$colon__f_head);
-          const tail$2 = x9.sci_$colon$colon__f_next;
-          const this$2 = options;
-          let temp$options$2;
-          if (this$2.isEmpty__Z()) {
-            temp$options$2 = $m_s_None$()
-          } else {
-            const arg1$1 = this$2.get__O();
-            const x$2 = $as_LRayTracing$Options(arg1$1);
-            const filename$3 = new $c_s_Some(filename$2);
-            const width$1 = x$2.LRayTracing$Options__f_width;
-            const height$1 = x$2.LRayTracing$Options__f_height;
-            const samples$1 = x$2.LRayTracing$Options__f_samples;
-            const scene$1 = x$2.LRayTracing$Options__f_scene;
-            temp$options$2 = new $c_s_Some(new $c_LRayTracing$Options(filename$3, width$1, height$1, samples$1, scene$1))
-          };
-          args = tail$2;
-          options = temp$options$2;
-          continue
-        }
-      };
-      if (rc49) {
-        const p11 = $as_T(x2.sci_$colon$colon__f_head);
-        const p12 = x2.sci_$colon$colon__f_next;
-        if (((p11 === "--width") && (p12 instanceof $c_sci_$colon$colon))) {
-          const x13 = $as_sci_$colon$colon(p12);
-          const width$2 = $as_T(x13.sci_$colon$colon__f_head);
-          const tail$3 = x13.sci_$colon$colon__f_next;
-          const this$3 = options;
-          let temp$options$3;
-          if (this$3.isEmpty__Z()) {
-            temp$options$3 = $m_s_None$()
-          } else {
-            const arg1$2 = this$3.get__O();
-            const x$3 = $as_LRayTracing$Options(arg1$2);
-            const this$6 = $m_jl_Integer$();
-            const x$1$1 = this$6.parseInt__T__I__I(width$2, 10);
-            const x$2$1 = x$3.LRayTracing$Options__f_filename;
-            const x$3$2 = x$3.LRayTracing$Options__f_height;
-            const x$4 = x$3.LRayTracing$Options__f_samples;
-            const x$5 = x$3.LRayTracing$Options__f_scene;
-            temp$options$3 = new $c_s_Some(new $c_LRayTracing$Options(x$2$1, x$1$1, x$3$2, x$4, x$5))
-          };
-          args = tail$3;
-          options = temp$options$3;
-          continue
-        }
-      };
-      if (rc49) {
-        const p15 = $as_T(x2.sci_$colon$colon__f_head);
-        const p16 = x2.sci_$colon$colon__f_next;
-        if (((p15 === "-w") && (p16 instanceof $c_sci_$colon$colon))) {
-          const x17 = $as_sci_$colon$colon(p16);
-          const width$2$1 = $as_T(x17.sci_$colon$colon__f_head);
-          const tail$4 = x17.sci_$colon$colon__f_next;
-          const this$7 = options;
-          let temp$options$4;
-          if (this$7.isEmpty__Z()) {
-            temp$options$4 = $m_s_None$()
-          } else {
-            const arg1$3 = this$7.get__O();
-            const x$4$1 = $as_LRayTracing$Options(arg1$3);
-            const this$10 = $m_jl_Integer$();
-            const x$6 = this$10.parseInt__T__I__I(width$2$1, 10);
-            const x$7 = x$4$1.LRayTracing$Options__f_filename;
-            const x$8 = x$4$1.LRayTracing$Options__f_height;
-            const x$9 = x$4$1.LRayTracing$Options__f_samples;
-            const x$10 = x$4$1.LRayTracing$Options__f_scene;
-            temp$options$4 = new $c_s_Some(new $c_LRayTracing$Options(x$7, x$6, x$8, x$9, x$10))
-          };
-          args = tail$4;
-          options = temp$options$4;
-          continue
-        }
-      };
-      if (rc49) {
-        const p19 = $as_T(x2.sci_$colon$colon__f_head);
-        const p20 = x2.sci_$colon$colon__f_next;
-        if (((p19 === "--height") && (p20 instanceof $c_sci_$colon$colon))) {
-          const x21 = $as_sci_$colon$colon(p20);
-          const height$2 = $as_T(x21.sci_$colon$colon__f_head);
-          const tail$5 = x21.sci_$colon$colon__f_next;
-          const this$11 = options;
-          let temp$options$5;
-          if (this$11.isEmpty__Z()) {
-            temp$options$5 = $m_s_None$()
-          } else {
-            const arg1$4 = this$11.get__O();
-            const x$5$1 = $as_LRayTracing$Options(arg1$4);
-            const this$14 = $m_jl_Integer$();
-            const x$11 = this$14.parseInt__T__I__I(height$2, 10);
-            const x$12 = x$5$1.LRayTracing$Options__f_filename;
-            const x$13 = x$5$1.LRayTracing$Options__f_width;
-            const x$14 = x$5$1.LRayTracing$Options__f_samples;
-            const x$15 = x$5$1.LRayTracing$Options__f_scene;
-            temp$options$5 = new $c_s_Some(new $c_LRayTracing$Options(x$12, x$13, x$11, x$14, x$15))
-          };
-          args = tail$5;
-          options = temp$options$5;
-          continue
-        }
-      };
-      if (rc49) {
-        const p23 = $as_T(x2.sci_$colon$colon__f_head);
-        const p24 = x2.sci_$colon$colon__f_next;
-        if (((p23 === "-h") && (p24 instanceof $c_sci_$colon$colon))) {
-          const x25 = $as_sci_$colon$colon(p24);
-          const height$2$1 = $as_T(x25.sci_$colon$colon__f_head);
-          const tail$6 = x25.sci_$colon$colon__f_next;
-          const this$15 = options;
-          let temp$options$6;
-          if (this$15.isEmpty__Z()) {
-            temp$options$6 = $m_s_None$()
-          } else {
-            const arg1$5 = this$15.get__O();
-            const x$6$1 = $as_LRayTracing$Options(arg1$5);
-            const this$18 = $m_jl_Integer$();
-            const x$16 = this$18.parseInt__T__I__I(height$2$1, 10);
-            const x$17 = x$6$1.LRayTracing$Options__f_filename;
-            const x$18 = x$6$1.LRayTracing$Options__f_width;
-            const x$19 = x$6$1.LRayTracing$Options__f_samples;
-            const x$20 = x$6$1.LRayTracing$Options__f_scene;
-            temp$options$6 = new $c_s_Some(new $c_LRayTracing$Options(x$17, x$18, x$16, x$19, x$20))
-          };
-          args = tail$6;
-          options = temp$options$6;
-          continue
-        }
-      };
-      if (rc49) {
-        const p27 = $as_T(x2.sci_$colon$colon__f_head);
-        const p28 = x2.sci_$colon$colon__f_next;
-        if (((p27 === "--samples") && (p28 instanceof $c_sci_$colon$colon))) {
-          const x29 = $as_sci_$colon$colon(p28);
-          const samples$2 = $as_T(x29.sci_$colon$colon__f_head);
-          const tail$7 = x29.sci_$colon$colon__f_next;
-          const this$19 = options;
-          let temp$options$7;
-          if (this$19.isEmpty__Z()) {
-            temp$options$7 = $m_s_None$()
-          } else {
-            const arg1$6 = this$19.get__O();
-            const x$7$1 = $as_LRayTracing$Options(arg1$6);
-            const this$22 = $m_jl_Integer$();
-            const x$21 = this$22.parseInt__T__I__I(samples$2, 10);
-            const x$22 = x$7$1.LRayTracing$Options__f_filename;
-            const x$23 = x$7$1.LRayTracing$Options__f_width;
-            const x$24 = x$7$1.LRayTracing$Options__f_height;
-            const x$25 = x$7$1.LRayTracing$Options__f_scene;
-            temp$options$7 = new $c_s_Some(new $c_LRayTracing$Options(x$22, x$23, x$24, x$21, x$25))
-          };
-          args = tail$7;
-          options = temp$options$7;
-          continue
-        }
-      };
-      if (rc49) {
-        const p31 = $as_T(x2.sci_$colon$colon__f_head);
-        const p32 = x2.sci_$colon$colon__f_next;
-        if (((p31 === "-s") && (p32 instanceof $c_sci_$colon$colon))) {
-          const x33 = $as_sci_$colon$colon(p32);
-          const samples$2$1 = $as_T(x33.sci_$colon$colon__f_head);
-          const tail$8 = x33.sci_$colon$colon__f_next;
-          const this$23 = options;
-          let temp$options$8;
-          if (this$23.isEmpty__Z()) {
-            temp$options$8 = $m_s_None$()
-          } else {
-            const arg1$7 = this$23.get__O();
-            const x$8$1 = $as_LRayTracing$Options(arg1$7);
-            const this$26 = $m_jl_Integer$();
-            const x$26 = this$26.parseInt__T__I__I(samples$2$1, 10);
-            const x$27 = x$8$1.LRayTracing$Options__f_filename;
-            const x$28 = x$8$1.LRayTracing$Options__f_width;
-            const x$29 = x$8$1.LRayTracing$Options__f_height;
-            const x$30 = x$8$1.LRayTracing$Options__f_scene;
-            temp$options$8 = new $c_s_Some(new $c_LRayTracing$Options(x$27, x$28, x$29, x$26, x$30))
-          };
-          args = tail$8;
-          options = temp$options$8;
-          continue
-        }
-      };
-      if (rc49) {
-        const p35 = $as_T(x2.sci_$colon$colon__f_head);
-        const p36 = x2.sci_$colon$colon__f_next;
-        if (((p35 === "--scene") && (p36 instanceof $c_sci_$colon$colon))) {
-          const x37 = $as_sci_$colon$colon(p36);
-          const scene$2 = $as_T(x37.sci_$colon$colon__f_head);
-          const tail$9 = x37.sci_$colon$colon__f_next;
-          const this$27 = options;
-          let temp$options$9;
-          if (this$27.isEmpty__Z()) {
-            temp$options$9 = $m_s_None$()
-          } else {
-            const arg1$8 = this$27.get__O();
-            const x$9$1 = $as_LRayTracing$Options(arg1$8);
-            const x$31 = new $c_s_Some(scene$2);
-            const x$32 = x$9$1.LRayTracing$Options__f_filename;
-            const x$33 = x$9$1.LRayTracing$Options__f_width;
-            const x$34 = x$9$1.LRayTracing$Options__f_height;
-            const x$35 = x$9$1.LRayTracing$Options__f_samples;
-            temp$options$9 = new $c_s_Some(new $c_LRayTracing$Options(x$32, x$33, x$34, x$35, x$31))
-          };
-          args = tail$9;
-          options = temp$options$9;
-          continue
-        }
-      };
-      const x = $m_sci_Nil$();
-      if (x.equals__O__Z(x1)) {
-        return options
-      };
-      return $m_s_None$()
-    }
-  };
-  parseOptions$default$2__s_Option() {
-    return new $c_s_Some(new $c_LRayTracing$Options($m_s_None$(), 400, 225, 8, $m_s_None$()))
   };
   loadScene__T__s_Option(scene) {
     try {
@@ -13678,7 +13700,7 @@ class $c_LRayTracing$ extends $c_O {
       $p_LRayTracing$__renderLine$1__I__LCamera__LHittable__Lorg_scalajs_dom_raw_ImageData__sjs_js_Dynamic__s_Option__s_Option__J__V(this$5, 0, camera$1, world$1, img$1, ctx$1, update$1, finish$1, start$1)
     }))(camera, world, img, ctx, update, finish, new $c_RTLong(lo, hi)))
   };
-  RayTracing$$$anonfun$render$5__D__I__LCamera__LHittable__Lorg_scalajs_dom_raw_ImageData__sjs_js_Dynamic__s_Option__s_Option__J__V(x$15, j$1, camera$1, world$1, img$1, ctx$1, update$1, finish$1, start$1) {
+  RayTracing$$$anonfun$render$5__D__I__LCamera__LHittable__Lorg_scalajs_dom_raw_ImageData__sjs_js_Dynamic__s_Option__s_Option__J__V(x$6, j$1, camera$1, world$1, img$1, ctx$1, update$1, finish$1, start$1) {
     $p_LRayTracing$__renderLine$1__I__LCamera__LHittable__Lorg_scalajs_dom_raw_ImageData__sjs_js_Dynamic__s_Option__s_Option__J__V(this, ((1 + j$1) | 0), camera$1, world$1, img$1, ctx$1, update$1, finish$1, start$1)
   };
   RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V(e) {
@@ -13733,19 +13755,6 @@ class $c_LRayTracing$ extends $c_O {
   };
   delayedEndpoint$RayTracing$1__V() {
     this.LRayTracing$__f_options = new $c_LRayTracing$Options($m_s_None$(), 400, 225, 8, $m_s_None$());
-    try {
-      const this$3 = $m_s_Predef$().wrapRefArray__AO__scm_ArraySeq$ofRef(this.LRayTracing$__f_scala$App$$_args);
-      $m_sci_List$();
-      this.LRayTracing$__f_options = $as_LRayTracing$Options(this.parseOptions__sci_List__s_Option__s_Option($m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(this$3), this.parseOptions$default$2__s_Option()).get__O())
-    } catch (e) {
-      if ((e instanceof $c_ju_NoSuchElementException)) {
-        const this$6 = $m_s_Console$();
-        const this$7 = this$6.out__Ljava_io_PrintStream();
-        this$7.java$lang$JSConsoleBasedPrintStream$$printString__T__V("Error parsing arguments\n")
-      } else {
-        throw e
-      }
-    };
     this.LRayTracing$__f_button = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().getElementById("render");
     this.LRayTracing$__f_button.onclick = ((arg1$2) => {
       $m_LRayTracing$().RayTracing$$$anonfun$new$1__Lorg_scalajs_dom_raw_MouseEvent__V(arg1$2)
@@ -15148,6 +15157,9 @@ class $c_sc_IterableFactory$Delegate extends $c_O {
     super();
     this.sc_IterableFactory$Delegate__f_delegate = null
   };
+  tabulate__I__F1__O(n, f) {
+    return $f_sc_IterableFactory__tabulate__I__F1__O(this, n, f)
+  };
   from__sc_IterableOnce__O(it) {
     return this.sc_IterableFactory$Delegate__f_delegate.from__sc_IterableOnce__O(it)
   };
@@ -15311,6 +15323,9 @@ class $c_sc_Iterator$ extends $c_O {
   newBuilder__scm_Builder() {
     return new $c_sc_Iterator$$anon$21()
   };
+  tabulate__I__F1__O(n, f) {
+    return new $c_sc_Iterator$$anon$23(n, f)
+  };
   from__sc_IterableOnce__O(source) {
     return source.iterator__sc_Iterator()
   };
@@ -15397,6 +15412,9 @@ class $c_sc_MapFactory$Delegate extends $c_O {
   };
 }
 class $c_sc_View$ extends $c_O {
+  tabulate__I__F1__O(n, f) {
+    return $f_sc_IterableFactory__tabulate__I__F1__O(this, n, f)
+  };
   from__sc_IterableOnce__sc_View(it) {
     if ($is_sc_View(it)) {
       const x2 = $as_sc_View(it);
@@ -16751,6 +16769,9 @@ class $c_sci_HashSet$ extends $c_O {
     const this$1 = $m_sci_SetNode$();
     this.sci_HashSet$__f_EmptySet = new $c_sci_HashSet(this$1.sci_SetNode$__f_EmptySetNode)
   };
+  tabulate__I__F1__O(n, f) {
+    return $f_sc_IterableFactory__tabulate__I__F1__O(this, n, f)
+  };
   from__sc_IterableOnce__sci_HashSet(source) {
     if ((source instanceof $c_sci_HashSet)) {
       const x2 = $as_sci_HashSet(source);
@@ -16880,6 +16901,9 @@ function $m_sci_Map$() {
   return $n_sci_Map$
 }
 class $c_sci_Set$ extends $c_O {
+  tabulate__I__F1__O(n, f) {
+    return $f_sc_IterableFactory__tabulate__I__F1__O(this, n, f)
+  };
   from__sc_IterableOnce__sci_Set(it) {
     if ($is_sci_SortedSet(it)) {
       const this$1 = new $c_sci_SetBuilderImpl();
@@ -17252,25 +17276,25 @@ const $d_sjsr_AnonFunction3 = new $TypeData().initClass({
   F3: 1
 });
 $c_sjsr_AnonFunction3.prototype.$classData = $d_sjsr_AnonFunction3;
-class $c_sjsr_AnonFunction7 extends $c_sr_AbstractFunction7 {
+class $c_sjsr_AnonFunction8 extends $c_sr_AbstractFunction8 {
   constructor(f) {
     super();
-    this.sjsr_AnonFunction7__f_f = null;
-    this.sjsr_AnonFunction7__f_f = f
+    this.sjsr_AnonFunction8__f_f = null;
+    this.sjsr_AnonFunction8__f_f = f
   };
-  apply__O__O__O__O__O__O__O__O(arg1, arg2, arg3, arg4, arg5, arg6, arg7) {
-    return (0, this.sjsr_AnonFunction7__f_f)(arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+  apply__O__O__O__O__O__O__O__O__O(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) {
+    return (0, this.sjsr_AnonFunction8__f_f)(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
   };
 }
-const $d_sjsr_AnonFunction7 = new $TypeData().initClass({
-  sjsr_AnonFunction7: 0
-}, false, "scala.scalajs.runtime.AnonFunction7", {
-  sjsr_AnonFunction7: 1,
-  sr_AbstractFunction7: 1,
+const $d_sjsr_AnonFunction8 = new $TypeData().initClass({
+  sjsr_AnonFunction8: 0
+}, false, "scala.scalajs.runtime.AnonFunction8", {
+  sjsr_AnonFunction8: 1,
+  sr_AbstractFunction8: 1,
   O: 1,
-  F7: 1
+  F8: 1
 });
-$c_sjsr_AnonFunction7.prototype.$classData = $d_sjsr_AnonFunction7;
+$c_sjsr_AnonFunction8.prototype.$classData = $d_sjsr_AnonFunction8;
 class $c_s_util_Random$ extends $c_s_util_Random {
   constructor() {
     super();
@@ -17552,7 +17576,7 @@ const $d_LAABB = new $TypeData().initClass({
 });
 $c_LAABB.prototype.$classData = $d_LAABB;
 class $c_LCamera extends $c_O {
-  constructor(origin, target, vup, vfov, aspect_ratio, aperture, focus_distance) {
+  constructor(origin, target, vup, vfov, aspect_ratio, aperture, focus_distance, background) {
     super();
     this.LCamera__f_origin = null;
     this.LCamera__f_target = null;
@@ -17561,6 +17585,7 @@ class $c_LCamera extends $c_O {
     this.LCamera__f_aspect_ratio = 0.0;
     this.LCamera__f_aperture = 0.0;
     this.LCamera__f_focus_distance = 0.0;
+    this.LCamera__f_background = null;
     this.LCamera__f_viewport_height = 0.0;
     this.LCamera__f_viewport_width = 0.0;
     this.LCamera__f_w = null;
@@ -17578,6 +17603,7 @@ class $c_LCamera extends $c_O {
     this.LCamera__f_aspect_ratio = aspect_ratio;
     this.LCamera__f_aperture = aperture;
     this.LCamera__f_focus_distance = focus_distance;
+    this.LCamera__f_background = background;
     const x = ((3.141592653589793 * (vfov / 180.0)) / 2.0);
     this.LCamera__f_viewport_height = (2.0 * $uD(Math.tan(x)));
     this.LCamera__f_viewport_width = (aspect_ratio * this.LCamera__f_viewport_height);
@@ -17631,21 +17657,18 @@ class $c_LCamera extends $c_O {
         if ((p3 !== null)) {
           const scattered = $as_LRay(p3._1__O());
           const attenuation = $as_LVec3(p3._2__O());
-          return attenuation.$times__LVec3__LVec3(this.ray_color__LRay__LHittable__I__LVec3(scattered, world, (((-1) + depth) | 0)))
+          return hit.LHit__f_material.emit__LVec2__LVec3__LVec3(hit.LHit__f_uv, hit.LHit__f_ray.at__D__LVec3(hit.LHit__f_t)).$plus__LVec3__LVec3(attenuation.$times__LVec3__LVec3(this.ray_color__LRay__LHittable__I__LVec3(scattered, world, (((-1) + depth) | 0))))
         }
       };
       const x = $m_s_None$();
       if ((x === x1$2)) {
-        return new $c_LVec3(0.0, 0.0, 0.0)
+        return hit.LHit__f_material.emit__LVec2__LVec3__LVec3(hit.LHit__f_uv, hit.LHit__f_ray.at__D__LVec3(hit.LHit__f_t))
       };
       throw new $c_s_MatchError(x1$2)
     } else {
       const x$3 = $m_s_None$();
       if ((x$3 === x1)) {
-        const unit_direction = ray.LRay__f_direction.unit_vector__LVec3();
-        const t = (0.5 * (unit_direction.LVec3__f_y + 1.0));
-        const v = (1.0 - t);
-        return new $c_LVec3(v, v, v).$times__LVec3__LVec3(new $c_LVec3(1.0, 1.0, 1.0)).$plus__LVec3__LVec3(new $c_LVec3(t, t, t).$times__LVec3__LVec3(new $c_LVec3(0.5, 0.7, 1.0)))
+        return this.LCamera__f_background
       } else {
         throw new $c_s_MatchError(x1)
       }
@@ -17655,7 +17678,7 @@ class $c_LCamera extends $c_O {
     return "Camera"
   };
   productArity__I() {
-    return 7
+    return 8
   };
   productElement__I__O(x$1) {
     switch (x$1) {
@@ -17685,6 +17708,10 @@ class $c_LCamera extends $c_O {
       }
       case 6: {
         return this.LCamera__f_focus_distance;
+        break
+      }
+      case 7: {
+        return this.LCamera__f_background;
         break
       }
       default: {
@@ -17729,7 +17756,11 @@ class $c_LCamera extends $c_O {
     const data$7 = $m_sr_Statics$().doubleHash__D__I(dv$3);
     acc = $m_sr_Statics$().mix__I__I__I(hash$7, data$7);
     const hash$8 = acc;
-    return $m_sr_Statics$().finalizeHash__I__I__I(hash$8, 7)
+    const x$3 = this.LCamera__f_background;
+    const data$8 = $m_sr_Statics$().anyHash__O__I(x$3);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$8, data$8);
+    const hash$9 = acc;
+    return $m_sr_Statics$().finalizeHash__I__I__I(hash$9, 8)
   };
   toString__T() {
     return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
@@ -17739,26 +17770,34 @@ class $c_LCamera extends $c_O {
       return true
     } else if ((x$1 instanceof $c_LCamera)) {
       const Camera$1 = $as_LCamera(x$1);
-      let $$x2;
+      let $$x3;
       if (((((this.LCamera__f_vfov === Camera$1.LCamera__f_vfov) && (this.LCamera__f_aspect_ratio === Camera$1.LCamera__f_aspect_ratio)) && (this.LCamera__f_aperture === Camera$1.LCamera__f_aperture)) && (this.LCamera__f_focus_distance === Camera$1.LCamera__f_focus_distance))) {
         const x = this.LCamera__f_origin;
         const x$2 = Camera$1.LCamera__f_origin;
-        $$x2 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+        $$x3 = ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+      } else {
+        $$x3 = false
+      };
+      let $$x2;
+      if ($$x3) {
+        const x$3 = this.LCamera__f_target;
+        const x$4 = Camera$1.LCamera__f_target;
+        $$x2 = ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
       } else {
         $$x2 = false
       };
       let $$x1;
       if ($$x2) {
-        const x$3 = this.LCamera__f_target;
-        const x$4 = Camera$1.LCamera__f_target;
-        $$x1 = ((x$3 === null) ? (x$4 === null) : x$3.equals__O__Z(x$4))
+        const x$5 = this.LCamera__f_vup;
+        const x$6 = Camera$1.LCamera__f_vup;
+        $$x1 = ((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6))
       } else {
         $$x1 = false
       };
       if ($$x1) {
-        const x$5 = this.LCamera__f_vup;
-        const x$6 = Camera$1.LCamera__f_vup;
-        return ((x$5 === null) ? (x$6 === null) : x$5.equals__O__Z(x$6))
+        const x$7 = this.LCamera__f_background;
+        const x$8 = Camera$1.LCamera__f_background;
+        return ((x$7 === null) ? (x$8 === null) : x$7.equals__O__Z(x$8))
       } else {
         return false
       }
@@ -21949,8 +21988,14 @@ class $c_sc_AbstractIterator extends $c_O {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -22765,8 +22810,14 @@ class $c_sjs_js_WrappedDictionary$DictionaryIterator extends $c_O {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -23088,6 +23139,9 @@ class $c_LDiffuse extends $c_O {
     this.LDiffuse__f_texture = null;
     this.LDiffuse__f_texture = texture
   };
+  emit__LVec2__LVec3__LVec3(uv, p) {
+    return new $c_LVec3(0.0, 0.0, 0.0)
+  };
   scatter__LRay__LHit__s_Option(ray, hit) {
     return new $c_s_Some(new $c_T2(new $c_LRay(hit.LHit__f_ray.at__D__LVec3(hit.LHit__f_t), hit.normal__LVec3().$plus__LVec3__LVec3($m_LVec3$().random_unit_vector__LVec3())), this.LDiffuse__f_texture.apply__LVec2__LVec3__LVec3(hit.LHit__f_uv, hit.LHit__f_ray.at__D__LVec3(hit.LHit__f_t))))
   };
@@ -23143,6 +23197,101 @@ const $d_LDiffuse = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_LDiffuse.prototype.$classData = $d_LDiffuse;
+class $c_LEmission extends $c_O {
+  constructor(texture, strength) {
+    super();
+    this.LEmission__f_texture = null;
+    this.LEmission__f_strength = 0.0;
+    this.LEmission__f_texture = texture;
+    this.LEmission__f_strength = strength
+  };
+  scatter__LRay__LHit__s_Option(ray, hit) {
+    return $m_s_None$()
+  };
+  emit__LVec2__LVec3__LVec3(uv, p) {
+    const v = this.LEmission__f_strength;
+    return new $c_LVec3(v, v, v).$times__LVec3__LVec3(this.LEmission__f_texture.apply__LVec2__LVec3__LVec3(uv, p))
+  };
+  productPrefix__T() {
+    return "Emission"
+  };
+  productArity__I() {
+    return 2
+  };
+  productElement__I__O(x$1) {
+    switch (x$1) {
+      case 0: {
+        return this.LEmission__f_texture;
+        break
+      }
+      case 1: {
+        return this.LEmission__f_strength;
+        break
+      }
+      default: {
+        return $m_sr_Statics$().ioobe__I__O(x$1)
+      }
+    }
+  };
+  productIterator__sc_Iterator() {
+    return new $c_sr_ScalaRunTime$$anon$1(this)
+  };
+  hashCode__I() {
+    let acc = (-889275714);
+    const hash = acc;
+    const data = $f_T__hashCode__I("Emission");
+    acc = $m_sr_Statics$().mix__I__I__I(hash, data);
+    const hash$1 = acc;
+    const x = this.LEmission__f_texture;
+    const data$1 = $m_sr_Statics$().anyHash__O__I(x);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$1, data$1);
+    const hash$2 = acc;
+    const dv = this.LEmission__f_strength;
+    const data$2 = $m_sr_Statics$().doubleHash__D__I(dv);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$2, data$2);
+    const hash$3 = acc;
+    return $m_sr_Statics$().finalizeHash__I__I__I(hash$3, 2)
+  };
+  toString__T() {
+    return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+  };
+  equals__O__Z(x$1) {
+    if ((this === x$1)) {
+      return true
+    } else if ((x$1 instanceof $c_LEmission)) {
+      const Emission$1 = $as_LEmission(x$1);
+      if ((this.LEmission__f_strength === Emission$1.LEmission__f_strength)) {
+        const x = this.LEmission__f_texture;
+        const x$2 = Emission$1.LEmission__f_texture;
+        return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  };
+}
+function $as_LEmission(obj) {
+  return (((obj instanceof $c_LEmission) || (obj === null)) ? obj : $throwClassCastException(obj, "Emission"))
+}
+function $isArrayOf_LEmission(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LEmission)))
+}
+function $asArrayOf_LEmission(obj, depth) {
+  return (($isArrayOf_LEmission(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LEmission;", depth))
+}
+const $d_LEmission = new $TypeData().initClass({
+  LEmission: 0
+}, false, "Emission", {
+  LEmission: 1,
+  O: 1,
+  LMaterial: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  Ljava_io_Serializable: 1
+});
+$c_LEmission.prototype.$classData = $d_LEmission;
 const $p_LGlass__schlick__D__D__D = (function($thiz, cosine, ref_idx) {
   const r0 = ((1.0 - ref_idx) / (1.0 + ref_idx));
   const r1 = (r0 * r0);
@@ -23165,6 +23314,9 @@ class $c_LGlass extends $c_O {
     this.LGlass__f_ior = 0.0;
     this.LGlass__f_texture = texture;
     this.LGlass__f_ior = ior
+  };
+  emit__LVec2__LVec3__LVec3(uv, p) {
+    return new $c_LVec3(0.0, 0.0, 0.0)
   };
   scatter__LRay__LHit__s_Option(ray, hit) {
     const etai_over_etat = (hit.front_face__Z() ? (1.0 / this.LGlass__f_ior) : this.LGlass__f_ior);
@@ -23276,6 +23428,9 @@ class $c_LGlossy extends $c_O {
     this.LGlossy__f_texture = texture;
     this.LGlossy__f_roughness = roughness
   };
+  emit__LVec2__LVec3__LVec3(uv, p) {
+    return new $c_LVec3(0.0, 0.0, 0.0)
+  };
   scatter__LRay__LHit__s_Option(ray, hit) {
     const $$x2 = hit.LHit__f_ray.at__D__LVec3(hit.LHit__f_t);
     const $$x1 = ray.LRay__f_direction.unit_vector__LVec3().reflect__LVec3__LVec3(hit.normal__LVec3());
@@ -23363,16 +23518,46 @@ const $d_LGlossy = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_LGlossy.prototype.$classData = $d_LGlossy;
+const $p_LPerlin__trilinear_interp__sci_Seq__D__D__D__D = (function($thiz, c, u, v, w) {
+  const uu = ((u * u) * (3.0 - (2.0 * u)));
+  const vv = ((v * v) * (3.0 - (2.0 * v)));
+  const ww = ((w * w) * (3.0 - (2.0 * w)));
+  const b = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+  const it = new $c_sci_RangeIterator(0, 1, 1, false);
+  while (it.sci_RangeIterator__f__hasNext) {
+    const arg1 = it.next__I();
+    const b$1 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+    const it$1 = new $c_sci_RangeIterator(0, 1, 1, false);
+    while (it$1.sci_RangeIterator__f__hasNext) {
+      const arg1$1 = it$1.next__I();
+      const b$2 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+      const it$2 = new $c_sci_RangeIterator(0, 1, 1, false);
+      while (it$2.sci_RangeIterator__f__hasNext) {
+        const arg1$2 = it$2.next__I();
+        const weight_v = new $c_LVec3((u - arg1), (v - arg1$1), (w - arg1$2));
+        const elem = (((((arg1 * uu) + (((1 - arg1) | 0) * (1.0 - uu))) * ((arg1$1 * vv) + (((1 - arg1$1) | 0) * (1.0 - vv)))) * ((arg1$2 * ww) + (((1 - arg1$2) | 0) * (1.0 - ww)))) * $as_LVec3($as_sc_SeqOps($as_sc_SeqOps(c.apply__I__O(arg1)).apply__I__O(arg1$1)).apply__I__O(arg1$2)).dot__LVec3__D(weight_v));
+        b$2.addOne__O__scm_Growable(elem)
+      };
+      const xs = $as_sci_IndexedSeq(b$2.result__O());
+      b$1.addAll__sc_IterableOnce__scm_Growable(xs)
+    };
+    const xs$1 = $as_sci_IndexedSeq(b$1.result__O());
+    b.addAll__sc_IterableOnce__scm_Growable(xs$1)
+  };
+  return $uD($as_sc_IterableOnceOps(b.result__O()).sum__s_math_Numeric__O($m_s_math_Numeric$DoubleIsFractional$()))
+});
 class $c_LPerlin extends $c_O {
-  constructor(size) {
+  constructor(scale) {
     super();
-    this.LPerlin__f_size = 0.0;
-    this.LPerlin__f_ranfloat = null;
+    this.LPerlin__f_scale = 0.0;
+    this.LPerlin__f_point_count = 0;
+    this.LPerlin__f_ranvec = null;
     this.LPerlin__f_perm_x = null;
     this.LPerlin__f_perm_y = null;
     this.LPerlin__f_perm_z = null;
-    this.LPerlin__f_size = size;
-    const end = $m_LPerlin$().LPerlin$__f_point_count;
+    this.LPerlin__f_scale = scale;
+    this.LPerlin__f_point_count = 256;
+    const end = this.LPerlin__f_point_count;
     const isEmpty = (end <= 0);
     let scala$collection$immutable$Range$$numRangeElements;
     if (isEmpty) {
@@ -23389,116 +23574,159 @@ class $c_LPerlin extends $c_O {
     const it = new $c_sci_RangeIterator(0, 1, scala$collection$immutable$Range$$lastElement, isEmpty);
     while (it.sci_RangeIterator__f__hasNext) {
       it.next__I();
-      const this$6 = $m_s_util_Random$();
-      const elem = this$6.s_util_Random__f_self.nextDouble__D();
+      const elem = $m_LVec3$().random__D__D__LVec3((-1.0), 1.0).unit_vector__LVec3();
       b.addOne__O__scm_Growable(elem)
     };
-    this.LPerlin__f_ranfloat = $as_sci_IndexedSeq(b.result__O());
-    const this$13 = $m_s_util_Random$();
-    const end$1 = $m_LPerlin$().LPerlin$__f_point_count;
+    this.LPerlin__f_ranvec = $as_sci_IndexedSeq(b.result__O());
+    const this$12 = $m_s_util_Random$();
+    const end$1 = this.LPerlin__f_point_count;
     const isEmpty$1 = (end$1 <= 0);
     const scala$collection$immutable$Range$$lastElement$1 = (((-1) + end$1) | 0);
-    const this$12 = $m_sc_BuildFrom$();
-    new $c_sc_BuildFromLowPriority2$$anon$11(this$12);
-    const this$14 = $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer());
+    const this$11 = $m_sc_BuildFrom$();
+    new $c_sc_BuildFromLowPriority2$$anon$11(this$11);
+    const this$13 = $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer());
     const it$1 = new $c_sci_RangeIterator(0, 1, scala$collection$immutable$Range$$lastElement$1, isEmpty$1);
     while (it$1.sci_RangeIterator__f__hasNext) {
       const elem$1 = it$1.next__I();
-      this$14.addOne__O__scm_ArrayBuffer(elem$1)
+      this$13.addOne__O__scm_ArrayBuffer(elem$1)
     };
-    const x = this$14.scm_ArrayBuffer__f_size0;
+    const x = this$13.scm_ArrayBuffer__f_size0;
     const isEmpty$2 = (x > 2);
     const isEmpty$3 = (x < 2);
     if ((!isEmpty$3)) {
       let i = x;
       while (true) {
         const v1 = i;
-        const k = this$13.s_util_Random__f_self.nextInt__I__I(v1);
-        $p_s_util_Random__swap$1__I__I__scm_ArrayBuffer__V(this$13, (((-1) + v1) | 0), k, this$14);
+        const k = this$12.s_util_Random__f_self.nextInt__I__I(v1);
+        $p_s_util_Random__swap$1__I__I__scm_ArrayBuffer__V(this$12, (((-1) + v1) | 0), k, this$13);
         if ((i === 2)) {
           break
         };
         i = (((-1) + i) | 0)
       }
     };
-    const this$26 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
-    this.LPerlin__f_perm_x = $as_sci_IndexedSeq($as_scm_Builder(this$26.addAll__sc_IterableOnce__scm_Growable(this$14)).result__O());
-    const this$33 = $m_s_util_Random$();
-    const end$2 = $m_LPerlin$().LPerlin$__f_point_count;
+    const this$25 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+    this.LPerlin__f_perm_x = $as_sci_IndexedSeq($as_scm_Builder(this$25.addAll__sc_IterableOnce__scm_Growable(this$13)).result__O());
+    const this$32 = $m_s_util_Random$();
+    const end$2 = this.LPerlin__f_point_count;
     const isEmpty$4 = (end$2 <= 0);
     const scala$collection$immutable$Range$$lastElement$2 = (((-1) + end$2) | 0);
-    const this$32 = $m_sc_BuildFrom$();
-    new $c_sc_BuildFromLowPriority2$$anon$11(this$32);
-    const this$34 = $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer());
+    const this$31 = $m_sc_BuildFrom$();
+    new $c_sc_BuildFromLowPriority2$$anon$11(this$31);
+    const this$33 = $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer());
     const it$2 = new $c_sci_RangeIterator(0, 1, scala$collection$immutable$Range$$lastElement$2, isEmpty$4);
     while (it$2.sci_RangeIterator__f__hasNext) {
       const elem$2 = it$2.next__I();
-      this$34.addOne__O__scm_ArrayBuffer(elem$2)
+      this$33.addOne__O__scm_ArrayBuffer(elem$2)
     };
-    const x$1 = this$34.scm_ArrayBuffer__f_size0;
+    const x$1 = this$33.scm_ArrayBuffer__f_size0;
     const isEmpty$5 = (x$1 > 2);
     const isEmpty$6 = (x$1 < 2);
     if ((!isEmpty$6)) {
       let i$1 = x$1;
       while (true) {
         const v1$1 = i$1;
-        const k$1 = this$33.s_util_Random__f_self.nextInt__I__I(v1$1);
-        $p_s_util_Random__swap$1__I__I__scm_ArrayBuffer__V(this$33, (((-1) + v1$1) | 0), k$1, this$34);
+        const k$1 = this$32.s_util_Random__f_self.nextInt__I__I(v1$1);
+        $p_s_util_Random__swap$1__I__I__scm_ArrayBuffer__V(this$32, (((-1) + v1$1) | 0), k$1, this$33);
         if ((i$1 === 2)) {
           break
         };
         i$1 = (((-1) + i$1) | 0)
       }
     };
-    const this$46 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
-    this.LPerlin__f_perm_y = $as_sci_IndexedSeq($as_scm_Builder(this$46.addAll__sc_IterableOnce__scm_Growable(this$34)).result__O());
-    const this$53 = $m_s_util_Random$();
-    const end$3 = $m_LPerlin$().LPerlin$__f_point_count;
+    const this$45 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+    this.LPerlin__f_perm_y = $as_sci_IndexedSeq($as_scm_Builder(this$45.addAll__sc_IterableOnce__scm_Growable(this$33)).result__O());
+    const this$52 = $m_s_util_Random$();
+    const end$3 = this.LPerlin__f_point_count;
     const isEmpty$7 = (end$3 <= 0);
     const scala$collection$immutable$Range$$lastElement$3 = (((-1) + end$3) | 0);
-    const this$52 = $m_sc_BuildFrom$();
-    new $c_sc_BuildFromLowPriority2$$anon$11(this$52);
-    const this$54 = $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer());
+    const this$51 = $m_sc_BuildFrom$();
+    new $c_sc_BuildFromLowPriority2$$anon$11(this$51);
+    const this$53 = $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer());
     const it$3 = new $c_sci_RangeIterator(0, 1, scala$collection$immutable$Range$$lastElement$3, isEmpty$7);
     while (it$3.sci_RangeIterator__f__hasNext) {
       const elem$3 = it$3.next__I();
-      this$54.addOne__O__scm_ArrayBuffer(elem$3)
+      this$53.addOne__O__scm_ArrayBuffer(elem$3)
     };
-    const x$2 = this$54.scm_ArrayBuffer__f_size0;
+    const x$2 = this$53.scm_ArrayBuffer__f_size0;
     const isEmpty$8 = (x$2 > 2);
     const isEmpty$9 = (x$2 < 2);
     if ((!isEmpty$9)) {
       let i$2 = x$2;
       while (true) {
         const v1$2 = i$2;
-        const k$2 = this$53.s_util_Random__f_self.nextInt__I__I(v1$2);
-        $p_s_util_Random__swap$1__I__I__scm_ArrayBuffer__V(this$53, (((-1) + v1$2) | 0), k$2, this$54);
+        const k$2 = this$52.s_util_Random__f_self.nextInt__I__I(v1$2);
+        $p_s_util_Random__swap$1__I__I__scm_ArrayBuffer__V(this$52, (((-1) + v1$2) | 0), k$2, this$53);
         if ((i$2 === 2)) {
           break
         };
         i$2 = (((-1) + i$2) | 0)
       }
     };
-    const this$66 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
-    this.LPerlin__f_perm_z = $as_sci_IndexedSeq($as_scm_Builder(this$66.addAll__sc_IterableOnce__scm_Growable(this$54)).result__O())
+    const this$65 = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+    this.LPerlin__f_perm_z = $as_sci_IndexedSeq($as_scm_Builder(this$65.addAll__sc_IterableOnce__scm_Growable(this$53)).result__O())
   };
   noise__LVec3__D(p) {
+    const $$x1 = p.LVec3__f_x;
     const x = p.LVec3__f_x;
-    $uD(Math.floor(x));
+    const u = ($$x1 - $uD(Math.floor(x)));
+    const $$x2 = p.LVec3__f_y;
     const x$1 = p.LVec3__f_y;
-    $uD(Math.floor(x$1));
+    const v = ($$x2 - $uD(Math.floor(x$1)));
+    const $$x3 = p.LVec3__f_z;
     const x$2 = p.LVec3__f_z;
-    $uD(Math.floor(x$2));
-    const i = (255 & $doubleToInt((4.0 * p.LVec3__f_x)));
-    const j = (255 & $doubleToInt((4.0 * p.LVec3__f_y)));
-    const k = (255 & $doubleToInt((4.0 * p.LVec3__f_z)));
-    return $uD(this.LPerlin__f_ranfloat.apply__I__O((($uI(this.LPerlin__f_perm_x.apply__I__O(i)) ^ $uI(this.LPerlin__f_perm_y.apply__I__O(j))) ^ $uI(this.LPerlin__f_perm_z.apply__I__O(k)))))
+    const w = ($$x3 - $uD(Math.floor(x$2)));
+    const x$3 = p.LVec3__f_x;
+    const i = $doubleToInt($uD(Math.floor(x$3)));
+    const x$4 = p.LVec3__f_y;
+    const j = $doubleToInt($uD(Math.floor(x$4)));
+    const x$5 = p.LVec3__f_z;
+    const k = $doubleToInt($uD(Math.floor(x$5)));
+    const this$14 = $m_sci_Seq$();
+    const f = new $c_sjsr_AnonFunction3(((this$13, i$1, j$1, k$1) => ((di$2, dj$2, dk$2) => {
+      const di = $uI(di$2);
+      const dj = $uI(dj$2);
+      const dk = $uI(dk$2);
+      return $as_LVec3(this$13.LPerlin__f_ranvec.apply__I__O((($uI(this$13.LPerlin__f_perm_x.apply__I__O((255 & ((i$1 + di) | 0)))) ^ $uI(this$13.LPerlin__f_perm_y.apply__I__O((255 & ((j$1 + dj) | 0))))) ^ $uI(this$13.LPerlin__f_perm_z.apply__I__O((255 & ((k$1 + dk) | 0)))))))
+    }))(this, i, j, k));
+    const c = $as_sci_Seq($f_sc_IterableFactory__tabulate__I__I__I__F3__O(this$14, 2, 2, 2, f));
+    return $p_LPerlin__trilinear_interp__sci_Seq__D__D__D__D(this, c, u, v, w)
+  };
+  turb__LVec3__I__D(p, depth) {
+    const isEmpty = (depth <= 0);
+    const scala$collection$immutable$Range$$lastElement = (((-1) + depth) | 0);
+    let result___1 = 0.0;
+    let result___2 = p;
+    let result___3 = 1.0;
+    const it = new $c_sci_RangeIterator(0, 1, scala$collection$immutable$Range$$lastElement, isEmpty);
+    while (it.sci_RangeIterator__f__hasNext) {
+      const arg1___1 = result___1;
+      const arg1___2 = result___2;
+      const arg1___3 = result___3;
+      it.next__I();
+      const accum = $uD(arg1___1);
+      const temp_p = $as_LVec3(arg1___2);
+      const weight = $uD(arg1___3);
+      const _1 = (accum + (weight * this.noise__LVec3__D(temp_p)));
+      const _2 = temp_p.$times__LVec3__LVec3(new $c_LVec3(2.0, 2.0, 2.0));
+      const _3 = (0.5 * weight);
+      const $$x1___1 = _1;
+      const $$x1___2 = _2;
+      const $$x1___3 = _3;
+      result___1 = $$x1___1;
+      result___2 = $$x1___2;
+      result___3 = $$x1___3
+    };
+    const x1___1 = result___1;
+    const x1___2 = result___2;
+    const x1___3 = result___3;
+    const accum$1 = $uD(x1___1);
+    return $uD(Math.abs(accum$1))
   };
   apply__LVec2__LVec3__LVec3(uv, p) {
-    const $$x1 = new $c_LVec3(1.0, 1.0, 1.0);
-    const v = this.LPerlin__f_size;
-    const v$1 = this.noise__LVec3__D(new $c_LVec3(v, v, v).$times__LVec3__LVec3(p));
-    return $$x1.$times__LVec3__LVec3(new $c_LVec3(v$1, v$1, v$1))
+    const x = ((this.LPerlin__f_scale * p.LVec3__f_z) + (10.0 * this.turb__LVec3__I__D(p, 7)));
+    const v = (0.5 * (1.0 + $uD(Math.sin(x))));
+    return new $c_LVec3(v, v, v)
   };
   productPrefix__T() {
     return "Perlin"
@@ -23507,7 +23735,7 @@ class $c_LPerlin extends $c_O {
     return 1
   };
   productElement__I__O(x$1) {
-    return ((x$1 === 0) ? this.LPerlin__f_size : $m_sr_Statics$().ioobe__I__O(x$1))
+    return ((x$1 === 0) ? this.LPerlin__f_scale : $m_sr_Statics$().ioobe__I__O(x$1))
   };
   productIterator__sc_Iterator() {
     return new $c_sr_ScalaRunTime$$anon$1(this)
@@ -23518,7 +23746,7 @@ class $c_LPerlin extends $c_O {
     const data = $f_T__hashCode__I("Perlin");
     acc = $m_sr_Statics$().mix__I__I__I(hash, data);
     const hash$1 = acc;
-    const dv = this.LPerlin__f_size;
+    const dv = this.LPerlin__f_scale;
     const data$1 = $m_sr_Statics$().doubleHash__D__I(dv);
     acc = $m_sr_Statics$().mix__I__I__I(hash$1, data$1);
     const hash$2 = acc;
@@ -23532,7 +23760,7 @@ class $c_LPerlin extends $c_O {
       return true
     } else if ((x$1 instanceof $c_LPerlin)) {
       const Perlin$1 = $as_LPerlin(x$1);
-      return (this.LPerlin__f_size === Perlin$1.LPerlin__f_size)
+      return (this.LPerlin__f_scale === Perlin$1.LPerlin__f_scale)
     } else {
       return false
     }
@@ -23771,6 +23999,429 @@ const $d_LSphere = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_LSphere.prototype.$classData = $d_LSphere;
+class $c_LXYRect extends $c_LHittable {
+  constructor(x0, x1, y0, y1, z, material) {
+    super();
+    this.LXYRect__f_x0 = 0.0;
+    this.LXYRect__f_x1 = 0.0;
+    this.LXYRect__f_y0 = 0.0;
+    this.LXYRect__f_y1 = 0.0;
+    this.LXYRect__f_z = 0.0;
+    this.LXYRect__f_material = null;
+    this.LXYRect__f_x0 = x0;
+    this.LXYRect__f_x1 = x1;
+    this.LXYRect__f_y0 = y0;
+    this.LXYRect__f_y1 = y1;
+    this.LXYRect__f_z = z;
+    this.LXYRect__f_material = material
+  };
+  hit__LRay__D__D__s_Option(r, t_min, t_max) {
+    const t = ((this.LXYRect__f_z - r.LRay__f_origin.LVec3__f_z) / r.LRay__f_direction.LVec3__f_z);
+    if (((t < t_min) || (t > t_max))) {
+      return $m_s_None$()
+    } else {
+      const x = (r.LRay__f_origin.LVec3__f_x + (t * r.LRay__f_direction.LVec3__f_x));
+      const y = (r.LRay__f_origin.LVec3__f_y + (t * r.LRay__f_direction.LVec3__f_y));
+      return (((((x < this.LXYRect__f_x0) || (x > this.LXYRect__f_x1)) || (y < this.LXYRect__f_y0)) || (y > this.LXYRect__f_y1)) ? $m_s_None$() : new $c_s_Some(new $c_LHit(r, new $c_LVec3(0.0, 0.0, 1.0), t, new $c_LVec2(((x - this.LXYRect__f_x0) / (this.LXYRect__f_x1 - this.LXYRect__f_x0)), ((y - this.LXYRect__f_y0) / (this.LXYRect__f_y1 - this.LXYRect__f_y0))), this.LXYRect__f_material)))
+    }
+  };
+  bounding_box__LAABB() {
+    return new $c_LAABB(new $c_LVec3(this.LXYRect__f_x0, this.LXYRect__f_y0, (this.LXYRect__f_z - 1.0E-4)), new $c_LVec3(this.LXYRect__f_x1, this.LXYRect__f_y1, (this.LXYRect__f_z + 1.0E-4)))
+  };
+  productPrefix__T() {
+    return "XYRect"
+  };
+  productArity__I() {
+    return 6
+  };
+  productElement__I__O(x$1) {
+    switch (x$1) {
+      case 0: {
+        return this.LXYRect__f_x0;
+        break
+      }
+      case 1: {
+        return this.LXYRect__f_x1;
+        break
+      }
+      case 2: {
+        return this.LXYRect__f_y0;
+        break
+      }
+      case 3: {
+        return this.LXYRect__f_y1;
+        break
+      }
+      case 4: {
+        return this.LXYRect__f_z;
+        break
+      }
+      case 5: {
+        return this.LXYRect__f_material;
+        break
+      }
+      default: {
+        return $m_sr_Statics$().ioobe__I__O(x$1)
+      }
+    }
+  };
+  productIterator__sc_Iterator() {
+    return new $c_sr_ScalaRunTime$$anon$1(this)
+  };
+  hashCode__I() {
+    let acc = (-889275714);
+    const hash = acc;
+    const data = $f_T__hashCode__I("XYRect");
+    acc = $m_sr_Statics$().mix__I__I__I(hash, data);
+    const hash$1 = acc;
+    const dv = this.LXYRect__f_x0;
+    const data$1 = $m_sr_Statics$().doubleHash__D__I(dv);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$1, data$1);
+    const hash$2 = acc;
+    const dv$1 = this.LXYRect__f_x1;
+    const data$2 = $m_sr_Statics$().doubleHash__D__I(dv$1);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$2, data$2);
+    const hash$3 = acc;
+    const dv$2 = this.LXYRect__f_y0;
+    const data$3 = $m_sr_Statics$().doubleHash__D__I(dv$2);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$3, data$3);
+    const hash$4 = acc;
+    const dv$3 = this.LXYRect__f_y1;
+    const data$4 = $m_sr_Statics$().doubleHash__D__I(dv$3);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$4, data$4);
+    const hash$5 = acc;
+    const dv$4 = this.LXYRect__f_z;
+    const data$5 = $m_sr_Statics$().doubleHash__D__I(dv$4);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$5, data$5);
+    const hash$6 = acc;
+    const x = this.LXYRect__f_material;
+    const data$6 = $m_sr_Statics$().anyHash__O__I(x);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$6, data$6);
+    const hash$7 = acc;
+    return $m_sr_Statics$().finalizeHash__I__I__I(hash$7, 6)
+  };
+  toString__T() {
+    return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+  };
+  equals__O__Z(x$1) {
+    if ((this === x$1)) {
+      return true
+    } else if ((x$1 instanceof $c_LXYRect)) {
+      const XYRect$1 = $as_LXYRect(x$1);
+      if ((((((this.LXYRect__f_x0 === XYRect$1.LXYRect__f_x0) && (this.LXYRect__f_x1 === XYRect$1.LXYRect__f_x1)) && (this.LXYRect__f_y0 === XYRect$1.LXYRect__f_y0)) && (this.LXYRect__f_y1 === XYRect$1.LXYRect__f_y1)) && (this.LXYRect__f_z === XYRect$1.LXYRect__f_z))) {
+        const x = this.LXYRect__f_material;
+        const x$2 = XYRect$1.LXYRect__f_material;
+        return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  };
+}
+function $as_LXYRect(obj) {
+  return (((obj instanceof $c_LXYRect) || (obj === null)) ? obj : $throwClassCastException(obj, "XYRect"))
+}
+function $isArrayOf_LXYRect(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LXYRect)))
+}
+function $asArrayOf_LXYRect(obj, depth) {
+  return (($isArrayOf_LXYRect(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LXYRect;", depth))
+}
+const $d_LXYRect = new $TypeData().initClass({
+  LXYRect: 0
+}, false, "XYRect", {
+  LXYRect: 1,
+  LHittable: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  Ljava_io_Serializable: 1
+});
+$c_LXYRect.prototype.$classData = $d_LXYRect;
+class $c_LXZRect extends $c_LHittable {
+  constructor(x0, x1, z0, z1, y, material) {
+    super();
+    this.LXZRect__f_x0 = 0.0;
+    this.LXZRect__f_x1 = 0.0;
+    this.LXZRect__f_z0 = 0.0;
+    this.LXZRect__f_z1 = 0.0;
+    this.LXZRect__f_y = 0.0;
+    this.LXZRect__f_material = null;
+    this.LXZRect__f_x0 = x0;
+    this.LXZRect__f_x1 = x1;
+    this.LXZRect__f_z0 = z0;
+    this.LXZRect__f_z1 = z1;
+    this.LXZRect__f_y = y;
+    this.LXZRect__f_material = material
+  };
+  hit__LRay__D__D__s_Option(r, t_min, t_max) {
+    const t = ((this.LXZRect__f_y - r.LRay__f_origin.LVec3__f_y) / r.LRay__f_direction.LVec3__f_y);
+    if (((t < t_min) || (t > t_max))) {
+      return $m_s_None$()
+    } else {
+      const x = (r.LRay__f_origin.LVec3__f_x + (t * r.LRay__f_direction.LVec3__f_x));
+      const z = (r.LRay__f_origin.LVec3__f_z + (t * r.LRay__f_direction.LVec3__f_z));
+      return (((((x < this.LXZRect__f_x0) || (x > this.LXZRect__f_x1)) || (z < this.LXZRect__f_z0)) || (z > this.LXZRect__f_z1)) ? $m_s_None$() : new $c_s_Some(new $c_LHit(r, new $c_LVec3(0.0, 0.0, 1.0), t, new $c_LVec2(((x - this.LXZRect__f_x0) / (this.LXZRect__f_x1 - this.LXZRect__f_x0)), ((z - this.LXZRect__f_z0) / (this.LXZRect__f_z1 - this.LXZRect__f_z0))), this.LXZRect__f_material)))
+    }
+  };
+  bounding_box__LAABB() {
+    return new $c_LAABB(new $c_LVec3(this.LXZRect__f_x0, (this.LXZRect__f_y - 1.0E-4), this.LXZRect__f_z0), new $c_LVec3(this.LXZRect__f_x1, (this.LXZRect__f_y + 1.0E-4), this.LXZRect__f_z1))
+  };
+  productPrefix__T() {
+    return "XZRect"
+  };
+  productArity__I() {
+    return 6
+  };
+  productElement__I__O(x$1) {
+    switch (x$1) {
+      case 0: {
+        return this.LXZRect__f_x0;
+        break
+      }
+      case 1: {
+        return this.LXZRect__f_x1;
+        break
+      }
+      case 2: {
+        return this.LXZRect__f_z0;
+        break
+      }
+      case 3: {
+        return this.LXZRect__f_z1;
+        break
+      }
+      case 4: {
+        return this.LXZRect__f_y;
+        break
+      }
+      case 5: {
+        return this.LXZRect__f_material;
+        break
+      }
+      default: {
+        return $m_sr_Statics$().ioobe__I__O(x$1)
+      }
+    }
+  };
+  productIterator__sc_Iterator() {
+    return new $c_sr_ScalaRunTime$$anon$1(this)
+  };
+  hashCode__I() {
+    let acc = (-889275714);
+    const hash = acc;
+    const data = $f_T__hashCode__I("XZRect");
+    acc = $m_sr_Statics$().mix__I__I__I(hash, data);
+    const hash$1 = acc;
+    const dv = this.LXZRect__f_x0;
+    const data$1 = $m_sr_Statics$().doubleHash__D__I(dv);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$1, data$1);
+    const hash$2 = acc;
+    const dv$1 = this.LXZRect__f_x1;
+    const data$2 = $m_sr_Statics$().doubleHash__D__I(dv$1);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$2, data$2);
+    const hash$3 = acc;
+    const dv$2 = this.LXZRect__f_z0;
+    const data$3 = $m_sr_Statics$().doubleHash__D__I(dv$2);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$3, data$3);
+    const hash$4 = acc;
+    const dv$3 = this.LXZRect__f_z1;
+    const data$4 = $m_sr_Statics$().doubleHash__D__I(dv$3);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$4, data$4);
+    const hash$5 = acc;
+    const dv$4 = this.LXZRect__f_y;
+    const data$5 = $m_sr_Statics$().doubleHash__D__I(dv$4);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$5, data$5);
+    const hash$6 = acc;
+    const x = this.LXZRect__f_material;
+    const data$6 = $m_sr_Statics$().anyHash__O__I(x);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$6, data$6);
+    const hash$7 = acc;
+    return $m_sr_Statics$().finalizeHash__I__I__I(hash$7, 6)
+  };
+  toString__T() {
+    return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+  };
+  equals__O__Z(x$1) {
+    if ((this === x$1)) {
+      return true
+    } else if ((x$1 instanceof $c_LXZRect)) {
+      const XZRect$1 = $as_LXZRect(x$1);
+      if ((((((this.LXZRect__f_x0 === XZRect$1.LXZRect__f_x0) && (this.LXZRect__f_x1 === XZRect$1.LXZRect__f_x1)) && (this.LXZRect__f_z0 === XZRect$1.LXZRect__f_z0)) && (this.LXZRect__f_z1 === XZRect$1.LXZRect__f_z1)) && (this.LXZRect__f_y === XZRect$1.LXZRect__f_y))) {
+        const x = this.LXZRect__f_material;
+        const x$2 = XZRect$1.LXZRect__f_material;
+        return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  };
+}
+function $as_LXZRect(obj) {
+  return (((obj instanceof $c_LXZRect) || (obj === null)) ? obj : $throwClassCastException(obj, "XZRect"))
+}
+function $isArrayOf_LXZRect(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LXZRect)))
+}
+function $asArrayOf_LXZRect(obj, depth) {
+  return (($isArrayOf_LXZRect(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LXZRect;", depth))
+}
+const $d_LXZRect = new $TypeData().initClass({
+  LXZRect: 0
+}, false, "XZRect", {
+  LXZRect: 1,
+  LHittable: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  Ljava_io_Serializable: 1
+});
+$c_LXZRect.prototype.$classData = $d_LXZRect;
+class $c_LYZRect extends $c_LHittable {
+  constructor(y0, y1, z0, z1, x, material) {
+    super();
+    this.LYZRect__f_y0 = 0.0;
+    this.LYZRect__f_y1 = 0.0;
+    this.LYZRect__f_z0 = 0.0;
+    this.LYZRect__f_z1 = 0.0;
+    this.LYZRect__f_x = 0.0;
+    this.LYZRect__f_material = null;
+    this.LYZRect__f_y0 = y0;
+    this.LYZRect__f_y1 = y1;
+    this.LYZRect__f_z0 = z0;
+    this.LYZRect__f_z1 = z1;
+    this.LYZRect__f_x = x;
+    this.LYZRect__f_material = material
+  };
+  hit__LRay__D__D__s_Option(r, t_min, t_max) {
+    const t = ((this.LYZRect__f_x - r.LRay__f_origin.LVec3__f_x) / r.LRay__f_direction.LVec3__f_x);
+    if (((t < t_min) || (t > t_max))) {
+      return $m_s_None$()
+    } else {
+      const y = (r.LRay__f_origin.LVec3__f_y + (t * r.LRay__f_direction.LVec3__f_y));
+      const z = (r.LRay__f_origin.LVec3__f_z + (t * r.LRay__f_direction.LVec3__f_z));
+      return (((((y < this.LYZRect__f_y0) || (y > this.LYZRect__f_y1)) || (z < this.LYZRect__f_z0)) || (z > this.LYZRect__f_z1)) ? $m_s_None$() : new $c_s_Some(new $c_LHit(r, new $c_LVec3(0.0, 0.0, 1.0), t, new $c_LVec2(((y - this.LYZRect__f_y0) / (this.LYZRect__f_y1 - this.LYZRect__f_y0)), ((z - this.LYZRect__f_z0) / (this.LYZRect__f_z1 - this.LYZRect__f_z0))), this.LYZRect__f_material)))
+    }
+  };
+  bounding_box__LAABB() {
+    return new $c_LAABB(new $c_LVec3((this.LYZRect__f_x - 1.0E-4), this.LYZRect__f_y0, this.LYZRect__f_z0), new $c_LVec3((this.LYZRect__f_x + 1.0E-4), this.LYZRect__f_y1, this.LYZRect__f_z1))
+  };
+  productPrefix__T() {
+    return "YZRect"
+  };
+  productArity__I() {
+    return 6
+  };
+  productElement__I__O(x$1) {
+    switch (x$1) {
+      case 0: {
+        return this.LYZRect__f_y0;
+        break
+      }
+      case 1: {
+        return this.LYZRect__f_y1;
+        break
+      }
+      case 2: {
+        return this.LYZRect__f_z0;
+        break
+      }
+      case 3: {
+        return this.LYZRect__f_z1;
+        break
+      }
+      case 4: {
+        return this.LYZRect__f_x;
+        break
+      }
+      case 5: {
+        return this.LYZRect__f_material;
+        break
+      }
+      default: {
+        return $m_sr_Statics$().ioobe__I__O(x$1)
+      }
+    }
+  };
+  productIterator__sc_Iterator() {
+    return new $c_sr_ScalaRunTime$$anon$1(this)
+  };
+  hashCode__I() {
+    let acc = (-889275714);
+    const hash = acc;
+    const data = $f_T__hashCode__I("YZRect");
+    acc = $m_sr_Statics$().mix__I__I__I(hash, data);
+    const hash$1 = acc;
+    const dv = this.LYZRect__f_y0;
+    const data$1 = $m_sr_Statics$().doubleHash__D__I(dv);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$1, data$1);
+    const hash$2 = acc;
+    const dv$1 = this.LYZRect__f_y1;
+    const data$2 = $m_sr_Statics$().doubleHash__D__I(dv$1);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$2, data$2);
+    const hash$3 = acc;
+    const dv$2 = this.LYZRect__f_z0;
+    const data$3 = $m_sr_Statics$().doubleHash__D__I(dv$2);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$3, data$3);
+    const hash$4 = acc;
+    const dv$3 = this.LYZRect__f_z1;
+    const data$4 = $m_sr_Statics$().doubleHash__D__I(dv$3);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$4, data$4);
+    const hash$5 = acc;
+    const dv$4 = this.LYZRect__f_x;
+    const data$5 = $m_sr_Statics$().doubleHash__D__I(dv$4);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$5, data$5);
+    const hash$6 = acc;
+    const x = this.LYZRect__f_material;
+    const data$6 = $m_sr_Statics$().anyHash__O__I(x);
+    acc = $m_sr_Statics$().mix__I__I__I(hash$6, data$6);
+    const hash$7 = acc;
+    return $m_sr_Statics$().finalizeHash__I__I__I(hash$7, 6)
+  };
+  toString__T() {
+    return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+  };
+  equals__O__Z(x$1) {
+    if ((this === x$1)) {
+      return true
+    } else if ((x$1 instanceof $c_LYZRect)) {
+      const YZRect$1 = $as_LYZRect(x$1);
+      if ((((((this.LYZRect__f_y0 === YZRect$1.LYZRect__f_y0) && (this.LYZRect__f_y1 === YZRect$1.LYZRect__f_y1)) && (this.LYZRect__f_z0 === YZRect$1.LYZRect__f_z0)) && (this.LYZRect__f_z1 === YZRect$1.LYZRect__f_z1)) && (this.LYZRect__f_x === YZRect$1.LYZRect__f_x))) {
+        const x = this.LYZRect__f_material;
+        const x$2 = YZRect$1.LYZRect__f_material;
+        return ((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))
+      } else {
+        return false
+      }
+    } else {
+      return false
+    }
+  };
+}
+function $as_LYZRect(obj) {
+  return (((obj instanceof $c_LYZRect) || (obj === null)) ? obj : $throwClassCastException(obj, "YZRect"))
+}
+function $isArrayOf_LYZRect(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.LYZRect)))
+}
+function $asArrayOf_LYZRect(obj, depth) {
+  return (($isArrayOf_LYZRect(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "LYZRect;", depth))
+}
+const $d_LYZRect = new $TypeData().initClass({
+  LYZRect: 0
+}, false, "YZRect", {
+  LYZRect: 1,
+  LHittable: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  Ljava_io_Serializable: 1
+});
+$c_LYZRect.prototype.$classData = $d_LYZRect;
 const $ct_Ljava_io_FilterOutputStream__Ljava_io_OutputStream__ = (function($thiz, out) {
   $thiz.Ljava_io_FilterOutputStream__f_out = out;
   return $thiz
@@ -24248,15 +24899,6 @@ const $ct_ju_NoSuchElementException__ = (function($thiz) {
   return $thiz
 });
 class $c_ju_NoSuchElementException extends $c_jl_RuntimeException {
-}
-function $as_ju_NoSuchElementException(obj) {
-  return (((obj instanceof $c_ju_NoSuchElementException) || (obj === null)) ? obj : $throwClassCastException(obj, "java.util.NoSuchElementException"))
-}
-function $isArrayOf_ju_NoSuchElementException(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.ju_NoSuchElementException)))
-}
-function $asArrayOf_ju_NoSuchElementException(obj, depth) {
-  return (($isArrayOf_ju_NoSuchElementException(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ljava.util.NoSuchElementException;", depth))
 }
 const $d_ju_NoSuchElementException = new $TypeData().initClass({
   ju_NoSuchElementException: 0
@@ -26295,8 +26937,14 @@ class $c_sci_MapKeyValueTupleHashIterator extends $c_sci_ChampBaseReverseIterato
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -26357,8 +27005,14 @@ class $c_sci_MapKeyValueTupleIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -26554,8 +27208,14 @@ class $c_sci_NewVectorIterator extends $c_O {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -26743,8 +27403,14 @@ class $c_sci_SetHashIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -26798,8 +27464,14 @@ class $c_sci_SetIterator extends $c_sci_ChampBaseIterator {
   toString__T() {
     return "<iterator>"
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -29198,6 +29870,9 @@ class $c_sc_AbstractIterable extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   isEmpty__Z() {
     return $f_sc_IterableOnceOps__isEmpty__Z(this)
   };
@@ -29206,6 +29881,9 @@ class $c_sc_AbstractIterable extends $c_O {
   };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -29990,6 +30668,9 @@ const $d_s_math_Ordering$$anon$4 = new $TypeData().initClass({
 $c_s_math_Ordering$$anon$4.prototype.$classData = $d_s_math_Ordering$$anon$4;
 function $f_s_math_Ordering$CachedReverse__isReverseOf__s_math_Ordering__Z($thiz, other) {
   return (other === $thiz.s_math_Ordering$Int$__f_scala$math$Ordering$CachedReverse$$_reverse)
+}
+function $f_s_math_Ordering$Double$IeeeOrdering__lteq__D__D__Z($thiz, x, y) {
+  return (x <= y)
 }
 class $c_s_math_Ordering$Reverse extends $c_O {
   constructor(outer) {
@@ -32248,6 +32929,9 @@ const $d_s_math_BigInt = new $TypeData().initClass({
   jl_Comparable: 1
 });
 $c_s_math_BigInt.prototype.$classData = $d_s_math_BigInt;
+function $f_s_math_Numeric$DoubleIsFractional__plus__D__D__D($thiz, x, y) {
+  return (x + y)
+}
 class $c_s_math_Ordering$Int$ extends $c_O {
   constructor() {
     super();
@@ -32962,8 +33646,14 @@ class $c_sc_SeqView$Sorted extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -33089,8 +33779,14 @@ class $c_sc_SeqView$Sorted$ReverseSorted extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
@@ -33454,6 +34150,52 @@ const $d_sc_View$ZipWithIndex = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_sc_View$ZipWithIndex.prototype.$classData = $d_sc_View$ZipWithIndex;
+class $c_s_math_Numeric$DoubleIsFractional$ extends $c_O {
+  isReverseOf__s_math_Ordering__Z(other) {
+    return $f_s_math_Ordering__isReverseOf__s_math_Ordering__Z(this, other)
+  };
+  fromInt__I__O(x) {
+    return x
+  };
+  plus__O__O__O(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $f_s_math_Numeric$DoubleIsFractional__plus__D__D__D(this, x$1, y$1)
+  };
+  lteq__O__O__Z(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $f_s_math_Ordering$Double$IeeeOrdering__lteq__D__D__Z(this, x$1, y$1)
+  };
+  compare__O__O__I(x, y) {
+    const x$1 = $uD(x);
+    const y$1 = $uD(y);
+    return $m_jl_Double$().compare__D__D__I(x$1, y$1)
+  };
+}
+const $d_s_math_Numeric$DoubleIsFractional$ = new $TypeData().initClass({
+  s_math_Numeric$DoubleIsFractional$: 0
+}, false, "scala.math.Numeric$DoubleIsFractional$", {
+  s_math_Numeric$DoubleIsFractional$: 1,
+  O: 1,
+  s_math_Numeric$DoubleIsFractional: 1,
+  s_math_Fractional: 1,
+  s_math_Numeric: 1,
+  s_math_Ordering: 1,
+  ju_Comparator: 1,
+  s_math_PartialOrdering: 1,
+  s_math_Equiv: 1,
+  Ljava_io_Serializable: 1,
+  s_math_Ordering$Double$IeeeOrdering: 1
+});
+$c_s_math_Numeric$DoubleIsFractional$.prototype.$classData = $d_s_math_Numeric$DoubleIsFractional$;
+let $n_s_math_Numeric$DoubleIsFractional$;
+function $m_s_math_Numeric$DoubleIsFractional$() {
+  if ((!$n_s_math_Numeric$DoubleIsFractional$)) {
+    $n_s_math_Numeric$DoubleIsFractional$ = new $c_s_math_Numeric$DoubleIsFractional$()
+  };
+  return $n_s_math_Numeric$DoubleIsFractional$
+}
 class $c_sc_AbstractSet extends $c_sc_AbstractIterable {
   equals__O__Z(that) {
     return $f_sc_Set__equals__O__Z(this, that)
@@ -36166,6 +36908,22 @@ class $c_sci_LazyList extends $c_sci_AbstractSeq {
   equals__O__Z(that) {
     return ((this === that) || $f_sc_Seq__equals__O__Z(this, that))
   };
+  reduceLeft__F2__O(f) {
+    if (this.isEmpty__Z()) {
+      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+    } else {
+      let reducedRes = this.scala$collection$immutable$LazyList$$state__sci_LazyList$State().head__O();
+      let left = this.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList();
+      while ((!left.isEmpty__Z())) {
+        const $$x1 = reducedRes;
+        const this$1 = left;
+        reducedRes = f.apply__O__O__O($$x1, this$1.scala$collection$immutable$LazyList$$state__sci_LazyList$State().head__O());
+        const this$2 = left;
+        left = this$2.scala$collection$immutable$LazyList$$state__sci_LazyList$State().tail__sci_LazyList()
+      };
+      return reducedRes
+    }
+  };
   partition__F1__T2(p) {
     return new $c_T2(this.filter__F1__sci_LazyList(p), this.filterNot__F1__sci_LazyList(p))
   };
@@ -36397,6 +37155,19 @@ class $c_sci_Stream extends $c_sci_AbstractSeq {
   };
   equals__O__Z(that) {
     return ((this === that) || $f_sc_Seq__equals__O__Z(this, that))
+  };
+  reduceLeft__F2__O(f) {
+    if (this.isEmpty__Z()) {
+      throw $ct_jl_UnsupportedOperationException__T__(new $c_jl_UnsupportedOperationException(), "empty.reduceLeft")
+    } else {
+      let reducedRes = this.head__O();
+      let left = $as_sci_Stream(this.tail__O());
+      while ((!left.isEmpty__Z())) {
+        reducedRes = f.apply__O__O__O(reducedRes, left.head__O());
+        left = $as_sci_Stream(left.tail__O())
+      };
+      return reducedRes
+    }
   };
   partition__F1__T2(p) {
     const pred = new $c_sjsr_AnonFunction1(((this$1, p$1) => ((x$1$2) => $uZ(p$1.apply__O__O(x$1$2))))(this, p));
@@ -36770,8 +37541,14 @@ class $c_sjsr_WrappedVarArgs extends $c_O {
   exists__F1__Z(p) {
     return $f_sc_IterableOnceOps__exists__F1__Z(this, p)
   };
+  reduceLeft__F2__O(op) {
+    return $f_sc_IterableOnceOps__reduceLeft__F2__O(this, op)
+  };
   copyToArray__O__I__I(xs, start) {
     return $f_sc_IterableOnceOps__copyToArray__O__I__I(this, xs, start)
+  };
+  sum__s_math_Numeric__O(num) {
+    return $f_sc_IterableOnceOps__sum__s_math_Numeric__O(this, num)
   };
   addString__scm_StringBuilder__T__T__T__scm_StringBuilder(b, start, sep, end) {
     return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end)
